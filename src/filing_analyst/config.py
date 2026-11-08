@@ -35,3 +35,7 @@ class Settings(BaseSettings):
     @property
     def sections_dir(self) -> Path:
         return self.data_dir / "sections"
+
+    @property
+    def facts_db(self) -> Path:
+        return self.data_dir / "facts.duckdb"
