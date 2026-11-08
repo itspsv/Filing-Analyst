@@ -1,0 +1,17 @@
+# secrets
+.env
+
+# data (downloaded or generated, never committed)
+data/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# os
+.DS_Store
+CLAUDE.md
+

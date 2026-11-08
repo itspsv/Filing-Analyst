@@ -1,0 +1,26 @@
+[project]
+name = "filing-analyst"
+version = "0.1.0"
+description = "Cited answers about US companies from their SEC 10-K filings."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "httpx==0.28.1",
+    "pydantic==2.14.3",
+    "pydantic-settings==2.16.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==9.2.0",
+    "ruff==0.17.4",
+]
+
+[build-system]
+requires = ["uv_build>=0.10.6,<0.11"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "network: calls the real SEC website (skipped when SEC_USER_AGENT is not set)",
+]
