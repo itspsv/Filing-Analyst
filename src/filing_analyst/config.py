@@ -8,9 +8,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 COMPANIES: tuple[str, ...] = (
-    "AAPL", "MSFT", "GOOGL", "AMZN", "META", "NVDA", "AMD", "INTC", "TSLA", "NFLX",
-    "CRM", "ORCL", "ADBE", "QCOM", "AVGO", "TXN", "MU", "IBM", "CSCO", "PYPL",
+    "AAPL", "MSFT", "GOOGL", "AMZN", "META", "NVDA", "AMD", "AMAT", "TSLA", "NFLX",
+    "CRM", "ORCL", "ADBE", "QCOM", "AVGO", "TXN", "MU", "NOW", "CSCO", "PYPL",
 )  # fmt: skip
+# INTC and IBM were swapped out: Intel's 10-K is not laid out by Item number, and IBM's
+# Item 7 only points to a separate annual-report exhibit.
 
 
 class Settings(BaseSettings):
