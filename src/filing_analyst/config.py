@@ -29,3 +29,7 @@ class Settings(BaseSettings):
     @property
     def raw_dir(self) -> Path:
         return self.data_dir / "raw"
+
+    @property
+    def sections_dir(self) -> Path:
+        return self.data_dir / "sections"
