@@ -56,6 +56,10 @@ class Settings(BaseSettings):
         return self.data_dir / "facts.duckdb"
 
     @property
+    def risks_dir(self) -> Path:
+        return self.data_dir / "risks"
+
+    @property
     def llm_cache_dir(self) -> Path:
         return self.data_dir / "llm_cache"
 

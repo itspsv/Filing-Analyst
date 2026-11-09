@@ -117,6 +117,7 @@ def test_bad_json_is_rejected_then_reasked(tmp_path: Path) -> None:
     assert line["success"] is False  # not valid on the first try
     assert line["retries"] == 1
     assert line["tokens_in"] == 100  # both attempts are counted
+    assert line["error"].startswith("severity: ")  # names the field, not just "1 error"
 
 
 def test_gives_up_when_output_stays_invalid(tmp_path: Path) -> None:

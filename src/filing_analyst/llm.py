@@ -48,6 +48,15 @@ def backoff_seconds(attempt: int, retry_after: str | None, jitter: float) -> flo
     return wait + jitter
 
 
+def describe_validation_error(err: ValidationError) -> str:
+    """Name the field and the reason, e.g. 'risks.3.severity: Input should be ... (+1 more)'."""
+    errors = err.errors()
+    first = errors[0]
+    where = ".".join(str(part) for part in first["loc"]) or "answer"
+    more = f" (+{len(errors) - 1} more)" if len(errors) > 1 else ""
+    return f"{where}: {first['msg']}{more}"[:300]
+
+
 class MinuteLimiter:
     """Sliding 60-second window: blocks until a call fits under both per-minute limits."""
 
@@ -160,12 +169,13 @@ class LLMClient:
             self._log(task, 0, 0, 0, success=True, retries=0, error=None, cached=True)
             return json.loads(cache_path.read_text())["text"]
 
-        started = time.perf_counter()
+        api_seconds = 0.0  # time spent waiting on the API only, not on our own rate limiter
         tokens_in = tokens_out = retries = 0
         first_error: str | None = None
         attempt_messages = messages
         for attempt in range(MAX_VALIDATION_RETRIES + 1):
-            body, http_retries = self._post({**payload, "messages": attempt_messages})
+            body, http_retries, seconds = self._post({**payload, "messages": attempt_messages})
+            api_seconds += seconds
             retries += http_retries + (1 if attempt > 0 else 0)  # HTTP retries + re-asks
             tokens_in += body["usage"]["prompt_tokens"]
             tokens_out += body["usage"]["completion_tokens"]
@@ -174,8 +184,9 @@ class LLMClient:
             if error is None:
                 cache_path.parent.mkdir(parents=True, exist_ok=True)
                 cache_path.write_text(json.dumps({"text": text}))
-                latency = time.perf_counter() - started
-                self._log(task, tokens_in, tokens_out, latency, attempt == 0, retries, first_error)
+                self._log(
+                    task, tokens_in, tokens_out, api_seconds, attempt == 0, retries, first_error
+                )
                 return text
             first_error = first_error or error
             attempt_messages = [
@@ -183,8 +194,7 @@ class LLMClient:
                 {"role": "assistant", "content": text},
                 {"role": "user", "content": f"That was not valid: {error}. Reply with JSON only."},
             ]
-        latency = time.perf_counter() - started
-        self._log(task, tokens_in, tokens_out, latency, False, retries, first_error)
+        self._log(task, tokens_in, tokens_out, api_seconds, False, retries, first_error)
         raise LLMError(f"{task}: no valid answer after {MAX_VALIDATION_RETRIES + 1} tries")
 
     def _payload(
@@ -219,11 +229,12 @@ class LLMClient:
         try:
             response_model.model_validate_json(text)
         except ValidationError as err:
-            return str(err).splitlines()[0][:300]
+            return describe_validation_error(err)
         return None
 
-    def _post(self, payload: dict) -> tuple[dict, int]:
-        """POST with retries. Returns the JSON body and how many retries it took."""
+    def _post(self, payload: dict) -> tuple[dict, int, float]:
+        """POST with retries. Returns the JSON body, retry count and seconds spent on the API."""
+        api_seconds = 0.0
         estimate = len(json.dumps(payload["messages"])) // 4 + payload["max_tokens"]
         with self._budget_lock:
             if self._used_today + estimate > self.settings.llm_daily_token_limit:
@@ -235,15 +246,17 @@ class LLMClient:
             response: httpx.Response | None = None
             with self._slots:
                 entry = self.limiter.reserve(estimate)
+                sent = time.perf_counter()
                 with contextlib.suppress(httpx.TransportError):  # network hiccup: retry like a 5xx
                     response = self._http.post("/chat/completions", json=payload)
+                api_seconds += time.perf_counter() - sent
             if response is not None and response.status_code == 200:
                 body = response.json()
                 used = body["usage"]["prompt_tokens"] + body["usage"]["completion_tokens"]
                 self.limiter.settle(entry, used)
                 with self._budget_lock:
                     self._used_today += used
-                return body, attempt
+                return body, attempt, api_seconds
             if response is not None and response.status_code not in RETRY_STATUSES:
                 raise LLMError(f"HTTP {response.status_code}: {response.text[:300]}")
             if attempt < MAX_HTTP_RETRIES:
