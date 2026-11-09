@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from pydantic import field_validator
+from pydantic import AliasChoices, Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -20,6 +20,21 @@ class Settings(BaseSettings):
 
     sec_user_agent: str
     data_dir: Path = PROJECT_ROOT / "data"
+
+    # LLM: any OpenAI-compatible chat API. Defaults are Groq's free tier for gpt-oss-120b
+    # (limits page, Nov 2026: 30 req/min, 1K req/day, 8K tokens/min, 200K tokens/day).
+    llm_api_key: SecretStr | None = Field(
+        default=None, validation_alias=AliasChoices("llm_api_key", "groq_api_key")
+    )
+    llm_base_url: str = "https://api.groq.com/openai/v1"
+    llm_model: str = "openai/gpt-oss-120b"
+    llm_reasoning_effort: str | None = "low"
+    llm_tokens_per_minute: int = 8_000
+    llm_requests_per_minute: int = 30
+    llm_daily_token_limit: int = 190_000  # 200K minus a safety margin
+    llm_max_concurrency: int = 2
+    llm_eur_per_million_in: float = 0.0  # free tier; set for a paid backup provider
+    llm_eur_per_million_out: float = 0.0
 
     @field_validator("sec_user_agent")
     @classmethod
@@ -39,3 +54,11 @@ class Settings(BaseSettings):
     @property
     def facts_db(self) -> Path:
         return self.data_dir / "facts.duckdb"
+
+    @property
+    def llm_cache_dir(self) -> Path:
+        return self.data_dir / "llm_cache"
+
+    @property
+    def run_log(self) -> Path:
+        return self.data_dir / "run_log.jsonl"
