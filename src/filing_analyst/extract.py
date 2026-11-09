@@ -8,7 +8,7 @@ import sys
 from concurrent.futures import ThreadPoolExecutor
 from typing import Literal, Protocol
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from filing_analyst.config import COMPANIES, Settings
 from filing_analyst.llm import DailyBudgetExceeded, LLMClient, LLMError, Messages
@@ -37,6 +37,8 @@ Category = Literal[
 
 
 class RiskFactor(BaseModel):
+    model_config = ConfigDict(extra="forbid")  # required by strict schema mode
+
     category: Category
     summary: str = Field(min_length=1, max_length=200)
     severity: int = Field(ge=1, le=5)
@@ -51,6 +53,8 @@ class RiskFactor(BaseModel):
 
 class ChunkRisks(BaseModel):
     """What the model returns for one chunk."""
+
+    model_config = ConfigDict(extra="forbid")
 
     risks: list[RiskFactor]
 

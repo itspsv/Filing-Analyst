@@ -150,6 +150,14 @@ def test_daily_budget_stops_before_calling(tmp_path: Path) -> None:
     assert calls == []
 
 
+def test_json_request_asks_for_strict_schema(tmp_path: Path) -> None:
+    body = ok_body('{"category": "supply", "severity": 4}')
+    client, calls, _ = make_client(tmp_path, [httpx.Response(200, json=body)])
+    client.complete_json(MESSAGES, task="t", response_model=Risk)
+    sent = json.loads(calls[0].content)
+    assert sent["response_format"]["json_schema"]["strict"] is True
+
+
 def test_limiter_waits_when_minute_budget_is_full() -> None:
     clock = FakeClock()
     limiter = MinuteLimiter(8_000, 30, clock.now, clock.sleep)

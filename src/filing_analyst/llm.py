@@ -214,6 +214,8 @@ class LLMClient:
                 "json_schema": {
                     "name": response_model.__name__,
                     "schema": response_model.model_json_schema(),
+                    # strict needs extra="forbid" on every model (additionalProperties: false)
+                    "strict": self.settings.llm_strict_schema,
                 },
             }
         return payload

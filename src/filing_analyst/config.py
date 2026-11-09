@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     llm_base_url: str = "https://api.groq.com/openai/v1"
     llm_model: str = "openai/gpt-oss-120b"
     llm_reasoning_effort: str | None = "low"
+    llm_strict_schema: bool = True  # Groq gpt-oss guarantees the JSON schema; off for others
     llm_tokens_per_minute: int = 8_000
     llm_requests_per_minute: int = 30
     llm_daily_token_limit: int = 190_000  # 200K minus a safety margin

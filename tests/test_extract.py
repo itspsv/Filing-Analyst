@@ -58,6 +58,20 @@ def test_bad_risk_output_is_rejected(bad: dict) -> None:
         RiskFactor.model_validate(bad)
 
 
+def test_extra_field_is_rejected() -> None:
+    with pytest.raises(ValidationError):
+        RiskFactor.model_validate(
+            {"category": "other", "summary": "ok", "severity": 2, "confidence": "high"}
+        )
+
+
+def test_schema_is_ready_for_strict_mode() -> None:
+    """Groq strict mode rejects any object without additionalProperties: false."""
+    schema = ChunkRisks.model_json_schema()
+    objects = [schema, *schema["$defs"].values()]
+    assert all(obj["additionalProperties"] is False for obj in objects)
+
+
 def test_merge_drops_exact_duplicates_keeps_order() -> None:
     same_again = EXPORT.model_copy(update={"summary": "EXPORT controls limit sales."})
     assert merge_risks([[EXPORT, SUPPLY], [same_again]]) == [EXPORT, SUPPLY]
