@@ -13,11 +13,12 @@ import threading
 import time
 from collections import deque
 from collections.abc import Callable
+from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import httpx
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel, ConfigDict, ValidationError
 
 from filing_analyst.config import Settings
 
@@ -31,12 +32,62 @@ WINDOW_SECONDS = 60.0
 Messages = list[dict[str, str]]
 
 
+SCHEMA_REJECTED = "does not match the expected schema"
+
+
 class LLMError(RuntimeError):
     pass
 
 
 class DailyBudgetExceeded(LLMError):
     pass
+
+
+class SchemaRejected(LLMError):
+    """Groq strict mode checks the JSON after generating it and returns HTTP 400 if it breaks
+    the schema. It does not prevent bad output, so we treat this like an invalid answer."""
+
+    def __init__(
+        self,
+        reason: str,
+        failed_generation: str,
+        token_estimate: int,
+        seconds: float,
+        http_retries: int,
+    ) -> None:
+        super().__init__(reason)
+        self.reason = reason
+        self.failed_generation = failed_generation
+        self.token_estimate = token_estimate
+        self.seconds = seconds
+        self.http_retries = http_retries
+
+
+def schema_rejection(response: httpx.Response) -> tuple[str, str] | None:
+    """(reason, rejected JSON) if Groq refused the answer for breaking the schema, else None."""
+    try:
+        body = response.json()
+    except ValueError:
+        return None
+    error = body.get("error") if isinstance(body, dict) else None
+    if not isinstance(error, dict):
+        return None
+    message = error.get("message", "")
+    if SCHEMA_REJECTED not in message:
+        return None
+    return message.split("Error: ", 1)[-1][:300], error.get("failed_generation", "")
+
+
+@dataclass
+class CallStats:
+    """Totals for one logical call, across HTTP retries and re-asks."""
+
+    tokens_in: int = 0
+    tokens_out: int = 0
+    api_seconds: float = 0.0
+    retries: int = 0
+    rejected_token_estimate: int = 0  # Groq gives no usage for rejected answers
+    first_error: str | None = None
 
 
 def backoff_seconds(attempt: int, retry_after: str | None, jitter: float) -> float:
@@ -118,6 +169,7 @@ class RunLog:
             record = json.loads(line)
             if not record["cached"] and datetime.fromisoformat(record["timestamp"]) > since:
                 total += record["tokens_in"] + record["tokens_out"]
+                total += record.get("rejected_token_estimate", 0)
         return total
 
 
@@ -166,36 +218,55 @@ class LLMClient:
         payload = self._payload(messages, max_tokens, response_model)
         cache_path = self._cache_path(payload)
         if cache_path.exists():
-            self._log(task, 0, 0, 0, success=True, retries=0, error=None, cached=True)
+            self._log(task, CallStats(), success=True, cached=True)
             return json.loads(cache_path.read_text())["text"]
 
-        api_seconds = 0.0  # time spent waiting on the API only, not on our own rate limiter
-        tokens_in = tokens_out = retries = 0
-        first_error: str | None = None
+        stats = CallStats()
         attempt_messages = messages
         for attempt in range(MAX_VALIDATION_RETRIES + 1):
-            body, http_retries, seconds = self._post({**payload, "messages": attempt_messages})
-            api_seconds += seconds
-            retries += http_retries + (1 if attempt > 0 else 0)  # HTTP retries + re-asks
-            tokens_in += body["usage"]["prompt_tokens"]
-            tokens_out += body["usage"]["completion_tokens"]
-            text = body["choices"][0]["message"]["content"] or ""
-            error = self._validation_error(text, response_model)
+            if attempt > 0:
+                stats.retries += 1  # a re-ask
+            try:
+                text, error = self._attempt({**payload, "messages": attempt_messages}, stats)
+            except LLMError as err:
+                spent = stats.tokens_in or stats.rejected_token_estimate
+                if spent or not isinstance(err, DailyBudgetExceeded):
+                    self._log(task, stats, success=False, error=str(err)[:300])
+                raise
+            if error is None:
+                error = self._validation_error(text, response_model)
             if error is None:
                 cache_path.parent.mkdir(parents=True, exist_ok=True)
                 cache_path.write_text(json.dumps({"text": text}))
-                self._log(
-                    task, tokens_in, tokens_out, api_seconds, attempt == 0, retries, first_error
-                )
+                self._log(task, stats, success=attempt == 0)
                 return text
-            first_error = first_error or error
+            stats.first_error = stats.first_error or error
             attempt_messages = [
                 *messages,
-                {"role": "assistant", "content": text},
-                {"role": "user", "content": f"That was not valid: {error}. Reply with JSON only."},
+                *([{"role": "assistant", "content": text}] if text else []),
+                {
+                    "role": "user",
+                    "content": f"That was not valid: {error}. "
+                    "Use only the allowed values. Reply with JSON only.",
+                },
             ]
-        self._log(task, tokens_in, tokens_out, api_seconds, False, retries, first_error)
+        self._log(task, stats, success=False)
         raise LLMError(f"{task}: no valid answer after {MAX_VALIDATION_RETRIES + 1} tries")
+
+    def _attempt(self, payload: dict, stats: CallStats) -> tuple[str, str | None]:
+        """One request. Returns the answer text, plus Groq's rejection reason if it refused it."""
+        try:
+            body, http_retries, seconds = self._post(payload)
+        except SchemaRejected as rejected:
+            stats.api_seconds += rejected.seconds
+            stats.retries += rejected.http_retries
+            stats.rejected_token_estimate += rejected.token_estimate
+            return rejected.failed_generation, rejected.reason
+        stats.api_seconds += seconds
+        stats.retries += http_retries
+        stats.tokens_in += body["usage"]["prompt_tokens"]
+        stats.tokens_out += body["usage"]["completion_tokens"]
+        return body["choices"][0]["message"]["content"] or "", None
 
     def _payload(
         self, messages: Messages, max_tokens: int, response_model: type[BaseModel] | None
@@ -259,6 +330,11 @@ class LLMClient:
                 with self._budget_lock:
                     self._used_today += used
                 return body, attempt, api_seconds
+            rejection = schema_rejection(response) if response is not None else None
+            if response is not None and response.status_code == 400 and rejection is not None:
+                with self._budget_lock:  # Groq still spent tokens on the rejected answer
+                    self._used_today += estimate
+                raise SchemaRejected(*rejection, estimate, api_seconds, attempt)
             if response is not None and response.status_code not in RETRY_STATUSES:
                 raise LLMError(f"HTTP {response.status_code}: {response.text[:300]}")
             if attempt < MAX_HTTP_RETRIES:
@@ -269,34 +345,38 @@ class LLMClient:
     def _log(
         self,
         task: str,
-        tokens_in: int,
-        tokens_out: int,
-        latency_s: float,
+        stats: CallStats,
         success: bool,
-        retries: int,
-        error: str | None,
+        error: str | None = None,
         cached: bool = False,
     ) -> None:
+        """One line per logical call. success = valid on the first try (no re-ask needed)."""
         s = self.settings
-        cost = (tokens_in * s.llm_eur_per_million_in + tokens_out * s.llm_eur_per_million_out) / 1e6
+        cost = (
+            stats.tokens_in * s.llm_eur_per_million_in
+            + stats.tokens_out * s.llm_eur_per_million_out
+        ) / 1e6
         self.log.append(
             {
                 "timestamp": datetime.now(UTC).isoformat(),
                 "model": s.llm_model,
                 "task": task,
-                "tokens_in": tokens_in,
-                "tokens_out": tokens_out,
+                "tokens_in": stats.tokens_in,
+                "tokens_out": stats.tokens_out,
+                "rejected_token_estimate": stats.rejected_token_estimate,
                 "cost_eur": round(cost, 6),
-                "latency_ms": round(latency_s * 1000),
+                "latency_ms": round(stats.api_seconds * 1000),
                 "success": success,
-                "retries": retries,
-                "error": error,
+                "retries": stats.retries,
+                "error": error or stats.first_error,
                 "cached": cached,
             }
         )
 
 
 class _Ping(BaseModel):
+    model_config = ConfigDict(extra="forbid")  # strict mode needs it on every model
+
     answer: str
 
 

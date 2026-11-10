@@ -192,6 +192,9 @@ def print_run_summary(client: LLMClient, log_start: int) -> None:
         print(f"first-try valid: {first_try}/{len(real)} ({first_try / len(real):.0%})")
         print(f"tokens in/out: {sum(c['tokens_in'] for c in real):,} / ", end="")
         print(f"{sum(c['tokens_out'] for c in real):,}")
+        rejected = sum(c.get("rejected_token_estimate", 0) for c in real)
+        if rejected:
+            print(f"estimated tokens for answers Groq rejected: {rejected:,}")
         print(f"cost: {sum(c['cost_eur'] for c in real):.4f} EUR")
 
 

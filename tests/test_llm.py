@@ -134,6 +134,66 @@ def test_401_is_not_retried_and_key_is_not_leaked(tmp_path: Path) -> None:
         client.complete(MESSAGES, task="t")
     assert len(calls) == 1
     assert FAKE_KEY not in str(err.value)
+    line = log_lines(client)[-1]  # failed calls are logged too, so success rates stay honest
+    assert line["success"] is False
+    assert "HTTP 401" in line["error"]
+
+
+# What Groq strict mode really returns when the model breaks the schema (Nov 10 full run).
+GROQ_SCHEMA_REJECTION = {
+    "error": {
+        "message": "Generated JSON does not match the expected schema. Please adjust your "
+        "prompt. See 'failed_generation' for more details. Error: jsonschema: '/category' "
+        "does not validate with /properties/category/enum: value must be one of 'a', 'b'",
+        "type": "invalid_request_error",
+        "failed_generation": '{"category": "made_up", "severity": 4}',
+    }
+}
+
+
+def test_groq_schema_rejection_is_reasked_not_fatal(tmp_path: Path) -> None:
+    client, calls, _ = make_client(
+        tmp_path,
+        [
+            httpx.Response(400, json=GROQ_SCHEMA_REJECTION),
+            httpx.Response(200, json=ok_body('{"category": "supply", "severity": 4}')),
+        ],
+    )
+    risk = client.complete_json(MESSAGES, task="t", response_model=Risk)
+    assert risk == Risk(category="supply", severity=4)
+    assert len(calls) == 2
+
+    reask = json.loads(calls[1].content)["messages"]
+    assert reask[-2] == {"role": "assistant", "content": '{"category": "made_up", "severity": 4}'}
+    assert "value must be one of" in reask[-1]["content"]
+
+    line = log_lines(client)[-1]
+    assert line["success"] is False  # not valid on the first try
+    assert line["retries"] == 1
+    assert line["error"].startswith("jsonschema: '/category'")
+    assert line["rejected_token_estimate"] > 0
+
+
+def test_rejected_tokens_count_toward_daily_budget(tmp_path: Path) -> None:
+    client, _, _ = make_client(
+        tmp_path,
+        [
+            httpx.Response(400, json=GROQ_SCHEMA_REJECTION),
+            httpx.Response(200, json=ok_body('{"category": "supply", "severity": 4}')),
+        ],
+    )
+    client.complete_json(MESSAGES, task="t", response_model=Risk)
+    estimate = log_lines(client)[-1]["rejected_token_estimate"]
+    assert client.log.tokens_last_24h() == 50 + 10 + estimate  # real usage + rejected estimate
+
+
+def test_other_400_errors_still_fail_fast(tmp_path: Path) -> None:
+    client, calls, _ = make_client(
+        tmp_path, [httpx.Response(400, json={"error": {"message": "model not found"}})]
+    )
+    with pytest.raises(LLMError, match="HTTP 400"):
+        client.complete(MESSAGES, task="t")
+    assert len(calls) == 1
 
 
 def test_daily_budget_stops_before_calling(tmp_path: Path) -> None:
