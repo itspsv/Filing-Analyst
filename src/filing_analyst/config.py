@@ -61,6 +61,10 @@ class Settings(BaseSettings):
         return self.data_dir / "chunks"
 
     @property
+    def embeddings_dir(self) -> Path:
+        return self.data_dir / "embeddings"
+
+    @property
     def risks_dir(self) -> Path:
         return self.data_dir / "risks"
 

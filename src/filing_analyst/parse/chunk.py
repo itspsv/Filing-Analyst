@@ -8,6 +8,7 @@ the real tokenizer of the embedding model (bge-small reads at most 512 tokens pe
 import re
 import statistics
 from collections.abc import Sequence
+from pathlib import Path
 from typing import Literal, Protocol
 
 from pydantic import BaseModel
@@ -126,6 +127,10 @@ def save_chunks(chunks: list[Chunk], settings: Settings, name: str = "fixed") ->
     settings.chunks_dir.mkdir(parents=True, exist_ok=True)
     lines = (c.model_dump_json() for c in chunks)
     (settings.chunks_dir / f"{name}.jsonl").write_text("\n".join(lines) + "\n")
+
+
+def load_chunks(path: Path) -> list[Chunk]:
+    return [Chunk.model_validate_json(line) for line in path.read_text().splitlines() if line]
 
 
 def main() -> None:
