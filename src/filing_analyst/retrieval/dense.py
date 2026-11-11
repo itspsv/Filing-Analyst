@@ -49,11 +49,9 @@ def embed_query(query: str, embedder: Embedder) -> np.ndarray:
     return embed_texts([QUERY_PREFIX + query], embedder)[0]
 
 
-def top_k(
-    query_vector: np.ndarray, vectors: np.ndarray, k: int, mask: np.ndarray | None = None
-) -> list[tuple[int, float]]:
-    """Indices and cosine scores of the k most similar rows, best first. mask=False rows skip."""
-    scores = vectors @ query_vector
+def best_k(scores: np.ndarray, k: int, mask: np.ndarray | None = None) -> list[tuple[int, float]]:
+    """Indices and scores of the k highest scores, best first. Rows where mask is False skip.
+    Shared by dense and BM25 search, so both pick winners the same way."""
     if mask is not None:
         scores = np.where(mask, scores, -np.inf)
     k = min(k, int(np.isfinite(scores).sum()))
@@ -62,6 +60,13 @@ def top_k(
     best = np.argpartition(-scores, k - 1)[:k]  # the k best, in any order (fast)
     best = best[np.argsort(-scores[best], kind="stable")]  # then sort just those k
     return [(int(i), float(scores[i])) for i in best]
+
+
+def top_k(
+    query_vector: np.ndarray, vectors: np.ndarray, k: int, mask: np.ndarray | None = None
+) -> list[tuple[int, float]]:
+    """Indices and cosine scores of the k rows most similar to the query, best first."""
+    return best_k(vectors @ query_vector, k, mask)
 
 
 @dataclass
