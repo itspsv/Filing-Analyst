@@ -54,27 +54,33 @@ def load_manifest(settings: Settings) -> list[Filing]:
     return [Filing.model_validate(row) for row in raw]
 
 
-def main() -> None:
-    settings = Settings()
+def extract_all_sections(settings: Settings) -> dict[str, dict[str, int | None]]:
+    """Save every company's sections. Returns ticker -> {section: chars, or None if missing}."""
     settings.sections_dir.mkdir(parents=True, exist_ok=True)
-    missing: list[str] = []
+    results: dict[str, dict[str, int | None]] = {}
     for filing in load_manifest(settings):
         text = html_to_text((settings.raw_dir / "10k" / filing.local_name).read_bytes())
-        sizes = []
+        sizes: dict[str, int | None] = {}
         for name in SECTIONS:
             section = extract_section(text, name)
-            if section is None:
-                found = find_section(text, *SECTIONS[name])
-                size = len(found) if found else 0
-                missing.append(f"{filing.ticker} Item {name}: best match only {size} chars")
-                sizes.append(f"{name}=MISSING")
-                continue
-            (settings.sections_dir / f"{filing.ticker}_{name}.txt").write_text(section)
-            sizes.append(f"{name}={len(section):>7,}")
-        print(f"{filing.ticker:<6} " + "  ".join(sizes))
-    print(f"\nnot found ({len(missing)}):" if missing else "\nall sections found")
-    for line in missing:
-        print(f"  {line}")
+            sizes[name] = len(section) if section else None
+            if section:
+                (settings.sections_dir / f"{filing.ticker}_{name}.txt").write_text(section)
+        results[filing.ticker] = sizes
+    return results
+
+
+def missing_sections(results: dict[str, dict[str, int | None]]) -> list[str]:
+    return [f"{t} Item {n}" for t, sizes in results.items() for n, s in sizes.items() if s is None]
+
+
+def main() -> None:
+    results = extract_all_sections(Settings())
+    for ticker, sizes in results.items():
+        cells = [f"{n}={s:>7,}" if s else f"{n}=MISSING" for n, s in sizes.items()]
+        print(f"{ticker:<6} " + "  ".join(cells))
+    missing = missing_sections(results)
+    print(f"\nnot found: {', '.join(missing)}" if missing else "\nall sections found")
 
 
 if __name__ == "__main__":

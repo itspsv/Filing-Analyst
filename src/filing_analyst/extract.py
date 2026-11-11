@@ -6,6 +6,7 @@
 import json
 import sys
 from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass, field
 from typing import Literal, Protocol
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -161,24 +162,43 @@ def save_extraction(extraction: RiskExtraction, settings: Settings) -> None:
     path.write_text(extraction.model_dump_json(indent=2))
 
 
-def main() -> None:
-    settings = Settings()
-    client = LLMClient(settings)
-    tickers = [t.upper() for t in sys.argv[1:]] or list(COMPANIES)
-    log_start = len(client.log.path.read_text().splitlines()) if client.log.path.exists() else 0
+@dataclass
+class ExtractionRun:
+    done: list[str] = field(default_factory=list)
+    failed: dict[str, str] = field(default_factory=dict)
+    stopped: str | None = None  # why the run stopped early (daily budget), if it did
+
+
+def run_extraction(settings: Settings, tickers: list[str], client: JSONCompleter) -> ExtractionRun:
+    """Extract and save risks per company, printing one progress line each.
+    Finished work is cached, so rerunning after a budget stop resumes for free."""
+    run = ExtractionRun()
     for ticker in tickers:
         try:
             extraction = extract_company(ticker, client, settings)
         except DailyBudgetExceeded as err:
-            print(f"stopping: {err}")
+            run.stopped = str(err)
+            print(f"  stopping: {err}")
             break
         except LLMError as err:
-            print(f"{ticker}: FAILED ({err})")
+            run.failed[ticker] = str(err)
+            print(f"  {ticker}: FAILED ({err})")
             continue
         save_extraction(extraction, settings)
-        print(f"\n{ticker}: {len(extraction.risks)} risks")
-        for risk in extraction.risks:
-            print(f"  [{risk.severity}] {risk.category:<22} {risk.summary}")
+        run.done.append(ticker)
+        print(f"  {ticker}: {len(extraction.risks)} risks")
+    return run
+
+
+def log_length(client: LLMClient) -> int:
+    return len(client.log.path.read_text().splitlines()) if client.log.path.exists() else 0
+
+
+def main() -> None:
+    settings = Settings()
+    client = LLMClient(settings)
+    log_start = log_length(client)
+    run_extraction(settings, [t.upper() for t in sys.argv[1:]] or list(COMPANIES), client)
     print_run_summary(client, log_start)
 
 
