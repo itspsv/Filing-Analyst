@@ -160,14 +160,18 @@ class RunLog:
             with self.path.open("a") as f:
                 f.write(json.dumps(record) + "\n")
 
-    def tokens_last_24h(self) -> int:
+    def tokens_last_24h(self, model: str | None = None) -> int:
+        """Tokens used in the last 24 h, for one model or (model=None) all of them.
+        Groq's daily limits are per model, so the client counts only its own model."""
         if not self.path.exists():
             return 0
         since = datetime.now(UTC) - timedelta(hours=24)
         total = 0
         for line in self.path.read_text().splitlines():
             record = json.loads(line)
-            if not record["cached"] and datetime.fromisoformat(record["timestamp"]) > since:
+            if record["cached"] or (model is not None and record.get("model") != model):
+                continue
+            if datetime.fromisoformat(record["timestamp"]) > since:
                 total += record["tokens_in"] + record["tokens_out"]
                 total += record.get("rejected_token_estimate", 0)
         return total
@@ -196,7 +200,7 @@ class LLMClient:
             settings.llm_tokens_per_minute, settings.llm_requests_per_minute, now, sleep
         )
         self.log = RunLog(settings.run_log)
-        self._used_today = self.log.tokens_last_24h()
+        self._used_today = self.log.tokens_last_24h(settings.llm_model)
         self._budget_lock = threading.Lock()
 
     def complete(self, messages: Messages, task: str, max_tokens: int = 1024) -> str:
@@ -312,8 +316,8 @@ class LLMClient:
         with self._budget_lock:
             if self._used_today + estimate > self.settings.llm_daily_token_limit:
                 raise DailyBudgetExceeded(
-                    f"{self._used_today} tokens used in the last 24 h; "
-                    f"limit {self.settings.llm_daily_token_limit}"
+                    f"{self._used_today} tokens used in the last 24 h on "
+                    f"{self.settings.llm_model}; limit {self.settings.llm_daily_token_limit}"
                 )
         for attempt in range(MAX_HTTP_RETRIES + 1):
             response: httpx.Response | None = None

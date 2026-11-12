@@ -45,6 +45,11 @@ class Settings(BaseSettings):
         return value.strip()
 
     @property
+    def evals_dir(self) -> Path:
+        """Test sets live in git (unlike data/), so results can be reproduced."""
+        return PROJECT_ROOT / "evals"
+
+    @property
     def raw_dir(self) -> Path:
         return self.data_dir / "raw"
 

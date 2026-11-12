@@ -196,18 +196,37 @@ def test_other_400_errors_still_fail_fast(tmp_path: Path) -> None:
     assert len(calls) == 1
 
 
-def test_daily_budget_stops_before_calling(tmp_path: Path) -> None:
-    earlier = {
+def earlier_usage(model: str) -> str:
+    record = {
         "timestamp": datetime.now(UTC).isoformat(),
+        "model": model,
         "tokens_in": 9_000,
         "tokens_out": 900,
         "cached": False,
     }
-    (tmp_path / "run_log.jsonl").write_text(json.dumps(earlier) + "\n")
+    return json.dumps(record) + "\n"
+
+
+def test_daily_budget_stops_before_calling(tmp_path: Path) -> None:
+    (tmp_path / "run_log.jsonl").write_text(earlier_usage("openai/gpt-oss-120b"))
     client, calls, _ = make_client(tmp_path, [], llm_daily_token_limit=10_000)
-    with pytest.raises(DailyBudgetExceeded):
+    with pytest.raises(DailyBudgetExceeded, match="gpt-oss-120b"):
         client.complete(MESSAGES, task="t", max_tokens=500)
     assert calls == []
+
+
+def test_daily_budget_is_counted_per_model(tmp_path: Path) -> None:
+    """Groq gives each model its own daily limit: 120b usage must not block 20b."""
+    (tmp_path / "run_log.jsonl").write_text(earlier_usage("openai/gpt-oss-120b"))
+    client, calls, _ = make_client(
+        tmp_path,
+        [httpx.Response(200, json=ok_body("hello"))],
+        llm_daily_token_limit=10_000,
+        llm_model="openai/gpt-oss-20b",
+    )
+    assert client.complete(MESSAGES, task="t", max_tokens=500) == "hello"
+    assert client.log.tokens_last_24h("openai/gpt-oss-120b") == 9_900
+    assert client.log.tokens_last_24h("openai/gpt-oss-20b") == 60  # the call just made
 
 
 def test_json_request_asks_for_strict_schema(tmp_path: Path) -> None:
