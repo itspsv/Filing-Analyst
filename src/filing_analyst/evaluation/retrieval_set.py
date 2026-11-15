@@ -186,12 +186,19 @@ def write_review_csv(items: Sequence[RetrievalItem], chunks: Sequence[Chunk], pa
             writer.writerow(row)
 
 
+def detect_delimiter(path: Path) -> str:
+    """Numbers and Excel on a German-region Mac save CSV with ';' (the comma is the decimal
+    sign there). Pick whichever separator the header line uses more."""
+    header = path.open(encoding="utf-8-sig").readline()
+    return ";" if header.count(";") > header.count(",") else ","
+
+
 def read_reviewed(path: Path, sections: dict[tuple[str, str], str]) -> list[RetrievalItem]:
     """Rows marked keep=y become items. Every quote (separate several with |) must exist in
     that company's section; otherwise stop and name the row, so nothing wrong slips in."""
     items: list[RetrievalItem] = []
-    with path.open(newline="") as f:
-        for row in csv.DictReader(f):
+    with path.open(newline="", encoding="utf-8-sig") as f:  # -sig: tolerate Excel's BOM
+        for row in csv.DictReader(f, delimiter=detect_delimiter(path)):
             if row["keep"].strip().lower() not in {"y", "yes"}:
                 continue
             quotes = [q.strip() for q in row["quote"].split("|") if q.strip()]

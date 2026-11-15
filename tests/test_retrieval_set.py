@@ -163,3 +163,17 @@ def test_several_quotes_separated_by_pipe(tmp_path: Path) -> None:
     two = "were produced by TSMC, and we depend on | we depend on a limited number of suppliers"
     mark_keep(path, {"q001": "yes"}, new_quote={"q001": two})
     assert len(read_reviewed(path, SECTIONS)[0].quotes) == 2
+
+
+def test_sheet_saved_by_numbers_with_semicolons_and_bom(tmp_path: Path) -> None:
+    """Real case, Nov 15: Numbers on a German-region Mac saved ';'-separated CSV, CRLF lines."""
+    path = make_review_sheet(tmp_path)
+    mark_keep(path, {"q001": "Y"})  # capital Y, as typed in the sheet
+    rows = list(csv.DictReader(path.open(newline="")))
+    with path.open("w", newline="", encoding="utf-8-sig") as f:
+        writer = csv.DictWriter(f, fieldnames=list(rows[0]), delimiter=";", lineterminator="\r\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    items = read_reviewed(path, SECTIONS)
+    assert [i.qid for i in items] == ["q001"]
+    assert items[0].quotes == ["were produced by TSMC, and we depend on"]
