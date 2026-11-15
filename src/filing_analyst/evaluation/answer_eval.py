@@ -16,7 +16,13 @@ from collections.abc import Sequence
 
 from pydantic import BaseModel
 
-from filing_analyst.answer import Answer, answer_question, load_default_search
+from filing_analyst.answer import (
+    Answer,
+    AnswerClient,
+    Search,
+    answer_question,
+    load_default_search,
+)
 from filing_analyst.config import Settings
 from filing_analyst.evaluation.retrieval_eval import load_items
 from filing_analyst.evaluation.retrieval_set import RetrievalItem
@@ -88,15 +94,59 @@ def summarize(results: Sequence[AnswerResult]) -> dict[str, float]:
     }  # fmt: skip
 
 
+class UnanswerableItem(BaseModel):
+    qid: str
+    ticker: str | None
+    question: str
+    why: str
+
+
+def load_unanswerable(settings: Settings) -> list[UnanswerableItem]:
+    path = settings.evals_dir / "unanswerable.jsonl"
+    return [UnanswerableItem.model_validate_json(line) for line in path.read_text().splitlines()]
+
+
+def check_refusals(
+    items: Sequence[UnanswerableItem], search: Search, client: AnswerClient
+) -> list[dict]:
+    """Every unanswerable question must be refused; an answer of any kind is a failure."""
+    rows = []
+    for item in items:
+        answer = answer_question(item.question, item.ticker, search, client)
+        rows.append({"qid": item.qid, "question": item.question, "refused": answer.refused,
+                     "reason": answer.refusal_reason, "answer": answer.answer,
+                     "tokens": answer.tokens})  # fmt: skip
+    return rows
+
+
+def run_refusal_check(settings: Settings, search: Search, client: AnswerClient) -> None:
+    rows = check_refusals(load_unanswerable(settings), search, client)
+    for r in rows:
+        status = f"refused ({r['reason']})" if r["refused"] else "ANSWERED (failure)"
+        print(f"{r['qid']} {status:<34} {r['question']}")
+    refused = sum(r["refused"] for r in rows)
+    print(f"\nrefused {refused}/{len(rows)} unanswerable questions")
+    name = settings.llm_model.split("/")[-1]
+    out = settings.evals_dir / f"refusal_report_{name}.json"
+    out.write_text(json.dumps({"model": settings.llm_model, "refused": refused,
+                               "total": len(rows), "questions": rows}, indent=2))  # fmt: skip
+    print(f"report: {out}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Measure cited answers on the eval set.")
     parser.add_argument("--model", default=None, help="override LLM_MODEL")
     parser.add_argument("--limit", type=int, default=None, help="only the first N questions")
+    parser.add_argument("--unanswerable", action="store_true", help="run the refusal check")
     args = parser.parse_args()
 
     settings = Settings()
     if args.model:
         settings = settings.model_copy(update={"llm_model": args.model})
+    if args.unanswerable:
+        search = load_default_search(settings)
+        run_refusal_check(settings, search, LLMClient(settings))
+        return
     items = load_items(settings)[: args.limit]
     texts = {c.chunk_id: c.text for c in load_chunks(settings.chunks_dir / "fixed.jsonl")}
     search, client = load_default_search(settings), LLMClient(settings)

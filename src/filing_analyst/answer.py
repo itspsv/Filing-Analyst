@@ -15,7 +15,7 @@ from typing import Literal, Protocol
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from filing_analyst.config import Settings
+from filing_analyst.config import COMPANIES, Settings
 from filing_analyst.llm import CallStats, LLMClient, Messages
 from filing_analyst.parse.chunk import Chunk
 from filing_analyst.quotes import contains_quote, normalize_for_match
@@ -26,7 +26,7 @@ MIN_QUOTE_WORDS = 3
 REFUSAL = "Not enough evidence in the filings."
 
 Search = Callable[[str, str | None], list[Chunk]]  # (question, ticker filter) -> best first
-RefusalReason = Literal["no evidence", "model refused", "no valid citation"]
+RefusalReason = Literal["company not covered", "no evidence", "model refused", "no valid citation"]
 
 
 class Citation(BaseModel):
@@ -143,6 +143,10 @@ def refusal(reason: RefusalReason, steps: int, stats: CallStats, client: AnswerC
 def answer_question(
     question: str, ticker: str | None, search: Search, client: AnswerClient
 ) -> Answer:
+    if ticker is not None and ticker.upper() not in COMPANIES:
+        # Searching all companies instead would let, say, AMD's text about Intel answer an
+        # Intel question. Refuse before any search or LLM call.
+        return refusal("company not covered", 0, CallStats(), client, [])
     evidence = search(question, ticker)[:EVIDENCE_K]
     if not evidence:
         return refusal("no evidence", 0, CallStats(), client, evidence)

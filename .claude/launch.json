@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "api",
+      "runtimeExecutable": "env",
+      "runtimeArgs": [
+        "LLM_MODEL=openai/gpt-oss-20b",
+        "uv", "run", "uvicorn", "filing_analyst.api:app", "--port", "8000"
+      ],
+      "port": 8000
+    }
+  ]
+}

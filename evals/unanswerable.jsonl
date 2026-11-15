@@ -1,0 +1,5 @@
+{"qid": "u001", "ticker": "AAPL", "question": "What is the favourite food of Apple's CEO?", "why": "personal trivia: never in a 10-K"}
+{"qid": "u002", "ticker": "NVDA", "question": "What revenue will NVIDIA report for fiscal year 2030?", "why": "a future number: 10-Ks do not forecast exact revenue"}
+{"qid": "u003", "ticker": "INTC", "question": "What risks does Intel name in its latest 10-K?", "why": "company not covered (Intel was swapped out)"}
+{"qid": "u004", "ticker": "TSLA", "question": "How many employees does Tesla have in Antarctica?", "why": "plausible-sounding fact that the filing does not contain"}
+{"qid": "u005", "ticker": "MSFT", "question": "What will the weather be in Seattle tomorrow?", "why": "off-topic: nothing to do with the filing"}

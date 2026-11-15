@@ -1,0 +1,47 @@
+{
+  "model": "openai/gpt-oss-20b",
+  "refused": 5,
+  "total": 5,
+  "questions": [
+    {
+      "qid": "u001",
+      "question": "What is the favourite food of Apple's CEO?",
+      "refused": true,
+      "reason": "no valid citation",
+      "answer": "Not enough evidence in the filings.",
+      "tokens": 2167
+    },
+    {
+      "qid": "u002",
+      "question": "What revenue will NVIDIA report for fiscal year 2030?",
+      "refused": true,
+      "reason": "model refused",
+      "answer": "Not enough evidence in the filings.",
+      "tokens": 2163
+    },
+    {
+      "qid": "u003",
+      "question": "What risks does Intel name in its latest 10-K?",
+      "refused": true,
+      "reason": "company not covered",
+      "answer": "Not enough evidence in the filings.",
+      "tokens": 0
+    },
+    {
+      "qid": "u004",
+      "question": "How many employees does Tesla have in Antarctica?",
+      "refused": true,
+      "reason": "model refused",
+      "answer": "Not enough evidence in the filings.",
+      "tokens": 2107
+    },
+    {
+      "qid": "u005",
+      "question": "What will the weather be in Seattle tomorrow?",
+      "refused": true,
+      "reason": "model refused",
+      "answer": "Not enough evidence in the filings.",
+      "tokens": 2121
+    }
+  ]
+}
