@@ -29,7 +29,11 @@ RECALL_K = 5
 MRR_K = 10
 ITEM_MENTION = re.compile(r"\bitem\s*(1a|7)\b", re.IGNORECASE)
 
-Search = Callable[[str], list[Chunk]]  # question -> best chunks first
+Search = Callable[[str, str | None], list[Chunk]]  # (question, ticker filter) -> best first
+
+# "no filter": search all 20 companies (hardest). "company filter": search only the asked
+# company, as the agent's search_filings(query, company) tool will.
+SETTINGS = {"no filter": False, "company filter": True}
 
 
 class QuestionResult(BaseModel):
@@ -83,11 +87,13 @@ def groups(results: Sequence[QuestionResult]) -> dict[str, list[QuestionResult]]
     return {name: rs for name, rs in named.items() if rs}
 
 
-def evaluate(items: Sequence[RetrievalItem], search: Search) -> list[QuestionResult]:
+def evaluate(
+    items: Sequence[RetrievalItem], search: Search, company_filter: bool = False
+) -> list[QuestionResult]:
     results = []
     for item in items:
         started = time.perf_counter()
-        found = search(item.question)
+        found = search(item.question, item.ticker if company_filter else None)
         results.append(score(item, found, (time.perf_counter() - started) * 1000))
     return results
 
@@ -109,40 +115,49 @@ def build_searchers(settings: Settings) -> tuple[list[Chunk], dict[str, Search]]
     bm25 = BM25Index(dense.chunks)
     hybrid = HybridSearcher(dense, bm25, embedder)
     searchers: dict[str, Search] = {
-        "dense": lambda q: [c for c, _ in dense.search(embed_query(q, embedder), k=MRR_K)],
-        "bm25": lambda q: [c for c, _ in bm25.search(q, k=MRR_K)],
-        "hybrid": lambda q: [r.chunk for r in hybrid.search(q, k=MRR_K)],
+        "dense": lambda q, t: [
+            c for c, _ in dense.search(embed_query(q, embedder), k=MRR_K, ticker=t)
+        ],
+        "bm25": lambda q, t: [c for c, _ in bm25.search(q, k=MRR_K, ticker=t)],
+        "hybrid": lambda q, t: [r.chunk for r in hybrid.search(q, k=MRR_K, ticker=t)],
     }
     return dense.chunks, searchers
+
+
+def print_table(setting: str, methods: dict) -> None:
+    print(f"\n== {setting} ==")
+    print(f"{'method':<8} {'group':<14} {'n':>3} {'recall@5':>9} {'mrr@10':>7} {'p50 ms':>7}")
+    for name, data in methods.items():
+        for group, s in data["summary"].items():
+            print(
+                f"{name:<8} {group:<14} {s['questions']:>3} {s['recall@5']:>9.3f} "
+                f"{s['mrr@10']:>7.3f} {s['latency_p50_ms']:>7.1f}"
+            )
+    for name, data in methods.items():
+        misses = [q["qid"] for q in data["questions"] if q["recall"] < 1]
+        print(f"{name} misses in top 5 ({len(misses)}): {', '.join(misses) or 'none'}")
 
 
 def main() -> None:
     settings = Settings()
     items = load_items(settings)
     chunks, searchers = build_searchers(settings)
-    searchers["dense"]("warm-up")  # first call loads model weights; keep it out of latency
+    searchers["dense"]("warm-up", None)  # first call loads model weights; keep out of latency
 
-    report: dict = {"chunking": "fixed", "unreachable": unreachable(items, chunks), "methods": {}}
-    per_question: dict[str, list[QuestionResult]] = {}
-    for name, search in searchers.items():
-        per_question[name] = evaluate(items, search)
-        summary = {g: summarize(rs) for g, rs in groups(per_question[name]).items()}
-        report["methods"][name] = {
-            "summary": summary,
-            "questions": [r.model_dump() for r in per_question[name]],
-        }
+    report: dict = {"chunking": "fixed", "unreachable": unreachable(items, chunks), "settings": {}}
+    for setting, company_filter in SETTINGS.items():
+        methods = {}
+        for name, search in searchers.items():
+            results = evaluate(items, search, company_filter)
+            methods[name] = {
+                "summary": {g: summarize(rs) for g, rs in groups(results).items()},
+                "questions": [r.model_dump() for r in results],
+            }
+        report["settings"][setting] = methods
 
     print(f"{len(items)} questions, fixed chunks; unreachable: {report['unreachable'] or 'none'}")
-    print(f"\n{'method':<8} {'group':<14} {'n':>3} {'recall@5':>9} {'mrr@10':>7} {'p50 ms':>7}")
-    for name, data in report["methods"].items():
-        for group, s in data["summary"].items():
-            print(
-                f"{name:<8} {group:<14} {s['questions']:>3} {s['recall@5']:>9.3f} "
-                f"{s['mrr@10']:>7.3f} {s['latency_p50_ms']:>7.1f}"
-            )
-    for name, results in per_question.items():
-        misses = [r.qid for r in results if r.recall < 1]
-        print(f"\n{name} misses in top 5 ({len(misses)}): {', '.join(misses) or 'none'}")
+    for setting, methods in report["settings"].items():
+        print_table(setting, methods)
 
     out = settings.evals_dir / "retrieval_report.json"
     out.write_text(json.dumps(report, indent=2))

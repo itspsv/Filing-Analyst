@@ -1,1161 +1,2320 @@
 {
   "chunking": "fixed",
   "unreachable": [],
-  "methods": {
-    "dense": {
-      "summary": {
-        "all": {
-          "questions": 39,
-          "recall@5": 0.769,
-          "mrr@10": 0.567,
-          "latency_p50_ms": 46.0,
-          "latency_p95_ms": 80.7
+  "settings": {
+    "no filter": {
+      "dense": {
+        "summary": {
+          "all": {
+            "questions": 39,
+            "recall@5": 0.769,
+            "mrr@10": 0.567,
+            "latency_p50_ms": 12.3,
+            "latency_p95_ms": 17.4
+          },
+          "literal": {
+            "questions": 20,
+            "recall@5": 0.7,
+            "mrr@10": 0.56,
+            "latency_p50_ms": 11.8,
+            "latency_p95_ms": 17.4
+          },
+          "paraphrase": {
+            "questions": 19,
+            "recall@5": 0.842,
+            "mrr@10": 0.575,
+            "latency_p50_ms": 12.4,
+            "latency_p95_ms": 16.8
+          },
+          "names an Item": {
+            "questions": 6,
+            "recall@5": 0.667,
+            "mrr@10": 0.524,
+            "latency_p50_ms": 11.9,
+            "latency_p95_ms": 14.4
+          }
         },
-        "literal": {
-          "questions": 20,
-          "recall@5": 0.7,
-          "mrr@10": 0.56,
-          "latency_p50_ms": 32.9,
-          "latency_p95_ms": 79.4
-        },
-        "paraphrase": {
-          "questions": 19,
-          "recall@5": 0.842,
-          "mrr@10": 0.575,
-          "latency_p50_ms": 48.3,
-          "latency_p95_ms": 80.7
-        },
-        "names an Item": {
-          "questions": 6,
-          "recall@5": 0.667,
-          "mrr@10": 0.524,
-          "latency_p50_ms": 13.5,
-          "latency_p95_ms": 48.4
-        }
+        "questions": [
+          {
+            "qid": "q001",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 16.82875000005879
+          },
+          {
+            "qid": "q002",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 18.624416001330246
+          },
+          {
+            "qid": "q003",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 14.021666000189725
+          },
+          {
+            "qid": "q004",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 17.400417000317248
+          },
+          {
+            "qid": "q005",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 14.798583999436232
+          },
+          {
+            "qid": "q006",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 14.320708000013838
+          },
+          {
+            "qid": "q007",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.25,
+            "first_hit_rank": 4,
+            "latency_ms": 12.93699999951059
+          },
+          {
+            "qid": "q008",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 11.682999998811283
+          },
+          {
+            "qid": "q009",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.326000001645298
+          },
+          {
+            "qid": "q012",
+            "style": "literal",
+            "names_item": true,
+            "recall": 0.0,
+            "reciprocal_rank": 0.14285714285714285,
+            "first_hit_rank": 7,
+            "latency_ms": 14.42658400083019
+          },
+          {
+            "qid": "q013",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.125,
+            "first_hit_rank": 8,
+            "latency_ms": 12.435833999916213
+          },
+          {
+            "qid": "q014",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.1111111111111111,
+            "first_hit_rank": 9,
+            "latency_ms": 10.422874998766929
+          },
+          {
+            "qid": "q015",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 11.04016699900967
+          },
+          {
+            "qid": "q016",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 10.717832999944221
+          },
+          {
+            "qid": "q018",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.303957999189151
+          },
+          {
+            "qid": "q019",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 13.310624999576248
+          },
+          {
+            "qid": "q021",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 14.003916998262866
+          },
+          {
+            "qid": "q022",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.631625000722124
+          },
+          {
+            "qid": "q025",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.25,
+            "first_hit_rank": 4,
+            "latency_ms": 11.35529200109886
+          },
+          {
+            "qid": "q029",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 13.022708000789862
+          },
+          {
+            "qid": "q030",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 15.374167000118177
+          },
+          {
+            "qid": "q032",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 13.051542000539484
+          },
+          {
+            "qid": "q033",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.2,
+            "first_hit_rank": 5,
+            "latency_ms": 11.071582999647944
+          },
+          {
+            "qid": "q034",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.918750000200816
+          },
+          {
+            "qid": "q036",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.872959001266281
+          },
+          {
+            "qid": "q037",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 12.274208998860558
+          },
+          {
+            "qid": "q038",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.70300000012503
+          },
+          {
+            "qid": "q039",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.1,
+            "first_hit_rank": 10,
+            "latency_ms": 11.213333000341663
+          },
+          {
+            "qid": "q040",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.899833000119543
+          },
+          {
+            "qid": "q041",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.73970899960841
+          },
+          {
+            "qid": "q042",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.25,
+            "first_hit_rank": 4,
+            "latency_ms": 11.295374999463093
+          },
+          {
+            "qid": "q043",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 12.448583000150393
+          },
+          {
+            "qid": "q044",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.87333400028001
+          },
+          {
+            "qid": "q045",
+            "style": "literal",
+            "names_item": true,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 9.743750000779983
+          },
+          {
+            "qid": "q046",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 10.870458001591032
+          },
+          {
+            "qid": "q047",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 10.399208000308136
+          },
+          {
+            "qid": "q048",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.308375000226079
+          },
+          {
+            "qid": "q049",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.2,
+            "first_hit_rank": 5,
+            "latency_ms": 12.866209001003881
+          },
+          {
+            "qid": "q050",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.496457999077393
+          }
+        ]
       },
-      "questions": [
-        {
-          "qid": "q001",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 60.57816599968646
+      "bm25": {
+        "summary": {
+          "all": {
+            "questions": 39,
+            "recall@5": 0.769,
+            "mrr@10": 0.658,
+            "latency_p50_ms": 0.2,
+            "latency_p95_ms": 0.2
+          },
+          "literal": {
+            "questions": 20,
+            "recall@5": 0.85,
+            "mrr@10": 0.783,
+            "latency_p50_ms": 0.2,
+            "latency_p95_ms": 0.2
+          },
+          "paraphrase": {
+            "questions": 19,
+            "recall@5": 0.684,
+            "mrr@10": 0.526,
+            "latency_p50_ms": 0.2,
+            "latency_p95_ms": 0.4
+          },
+          "names an Item": {
+            "questions": 6,
+            "recall@5": 0.667,
+            "mrr@10": 0.583,
+            "latency_p50_ms": 0.2,
+            "latency_p95_ms": 0.2
+          }
         },
-        {
-          "qid": "q002",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 123.6609169991425
+        "questions": [
+          {
+            "qid": "q001",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 0.44216700007382315
+          },
+          {
+            "qid": "q002",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.16579099974478595
+          },
+          {
+            "qid": "q003",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.17933399976755027
+          },
+          {
+            "qid": "q004",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.2456659985909937
+          },
+          {
+            "qid": "q005",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 0.1874170011433307
+          },
+          {
+            "qid": "q006",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.16487500033690594
+          },
+          {
+            "qid": "q007",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.14285714285714285,
+            "first_hit_rank": 7,
+            "latency_ms": 0.1960419995157281
+          },
+          {
+            "qid": "q008",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 0.10924999878625385
+          },
+          {
+            "qid": "q009",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 0.1721660009934567
+          },
+          {
+            "qid": "q012",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.22416600040742196
+          },
+          {
+            "qid": "q013",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.125,
+            "first_hit_rank": 8,
+            "latency_ms": 0.18545799866842572
+          },
+          {
+            "qid": "q014",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 0.18412499957776163
+          },
+          {
+            "qid": "q015",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 0.16387499999837019
+          },
+          {
+            "qid": "q016",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 0.15466699915123172
+          },
+          {
+            "qid": "q018",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.17699999989417847
+          },
+          {
+            "qid": "q019",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.22420899949793238
+          },
+          {
+            "qid": "q021",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.1937910001288401
+          },
+          {
+            "qid": "q022",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.20545900042634457
+          },
+          {
+            "qid": "q025",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.13208299969846848
+          },
+          {
+            "qid": "q029",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.18429200099490117
+          },
+          {
+            "qid": "q030",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 0.16599999980826396
+          },
+          {
+            "qid": "q032",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.19029099894396495
+          },
+          {
+            "qid": "q033",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 0.16325000069628004
+          },
+          {
+            "qid": "q034",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.20245800078555476
+          },
+          {
+            "qid": "q036",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.19020800027647056
+          },
+          {
+            "qid": "q037",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.25,
+            "first_hit_rank": 4,
+            "latency_ms": 0.1553330002934672
+          },
+          {
+            "qid": "q038",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.19366699962120038
+          },
+          {
+            "qid": "q039",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.14285714285714285,
+            "first_hit_rank": 7,
+            "latency_ms": 0.1377910011797212
+          },
+          {
+            "qid": "q040",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.20699999913631473
+          },
+          {
+            "qid": "q041",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.1482500010752119
+          },
+          {
+            "qid": "q042",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.17224999828613363
+          },
+          {
+            "qid": "q043",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 0.21087500135763548
+          },
+          {
+            "qid": "q044",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.13899999976274557
+          },
+          {
+            "qid": "q045",
+            "style": "literal",
+            "names_item": true,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 0.09387499994772952
+          },
+          {
+            "qid": "q046",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 0.12504100050136913
+          },
+          {
+            "qid": "q047",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.11949999861826655
+          },
+          {
+            "qid": "q048",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 0.15670799984945916
+          },
+          {
+            "qid": "q049",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.15158399946813006
+          },
+          {
+            "qid": "q050",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.15537500075879507
+          }
+        ]
+      },
+      "hybrid": {
+        "summary": {
+          "all": {
+            "questions": 39,
+            "recall@5": 0.795,
+            "mrr@10": 0.713,
+            "latency_p50_ms": 11.3,
+            "latency_p95_ms": 14.2
+          },
+          "literal": {
+            "questions": 20,
+            "recall@5": 0.8,
+            "mrr@10": 0.757,
+            "latency_p50_ms": 11.2,
+            "latency_p95_ms": 12.8
+          },
+          "paraphrase": {
+            "questions": 19,
+            "recall@5": 0.789,
+            "mrr@10": 0.667,
+            "latency_p50_ms": 11.5,
+            "latency_p95_ms": 15.2
+          },
+          "names an Item": {
+            "questions": 6,
+            "recall@5": 0.667,
+            "mrr@10": 0.611,
+            "latency_p50_ms": 11.7,
+            "latency_p95_ms": 13.0
+          }
         },
-        {
-          "qid": "q003",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 63.75254099839367
-        },
-        {
-          "qid": "q004",
-          "style": "literal",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 55.76508299964189
-        },
-        {
-          "qid": "q005",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 46.0097079994739
-        },
-        {
-          "qid": "q006",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 28.76533400012704
-        },
-        {
-          "qid": "q007",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.25,
-          "first_hit_rank": 4,
-          "latency_ms": 56.73995800134435
-        },
-        {
-          "qid": "q008",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.3333333333333333,
-          "first_hit_rank": 3,
-          "latency_ms": 63.07862500034389
-        },
-        {
-          "qid": "q009",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 67.71479099916178
-        },
-        {
-          "qid": "q012",
-          "style": "literal",
-          "names_item": true,
-          "recall": 0.0,
-          "reciprocal_rank": 0.14285714285714285,
-          "first_hit_rank": 7,
-          "latency_ms": 48.433250000016415
-        },
-        {
-          "qid": "q013",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.125,
-          "first_hit_rank": 8,
-          "latency_ms": 80.7497500009049
-        },
-        {
-          "qid": "q014",
-          "style": "literal",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.1111111111111111,
-          "first_hit_rank": 9,
-          "latency_ms": 76.58012499996403
-        },
-        {
-          "qid": "q015",
-          "style": "literal",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 54.062624998550746
-        },
-        {
-          "qid": "q016",
-          "style": "literal",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 49.8692499986646
-        },
-        {
-          "qid": "q018",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 57.5046249996376
-        },
-        {
-          "qid": "q019",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.3333333333333333,
-          "first_hit_rank": 3,
-          "latency_ms": 74.4719169997552
-        },
-        {
-          "qid": "q021",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 77.39154100090673
-        },
-        {
-          "qid": "q022",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 79.427915999986
-        },
-        {
-          "qid": "q025",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.25,
-          "first_hit_rank": 4,
-          "latency_ms": 73.77699999960896
-        },
-        {
-          "qid": "q029",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 38.67220900065149
-        },
-        {
-          "qid": "q030",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 37.07075000056648
-        },
-        {
-          "qid": "q032",
-          "style": "literal",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 27.389083999878494
-        },
-        {
-          "qid": "q033",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.2,
-          "first_hit_rank": 5,
-          "latency_ms": 19.611791998613626
-        },
-        {
-          "qid": "q034",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 17.095332999815582
-        },
-        {
-          "qid": "q036",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 15.736999999717227
-        },
-        {
-          "qid": "q037",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 33.99754199926974
-        },
-        {
-          "qid": "q038",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 47.46008400070423
-        },
-        {
-          "qid": "q039",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.1,
-          "first_hit_rank": 10,
-          "latency_ms": 45.097207999788225
-        },
-        {
-          "qid": "q040",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 27.8325830004178
-        },
-        {
-          "qid": "q041",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 17.32645800075261
-        },
-        {
-          "qid": "q042",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.25,
-          "first_hit_rank": 4,
-          "latency_ms": 18.632082999829436
-        },
-        {
-          "qid": "q043",
-          "style": "paraphrase",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 13.848333999703755
-        },
-        {
-          "qid": "q044",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 11.518082999828039
-        },
-        {
-          "qid": "q045",
-          "style": "literal",
-          "names_item": true,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 11.899749999429332
-        },
-        {
-          "qid": "q046",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.3333333333333333,
-          "first_hit_rank": 3,
-          "latency_ms": 12.06070900116174
-        },
-        {
-          "qid": "q047",
-          "style": "literal",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 13.246167000033893
-        },
-        {
-          "qid": "q048",
-          "style": "paraphrase",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 13.218042000517016
-        },
-        {
-          "qid": "q049",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.2,
-          "first_hit_rank": 5,
-          "latency_ms": 25.703041999804555
-        },
-        {
-          "qid": "q050",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 48.2849999989412
-        }
-      ]
+        "questions": [
+          {
+            "qid": "q001",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 15.225666998958332
+          },
+          {
+            "qid": "q002",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.386916999981622
+          },
+          {
+            "qid": "q003",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.865374999615597
+          },
+          {
+            "qid": "q004",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.16666666666666666,
+            "first_hit_rank": 6,
+            "latency_ms": 11.872416000187513
+          },
+          {
+            "qid": "q005",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.979542001427035
+          },
+          {
+            "qid": "q006",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.317000000417465
+          },
+          {
+            "qid": "q007",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.68058300006669
+          },
+          {
+            "qid": "q008",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 10.545625000304426
+          },
+          {
+            "qid": "q009",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 11.501790999318473
+          },
+          {
+            "qid": "q012",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.808833000235609
+          },
+          {
+            "qid": "q013",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 11.469999999462743
+          },
+          {
+            "qid": "q014",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.029084000256262
+          },
+          {
+            "qid": "q015",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 10.990458000378567
+          },
+          {
+            "qid": "q016",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.14285714285714285,
+            "first_hit_rank": 7,
+            "latency_ms": 10.412125000584638
+          },
+          {
+            "qid": "q018",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.930415999609977
+          },
+          {
+            "qid": "q019",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.898709001092357
+          },
+          {
+            "qid": "q021",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.292542000068352
+          },
+          {
+            "qid": "q022",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.192459000289091
+          },
+          {
+            "qid": "q025",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 10.987790999934077
+          },
+          {
+            "qid": "q029",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.345375000222703
+          },
+          {
+            "qid": "q030",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 10.133499999938067
+          },
+          {
+            "qid": "q032",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 13.013040999794612
+          },
+          {
+            "qid": "q033",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 14.177875000314089
+          },
+          {
+            "qid": "q034",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.341166999045527
+          },
+          {
+            "qid": "q036",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.310458001185907
+          },
+          {
+            "qid": "q037",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 11.054624999815132
+          },
+          {
+            "qid": "q038",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.507375000495813
+          },
+          {
+            "qid": "q039",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.16666666666666666,
+            "first_hit_rank": 6,
+            "latency_ms": 9.995958000217797
+          },
+          {
+            "qid": "q040",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.166499998784275
+          },
+          {
+            "qid": "q041",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.328208000122686
+          },
+          {
+            "qid": "q042",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 10.34612500006915
+          },
+          {
+            "qid": "q043",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 12.594374999025604
+          },
+          {
+            "qid": "q044",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.021250000339933
+          },
+          {
+            "qid": "q045",
+            "style": "literal",
+            "names_item": true,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 10.143665998839424
+          },
+          {
+            "qid": "q046",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.49241699911363
+          },
+          {
+            "qid": "q047",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.849874999621534
+          },
+          {
+            "qid": "q048",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 0.0,
+            "reciprocal_rank": 0.16666666666666666,
+            "first_hit_rank": 6,
+            "latency_ms": 10.250334000375005
+          },
+          {
+            "qid": "q049",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.892667000211077
+          },
+          {
+            "qid": "q050",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.197542000445537
+          }
+        ]
+      }
     },
-    "bm25": {
-      "summary": {
-        "all": {
-          "questions": 39,
-          "recall@5": 0.769,
-          "mrr@10": 0.658,
-          "latency_p50_ms": 0.4,
-          "latency_p95_ms": 4.4
+    "company filter": {
+      "dense": {
+        "summary": {
+          "all": {
+            "questions": 39,
+            "recall@5": 0.897,
+            "mrr@10": 0.734,
+            "latency_p50_ms": 11.1,
+            "latency_p95_ms": 14.2
+          },
+          "literal": {
+            "questions": 20,
+            "recall@5": 0.85,
+            "mrr@10": 0.714,
+            "latency_p50_ms": 11.1,
+            "latency_p95_ms": 13.3
+          },
+          "paraphrase": {
+            "questions": 19,
+            "recall@5": 0.947,
+            "mrr@10": 0.755,
+            "latency_p50_ms": 11.1,
+            "latency_p95_ms": 14.2
+          },
+          "names an Item": {
+            "questions": 6,
+            "recall@5": 1.0,
+            "mrr@10": 0.722,
+            "latency_p50_ms": 11.4,
+            "latency_p95_ms": 12.4
+          }
         },
-        "literal": {
-          "questions": 20,
-          "recall@5": 0.85,
-          "mrr@10": 0.783,
-          "latency_p50_ms": 0.3,
-          "latency_p95_ms": 4.0
-        },
-        "paraphrase": {
-          "questions": 19,
-          "recall@5": 0.684,
-          "mrr@10": 0.526,
-          "latency_p50_ms": 0.6,
-          "latency_p95_ms": 23.7
-        },
-        "names an Item": {
-          "questions": 6,
-          "recall@5": 0.667,
-          "mrr@10": 0.583,
-          "latency_p50_ms": 0.3,
-          "latency_p95_ms": 4.4
-        }
+        "questions": [
+          {
+            "qid": "q001",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.008917000959627
+          },
+          {
+            "qid": "q002",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.614833001454826
+          },
+          {
+            "qid": "q003",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.81829199938511
+          },
+          {
+            "qid": "q004",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.125,
+            "first_hit_rank": 8,
+            "latency_ms": 11.520959000336006
+          },
+          {
+            "qid": "q005",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 14.158165999106131
+          },
+          {
+            "qid": "q006",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 13.335167001059745
+          },
+          {
+            "qid": "q007",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 11.296124999716994
+          },
+          {
+            "qid": "q008",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 10.125083001184976
+          },
+          {
+            "qid": "q009",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.888250000789412
+          },
+          {
+            "qid": "q012",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 12.438208001185558
+          },
+          {
+            "qid": "q013",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.2,
+            "first_hit_rank": 5,
+            "latency_ms": 11.822333000964136
+          },
+          {
+            "qid": "q014",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 10.073459001432639
+          },
+          {
+            "qid": "q015",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.14285714285714285,
+            "first_hit_rank": 7,
+            "latency_ms": 11.016083999493276
+          },
+          {
+            "qid": "q016",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.14285714285714285,
+            "first_hit_rank": 7,
+            "latency_ms": 10.718208000980667
+          },
+          {
+            "qid": "q018",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.224999999991269
+          },
+          {
+            "qid": "q019",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.305290998483542
+          },
+          {
+            "qid": "q021",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.327041000389727
+          },
+          {
+            "qid": "q022",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.716791999788256
+          },
+          {
+            "qid": "q025",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.005624999597785
+          },
+          {
+            "qid": "q029",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 12.472749998778454
+          },
+          {
+            "qid": "q030",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.14124999892374
+          },
+          {
+            "qid": "q032",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.259584000275936
+          },
+          {
+            "qid": "q033",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 11.043667000194546
+          },
+          {
+            "qid": "q034",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.263665999445948
+          },
+          {
+            "qid": "q036",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.68370800021512
+          },
+          {
+            "qid": "q037",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.14285714285714285,
+            "first_hit_rank": 7,
+            "latency_ms": 11.24516600066272
+          },
+          {
+            "qid": "q038",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 18.610582999826875
+          },
+          {
+            "qid": "q039",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.921291001068312
+          },
+          {
+            "qid": "q040",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.59650000045076
+          },
+          {
+            "qid": "q041",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.149832998853526
+          },
+          {
+            "qid": "q042",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 11.160082998685539
+          },
+          {
+            "qid": "q043",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 11.62550000117335
+          },
+          {
+            "qid": "q044",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.761875000753207
+          },
+          {
+            "qid": "q045",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 11.125999999421765
+          },
+          {
+            "qid": "q046",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 10.070917000120971
+          },
+          {
+            "qid": "q047",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.915459000898409
+          },
+          {
+            "qid": "q048",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.101374999270774
+          },
+          {
+            "qid": "q049",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.2,
+            "first_hit_rank": 5,
+            "latency_ms": 11.266375000559492
+          },
+          {
+            "qid": "q050",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.981041999912122
+          }
+        ]
       },
-      "questions": [
-        {
-          "qid": "q001",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 23.657083000216517
+      "bm25": {
+        "summary": {
+          "all": {
+            "questions": 39,
+            "recall@5": 0.923,
+            "mrr@10": 0.76,
+            "latency_p50_ms": 0.2,
+            "latency_p95_ms": 0.2
+          },
+          "literal": {
+            "questions": 20,
+            "recall@5": 0.9,
+            "mrr@10": 0.813,
+            "latency_p50_ms": 0.2,
+            "latency_p95_ms": 0.2
+          },
+          "paraphrase": {
+            "questions": 19,
+            "recall@5": 0.947,
+            "mrr@10": 0.704,
+            "latency_p50_ms": 0.2,
+            "latency_p95_ms": 0.2
+          },
+          "names an Item": {
+            "questions": 6,
+            "recall@5": 0.833,
+            "mrr@10": 0.633,
+            "latency_p50_ms": 0.2,
+            "latency_p95_ms": 0.2
+          }
         },
-        {
-          "qid": "q002",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.8592089998273877
-        },
-        {
-          "qid": "q003",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 3.3562079988769256
-        },
-        {
-          "qid": "q004",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 3.9787499990779907
-        },
-        {
-          "qid": "q005",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 0.7665419998375
-        },
-        {
-          "qid": "q006",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 1.008957999147242
-        },
-        {
-          "qid": "q007",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.14285714285714285,
-          "first_hit_rank": 7,
-          "latency_ms": 0.7654999990336364
-        },
-        {
-          "qid": "q008",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 0.6043749999662396
-        },
-        {
-          "qid": "q009",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 3.6822500005655456
-        },
-        {
-          "qid": "q012",
-          "style": "literal",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 4.390083999169292
-        },
-        {
-          "qid": "q013",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.125,
-          "first_hit_rank": 8,
-          "latency_ms": 3.1224579997797264
-        },
-        {
-          "qid": "q014",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.3333333333333333,
-          "first_hit_rank": 3,
-          "latency_ms": 2.860500000679167
-        },
-        {
-          "qid": "q015",
-          "style": "literal",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 0.8359169987670612
-        },
-        {
-          "qid": "q016",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.3333333333333333,
-          "first_hit_rank": 3,
-          "latency_ms": 0.23725000028207432
-        },
-        {
-          "qid": "q018",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.2682090016605798
-        },
-        {
-          "qid": "q019",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.292417000309797
-        },
-        {
-          "qid": "q021",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.24562500038882717
-        },
-        {
-          "qid": "q022",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.2479169997968711
-        },
-        {
-          "qid": "q025",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.5947919999016449
-        },
-        {
-          "qid": "q029",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.28625000049942173
-        },
-        {
-          "qid": "q030",
-          "style": "literal",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 0.2193749987782212
-        },
-        {
-          "qid": "q032",
-          "style": "literal",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.26087500009452924
-        },
-        {
-          "qid": "q033",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.3333333333333333,
-          "first_hit_rank": 3,
-          "latency_ms": 0.19129200154566206
-        },
-        {
-          "qid": "q034",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.22304199956124648
-        },
-        {
-          "qid": "q036",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.22908299979462754
-        },
-        {
-          "qid": "q037",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.25,
-          "first_hit_rank": 4,
-          "latency_ms": 0.19274999976914842
-        },
-        {
-          "qid": "q038",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.42341699918324593
-        },
-        {
-          "qid": "q039",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.14285714285714285,
-          "first_hit_rank": 7,
-          "latency_ms": 3.423542000746238
-        },
-        {
-          "qid": "q040",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 1.0107079997396795
-        },
-        {
-          "qid": "q041",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.432333001299412
-        },
-        {
-          "qid": "q042",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.2927920013462426
-        },
-        {
-          "qid": "q043",
-          "style": "paraphrase",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 0.5784169989055954
-        },
-        {
-          "qid": "q044",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.3949169986299239
-        },
-        {
-          "qid": "q045",
-          "style": "literal",
-          "names_item": true,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 0.14166599976306316
-        },
-        {
-          "qid": "q046",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 0.16154199875018094
-        },
-        {
-          "qid": "q047",
-          "style": "literal",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.1565000002301531
-        },
-        {
-          "qid": "q048",
-          "style": "paraphrase",
-          "names_item": true,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 0.3230419988540234
-        },
-        {
-          "qid": "q049",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.6798750000598375
-        },
-        {
-          "qid": "q050",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 0.44920799882675055
-        }
-      ]
-    },
-    "hybrid": {
-      "summary": {
-        "all": {
-          "questions": 39,
-          "recall@5": 0.795,
-          "mrr@10": 0.713,
-          "latency_p50_ms": 42.8,
-          "latency_p95_ms": 347.2
-        },
-        "literal": {
-          "questions": 20,
-          "recall@5": 0.8,
-          "mrr@10": 0.757,
-          "latency_p50_ms": 37.7,
-          "latency_p95_ms": 347.2
-        },
-        "paraphrase": {
-          "questions": 19,
-          "recall@5": 0.789,
-          "mrr@10": 0.667,
-          "latency_p50_ms": 49.9,
-          "latency_p95_ms": 83.9
-        },
-        "names an Item": {
-          "questions": 6,
-          "recall@5": 0.667,
-          "mrr@10": 0.611,
-          "latency_p50_ms": 47.1,
-          "latency_p95_ms": 548.9
-        }
+        "questions": [
+          {
+            "qid": "q001",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.16295900059049018
+          },
+          {
+            "qid": "q002",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.1402080015395768
+          },
+          {
+            "qid": "q003",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.13683299948752392
+          },
+          {
+            "qid": "q004",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.21208399994065985
+          },
+          {
+            "qid": "q005",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 0.16058399887697306
+          },
+          {
+            "qid": "q006",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.17258299885725137
+          },
+          {
+            "qid": "q007",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 0.19591700038290583
+          },
+          {
+            "qid": "q008",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 0.09616699935577344
+          },
+          {
+            "qid": "q009",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.25,
+            "first_hit_rank": 4,
+            "latency_ms": 0.16637499902572017
+          },
+          {
+            "qid": "q012",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.20737500017276034
+          },
+          {
+            "qid": "q013",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 0.16954200145846698
+          },
+          {
+            "qid": "q014",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 0.1663329985603923
+          },
+          {
+            "qid": "q015",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 0.14908299999660812
+          },
+          {
+            "qid": "q016",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 0.15137499940465204
+          },
+          {
+            "qid": "q018",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.16170900016732048
+          },
+          {
+            "qid": "q019",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.20724999922094867
+          },
+          {
+            "qid": "q021",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.19254200014984235
+          },
+          {
+            "qid": "q022",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.1842500005295733
+          },
+          {
+            "qid": "q025",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.12366599912638776
+          },
+          {
+            "qid": "q029",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.18783300038194284
+          },
+          {
+            "qid": "q030",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 0.2751669999270234
+          },
+          {
+            "qid": "q032",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.1988339990930399
+          },
+          {
+            "qid": "q033",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.16295800014631823
+          },
+          {
+            "qid": "q034",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.1866670008894289
+          },
+          {
+            "qid": "q036",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.186416000360623
+          },
+          {
+            "qid": "q037",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.25,
+            "first_hit_rank": 4,
+            "latency_ms": 0.20295800095482264
+          },
+          {
+            "qid": "q038",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.20654100080719218
+          },
+          {
+            "qid": "q039",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.12475000039557926
+          },
+          {
+            "qid": "q040",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.19737500042538159
+          },
+          {
+            "qid": "q041",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.13745800060860347
+          },
+          {
+            "qid": "q042",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.1609170012670802
+          },
+          {
+            "qid": "q043",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 0.19904200053133536
+          },
+          {
+            "qid": "q044",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.1281670010939706
+          },
+          {
+            "qid": "q045",
+            "style": "literal",
+            "names_item": true,
+            "recall": 0.0,
+            "reciprocal_rank": 0.1,
+            "first_hit_rank": 10,
+            "latency_ms": 0.10020899935625494
+          },
+          {
+            "qid": "q046",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.11966700003540609
+          },
+          {
+            "qid": "q047",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.12270800107216928
+          },
+          {
+            "qid": "q048",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.2,
+            "first_hit_rank": 5,
+            "latency_ms": 0.15537499893980566
+          },
+          {
+            "qid": "q049",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.1470419992983807
+          },
+          {
+            "qid": "q050",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 0.146625001434586
+          }
+        ]
       },
-      "questions": [
-        {
-          "qid": "q001",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 57.871875000273576
+      "hybrid": {
+        "summary": {
+          "all": {
+            "questions": 39,
+            "recall@5": 0.949,
+            "mrr@10": 0.842,
+            "latency_p50_ms": 11.5,
+            "latency_p95_ms": 15.6
+          },
+          "literal": {
+            "questions": 20,
+            "recall@5": 0.95,
+            "mrr@10": 0.825,
+            "latency_p50_ms": 11.5,
+            "latency_p95_ms": 13.5
+          },
+          "paraphrase": {
+            "questions": 19,
+            "recall@5": 0.947,
+            "mrr@10": 0.86,
+            "latency_p50_ms": 11.6,
+            "latency_p95_ms": 15.6
+          },
+          "names an Item": {
+            "questions": 6,
+            "recall@5": 1.0,
+            "mrr@10": 0.806,
+            "latency_p50_ms": 11.9,
+            "latency_p95_ms": 13.5
+          }
         },
-        {
-          "qid": "q002",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 39.58670899919525
-        },
-        {
-          "qid": "q003",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 62.04762500055949
-        },
-        {
-          "qid": "q004",
-          "style": "literal",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.16666666666666666,
-          "first_hit_rank": 6,
-          "latency_ms": 45.03520899925206
-        },
-        {
-          "qid": "q005",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 67.97487500080024
-        },
-        {
-          "qid": "q006",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 347.17908399943553
-        },
-        {
-          "qid": "q007",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 81.15299999917625
-        },
-        {
-          "qid": "q008",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 49.85879199921328
-        },
-        {
-          "qid": "q009",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 58.94654099938634
-        },
-        {
-          "qid": "q012",
-          "style": "literal",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 87.0203330014192
-        },
-        {
-          "qid": "q013",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.3333333333333333,
-          "first_hit_rank": 3,
-          "latency_ms": 32.39820799899462
-        },
-        {
-          "qid": "q014",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 21.03749999878346
-        },
-        {
-          "qid": "q015",
-          "style": "literal",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 23.887792000095942
-        },
-        {
-          "qid": "q016",
-          "style": "literal",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.14285714285714285,
-          "first_hit_rank": 7,
-          "latency_ms": 33.71258399965882
-        },
-        {
-          "qid": "q018",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 35.741666999456356
-        },
-        {
-          "qid": "q019",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 26.694874999520835
-        },
-        {
-          "qid": "q021",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 21.31908299998031
-        },
-        {
-          "qid": "q022",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 23.795749999408145
-        },
-        {
-          "qid": "q025",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 42.78104200056987
-        },
-        {
-          "qid": "q029",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 19.953874998464016
-        },
-        {
-          "qid": "q030",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.3333333333333333,
-          "first_hit_rank": 3,
-          "latency_ms": 28.24920900093275
-        },
-        {
-          "qid": "q032",
-          "style": "literal",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 548.9197919996514
-        },
-        {
-          "qid": "q033",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 70.26220800071314
-        },
-        {
-          "qid": "q034",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 25.489125000603963
-        },
-        {
-          "qid": "q036",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 61.27024999841524
-        },
-        {
-          "qid": "q037",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 41.0714999998163
-        },
-        {
-          "qid": "q038",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 142.05799999945157
-        },
-        {
-          "qid": "q039",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 0.0,
-          "reciprocal_rank": 0.16666666666666666,
-          "first_hit_rank": 6,
-          "latency_ms": 66.38662500154169
-        },
-        {
-          "qid": "q040",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 295.68762500093726
-        },
-        {
-          "qid": "q041",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 83.89100000022154
-        },
-        {
-          "qid": "q042",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 46.213624998927116
-        },
-        {
-          "qid": "q043",
-          "style": "paraphrase",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 0.5,
-          "first_hit_rank": 2,
-          "latency_ms": 62.28158300109499
-        },
-        {
-          "qid": "q044",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 18.296917000043322
-        },
-        {
-          "qid": "q045",
-          "style": "literal",
-          "names_item": true,
-          "recall": 0.0,
-          "reciprocal_rank": 0.0,
-          "first_hit_rank": null,
-          "latency_ms": 13.834249999490567
-        },
-        {
-          "qid": "q046",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 14.146666000669939
-        },
-        {
-          "qid": "q047",
-          "style": "literal",
-          "names_item": true,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 20.25879099892336
-        },
-        {
-          "qid": "q048",
-          "style": "paraphrase",
-          "names_item": true,
-          "recall": 0.0,
-          "reciprocal_rank": 0.16666666666666666,
-          "first_hit_rank": 6,
-          "latency_ms": 31.977958999050315
-        },
-        {
-          "qid": "q049",
-          "style": "literal",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 78.52295799966669
-        },
-        {
-          "qid": "q050",
-          "style": "paraphrase",
-          "names_item": false,
-          "recall": 1.0,
-          "reciprocal_rank": 1.0,
-          "first_hit_rank": 1,
-          "latency_ms": 29.817124999681255
-        }
-      ]
+        "questions": [
+          {
+            "qid": "q001",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.00929200038081
+          },
+          {
+            "qid": "q002",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.305792000508518
+          },
+          {
+            "qid": "q003",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.563500000193017
+          },
+          {
+            "qid": "q004",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 12.580208000144921
+          },
+          {
+            "qid": "q005",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.622500000157743
+          },
+          {
+            "qid": "q006",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.142874998768093
+          },
+          {
+            "qid": "q007",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.518209001224022
+          },
+          {
+            "qid": "q008",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.16666666666666666,
+            "first_hit_rank": 6,
+            "latency_ms": 15.594958998917718
+          },
+          {
+            "qid": "q009",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.42062500002794
+          },
+          {
+            "qid": "q012",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 13.482374999512103
+          },
+          {
+            "qid": "q013",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 13.394666000749567
+          },
+          {
+            "qid": "q014",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.518624998643645
+          },
+          {
+            "qid": "q015",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.14285714285714285,
+            "first_hit_rank": 7,
+            "latency_ms": 10.33912499951839
+          },
+          {
+            "qid": "q016",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.2,
+            "first_hit_rank": 5,
+            "latency_ms": 12.374375000945292
+          },
+          {
+            "qid": "q018",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 13.088292000247748
+          },
+          {
+            "qid": "q019",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 13.683040999239893
+          },
+          {
+            "qid": "q021",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.537583001176245
+          },
+          {
+            "qid": "q022",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.161167000158457
+          },
+          {
+            "qid": "q025",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.122084000817267
+          },
+          {
+            "qid": "q029",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.455665999368648
+          },
+          {
+            "qid": "q030",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.410290999061544
+          },
+          {
+            "qid": "q032",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.615708001249004
+          },
+          {
+            "qid": "q033",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.336916000800557
+          },
+          {
+            "qid": "q034",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.96641699950851
+          },
+          {
+            "qid": "q036",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.72504200055846
+          },
+          {
+            "qid": "q037",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 11.623208001765306
+          },
+          {
+            "qid": "q038",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 12.348250000286498
+          },
+          {
+            "qid": "q039",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.737624999819673
+          },
+          {
+            "qid": "q040",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 16.6516249992128
+          },
+          {
+            "qid": "q041",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.206332999790902
+          },
+          {
+            "qid": "q042",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 11.072375000367174
+          },
+          {
+            "qid": "q043",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 12.1344159997534
+          },
+          {
+            "qid": "q044",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.07133299956331
+          },
+          {
+            "qid": "q045",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 11.35791600063385
+          },
+          {
+            "qid": "q046",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 10.181124998780433
+          },
+          {
+            "qid": "q047",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.414334001528914
+          },
+          {
+            "qid": "q048",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.624708999079303
+          },
+          {
+            "qid": "q049",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.539666998942266
+          },
+          {
+            "qid": "q050",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 11.171624999406049
+          }
+        ]
+      }
     }
   }
 }

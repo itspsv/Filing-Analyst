@@ -70,12 +70,24 @@ def test_summary_averages_and_groups_by_style_and_item_mention() -> None:
         item("q2", [TSMC], style="paraphrase", question="Per Item 1A, who makes the wafers?"),
     ]
     answers = {"Q?": [ANSWER], "Per Item 1A, who makes the wafers?": [FILLER[0], ANSWER]}
-    results = evaluate(items, lambda q: answers[q])
+    results = evaluate(items, lambda q, ticker: answers[q])
     by_group = {name: summarize(rs) for name, rs in groups(results).items()}
     assert by_group["all"]["recall@5"] == 1.0
     assert by_group["all"]["mrr@10"] == pytest.approx((1 + 1 / 2) / 2, abs=1e-3)
     assert by_group["literal"]["questions"] == 1
     assert by_group["names an Item"]["mrr@10"] == 0.5
+
+
+def test_company_filter_passes_the_question_ticker_to_search() -> None:
+    asked: list[str | None] = []
+
+    def search(question: str, ticker: str | None) -> list:
+        asked.append(ticker)
+        return [ANSWER]
+
+    evaluate([item("q1", [TSMC])], search, company_filter=False)
+    evaluate([item("q1", [TSMC])], search, company_filter=True)
+    assert asked == [None, "AVGO"]
 
 
 def test_quote_cut_by_a_chunk_boundary_is_reported_as_unreachable() -> None:
