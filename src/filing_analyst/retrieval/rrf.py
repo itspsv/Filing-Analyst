@@ -15,8 +15,8 @@ from filing_analyst.config import Settings
 from filing_analyst.parse.chunk import Chunk
 from filing_analyst.retrieval.bm25 import BM25Index
 from filing_analyst.retrieval.dense import (
-    DenseIndex,
     Embedder,
+    VectorSearch,
     embed_query,
     load_embedder,
     load_or_build_index,
@@ -45,7 +45,7 @@ class HybridResult:
 
 
 class HybridSearcher:
-    def __init__(self, dense: DenseIndex, bm25: BM25Index, embedder: Embedder) -> None:
+    def __init__(self, dense: VectorSearch, bm25: BM25Index, embedder: Embedder) -> None:
         dense_ids = [c.chunk_id for c in dense.chunks]
         if dense_ids != [c.chunk_id for c in bm25.chunks]:
             raise ValueError("dense and BM25 indexes were built from different chunks")

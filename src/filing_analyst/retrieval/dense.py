@@ -83,6 +83,16 @@ class DenseIndex:
         return [(self.chunks[i], s) for i, s in top_k(query_vector, self.vectors, k, mask)]
 
 
+class VectorSearch(Protocol):
+    """What hybrid search needs from a vector index: NumPy (DenseIndex) or Qdrant."""
+
+    chunks: list[Chunk]
+
+    def search(
+        self, query_vector: np.ndarray, k: int = ..., ticker: str | None = ...
+    ) -> list[tuple[Chunk, float]]: ...
+
+
 def fingerprint(data: bytes) -> str:
     return hashlib.sha256(data + EMBEDDING_MODEL.encode()).hexdigest()[:16]
 
