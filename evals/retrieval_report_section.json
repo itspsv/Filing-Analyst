@@ -10,28 +10,28 @@
             "recall@5": 0.692,
             "mrr@10": 0.544,
             "latency_p50_ms": 10.6,
-            "latency_p95_ms": 12.5
+            "latency_p95_ms": 12.1
           },
           "literal": {
             "questions": 20,
             "recall@5": 0.7,
             "mrr@10": 0.529,
-            "latency_p50_ms": 10.8,
-            "latency_p95_ms": 12.5
+            "latency_p50_ms": 10.7,
+            "latency_p95_ms": 12.1
           },
           "paraphrase": {
             "questions": 19,
             "recall@5": 0.684,
             "mrr@10": 0.56,
-            "latency_p50_ms": 10.6,
-            "latency_p95_ms": 15.4
+            "latency_p50_ms": 10.4,
+            "latency_p95_ms": 12.1
           },
           "names an Item": {
             "questions": 6,
             "recall@5": 0.5,
             "mrr@10": 0.429,
             "latency_p50_ms": 10.8,
-            "latency_p95_ms": 12.5
+            "latency_p95_ms": 12.1
           }
         },
         "questions": [
@@ -42,7 +42,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.394082999482634
+            "latency_ms": 9.8607500003709
           },
           {
             "qid": "q002",
@@ -51,7 +51,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.688250000181142
+            "latency_ms": 10.039916000096127
           },
           {
             "qid": "q003",
@@ -60,7 +60,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.97283300057461
+            "latency_ms": 10.394584000096074
           },
           {
             "qid": "q004",
@@ -69,7 +69,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.528290999194724
+            "latency_ms": 11.573457999475067
           },
           {
             "qid": "q005",
@@ -78,7 +78,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.07229199988069
+            "latency_ms": 11.616332998528378
           },
           {
             "qid": "q006",
@@ -87,7 +87,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.12033299957693
+            "latency_ms": 10.841459001312614
           },
           {
             "qid": "q007",
@@ -96,7 +96,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 9.869916999377892
+            "latency_ms": 9.871125001154724
           },
           {
             "qid": "q008",
@@ -105,7 +105,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 9.789499999897089
+            "latency_ms": 10.557125000559608
           },
           {
             "qid": "q009",
@@ -114,7 +114,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 9.973500000342028
+            "latency_ms": 10.35441699968942
           },
           {
             "qid": "q012",
@@ -123,7 +123,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 11.701375000484404
+            "latency_ms": 11.859832999107311
           },
           {
             "qid": "q013",
@@ -132,7 +132,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 11.26812499933294
+            "latency_ms": 11.86875000166765
           },
           {
             "qid": "q014",
@@ -141,7 +141,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 10.60762500128476
+            "latency_ms": 10.607250000248314
           },
           {
             "qid": "q015",
@@ -150,7 +150,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 10.463708000315819
+            "latency_ms": 9.794416999284294
           },
           {
             "qid": "q016",
@@ -159,7 +159,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.60979100111581
+            "latency_ms": 10.840541999641573
           },
           {
             "qid": "q018",
@@ -168,7 +168,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.26395799999591
+            "latency_ms": 10.51795800049149
           },
           {
             "qid": "q019",
@@ -177,7 +177,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.557582998648286
+            "latency_ms": 11.626083000010112
           },
           {
             "qid": "q021",
@@ -186,7 +186,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.84504200136871
+            "latency_ms": 11.920749999262625
           },
           {
             "qid": "q022",
@@ -195,7 +195,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 12.544332999823382
+            "latency_ms": 12.13504100087448
           },
           {
             "qid": "q025",
@@ -204,7 +204,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 12.299375001020962
+            "latency_ms": 10.02024999979767
           },
           {
             "qid": "q029",
@@ -213,7 +213,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.221708999277325
+            "latency_ms": 11.833124999611755
           },
           {
             "qid": "q030",
@@ -222,7 +222,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.967750000418164
+            "latency_ms": 10.635874999934458
           },
           {
             "qid": "q032",
@@ -231,7 +231,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.465666999560199
+            "latency_ms": 11.248666000028607
           },
           {
             "qid": "q033",
@@ -240,7 +240,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.580583999399096
+            "latency_ms": 10.408207999716979
           },
           {
             "qid": "q034",
@@ -249,7 +249,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.85362499927578
+            "latency_ms": 10.704041000280995
           },
           {
             "qid": "q036",
@@ -258,7 +258,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 11.675208999804454
+            "latency_ms": 10.13408400103799
           },
           {
             "qid": "q037",
@@ -267,7 +267,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 15.430916000696016
+            "latency_ms": 11.167915999976685
           },
           {
             "qid": "q038",
@@ -276,7 +276,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.015583999527735
+            "latency_ms": 12.07283300027484
           },
           {
             "qid": "q039",
@@ -285,7 +285,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.2,
             "first_hit_rank": 5,
-            "latency_ms": 10.551167000812711
+            "latency_ms": 9.71341699914774
           },
           {
             "qid": "q040",
@@ -294,7 +294,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.1111111111111111,
             "first_hit_rank": 9,
-            "latency_ms": 11.498792000566027
+            "latency_ms": 12.12945800034504
           },
           {
             "qid": "q041",
@@ -303,7 +303,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.052167001049384
+            "latency_ms": 10.655207999661798
           },
           {
             "qid": "q042",
@@ -312,7 +312,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.161792000872083
+            "latency_ms": 10.118834001332289
           },
           {
             "qid": "q043",
@@ -321,7 +321,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.1,
             "first_hit_rank": 10,
-            "latency_ms": 11.788542000431335
+            "latency_ms": 12.064209000527626
           },
           {
             "qid": "q044",
@@ -330,7 +330,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.084875000757165
+            "latency_ms": 10.624541999277426
           },
           {
             "qid": "q045",
@@ -339,7 +339,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 9.954791999916779
+            "latency_ms": 9.724083000037353
           },
           {
             "qid": "q046",
@@ -348,7 +348,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.694958000181941
+            "latency_ms": 10.407833999124705
           },
           {
             "qid": "q047",
@@ -357,7 +357,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.14285714285714285,
             "first_hit_rank": 7,
-            "latency_ms": 9.638875000746339
+            "latency_ms": 9.88645799952792
           },
           {
             "qid": "q048",
@@ -366,7 +366,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.900249999191146
+            "latency_ms": 10.270709000906209
           },
           {
             "qid": "q049",
@@ -375,7 +375,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.132083000120474
+            "latency_ms": 11.68599999982689
           },
           {
             "qid": "q050",
@@ -384,7 +384,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.937291999449371
+            "latency_ms": 9.956582998711383
           }
         ]
       },
@@ -409,7 +409,7 @@
             "recall@5": 0.684,
             "mrr@10": 0.554,
             "latency_p50_ms": 0.2,
-            "latency_p95_ms": 0.6
+            "latency_p95_ms": 0.2
           },
           "names an Item": {
             "questions": 6,
@@ -427,7 +427,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.5608749997918494
+            "latency_ms": 0.23962500017660204
           },
           {
             "qid": "q002",
@@ -436,7 +436,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1654170009715017
+            "latency_ms": 0.180582999746548
           },
           {
             "qid": "q003",
@@ -445,7 +445,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.16554100147914141
+            "latency_ms": 0.18687500050873496
           },
           {
             "qid": "q004",
@@ -454,7 +454,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.24725000002945308
+            "latency_ms": 0.30604200037487317
           },
           {
             "qid": "q005",
@@ -463,7 +463,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.18379100038146134
+            "latency_ms": 0.22816700038674753
           },
           {
             "qid": "q006",
@@ -472,7 +472,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.1892079999379348
+            "latency_ms": 0.21004200061724987
           },
           {
             "qid": "q007",
@@ -481,7 +481,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.1111111111111111,
             "first_hit_rank": 9,
-            "latency_ms": 0.20095800027775113
+            "latency_ms": 0.21416700110421516
           },
           {
             "qid": "q008",
@@ -490,7 +490,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.16666666666666666,
             "first_hit_rank": 6,
-            "latency_ms": 0.11575000098673627
+            "latency_ms": 0.1252919992111856
           },
           {
             "qid": "q009",
@@ -499,7 +499,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 0.17925000065588392
+            "latency_ms": 0.18762500076263677
           },
           {
             "qid": "q012",
@@ -508,7 +508,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.2,
             "first_hit_rank": 5,
-            "latency_ms": 0.22175000049173832
+            "latency_ms": 0.23824999880162068
           },
           {
             "qid": "q013",
@@ -517,7 +517,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.1,
             "first_hit_rank": 10,
-            "latency_ms": 0.17800000023271423
+            "latency_ms": 0.1875830002973089
           },
           {
             "qid": "q014",
@@ -526,7 +526,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.1921660004882142
+            "latency_ms": 0.18708300012804102
           },
           {
             "qid": "q015",
@@ -535,7 +535,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 0.17433299944968894
+            "latency_ms": 0.18083299983118195
           },
           {
             "qid": "q016",
@@ -544,7 +544,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.16691599921614397
+            "latency_ms": 0.17174999993585516
           },
           {
             "qid": "q018",
@@ -553,7 +553,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.18695799917622935
+            "latency_ms": 0.1918340003612684
           },
           {
             "qid": "q019",
@@ -562,7 +562,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.22816699856775813
+            "latency_ms": 0.2365000000281725
           },
           {
             "qid": "q021",
@@ -571,7 +571,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.19829200027743354
+            "latency_ms": 0.19874999998137355
           },
           {
             "qid": "q022",
@@ -580,7 +580,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.2064159998553805
+            "latency_ms": 0.20804199994017836
           },
           {
             "qid": "q025",
@@ -589,7 +589,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.25,
             "first_hit_rank": 4,
-            "latency_ms": 0.1326670007983921
+            "latency_ms": 0.13637499978358392
           },
           {
             "qid": "q029",
@@ -598,7 +598,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.19112500012852252
+            "latency_ms": 0.1984999998967396
           },
           {
             "qid": "q030",
@@ -607,7 +607,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1692910009296611
+            "latency_ms": 0.17729099999996834
           },
           {
             "qid": "q032",
@@ -616,7 +616,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1908330013975501
+            "latency_ms": 0.19166700076311827
           },
           {
             "qid": "q033",
@@ -625,7 +625,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.14285714285714285,
             "first_hit_rank": 7,
-            "latency_ms": 0.16775000040070154
+            "latency_ms": 0.1722090000839671
           },
           {
             "qid": "q034",
@@ -634,7 +634,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.20591700013028458
+            "latency_ms": 0.20620800023607444
           },
           {
             "qid": "q036",
@@ -643,7 +643,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1962080004886957
+            "latency_ms": 0.19462499949440826
           },
           {
             "qid": "q037",
@@ -652,7 +652,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.16979199972411152
+            "latency_ms": 0.17312499949184712
           },
           {
             "qid": "q038",
@@ -661,7 +661,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.20879099974990822
+            "latency_ms": 0.20887499886157457
           },
           {
             "qid": "q039",
@@ -670,7 +670,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.25,
             "first_hit_rank": 4,
-            "latency_ms": 0.1414580001437571
+            "latency_ms": 0.13945799946668558
           },
           {
             "qid": "q040",
@@ -679,7 +679,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.219457999264705
+            "latency_ms": 0.21454099987749942
           },
           {
             "qid": "q041",
@@ -688,7 +688,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.14274999921326526
+            "latency_ms": 0.1408339994668495
           },
           {
             "qid": "q042",
@@ -697,7 +697,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.17366700012644287
+            "latency_ms": 0.17745900004229043
           },
           {
             "qid": "q043",
@@ -706,7 +706,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.22279200129560195
+            "latency_ms": 0.21483400087163318
           },
           {
             "qid": "q044",
@@ -715,7 +715,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.12900000001536682
+            "latency_ms": 0.1261670004168991
           },
           {
             "qid": "q045",
@@ -724,7 +724,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 0.09900000077323057
+            "latency_ms": 0.10016699889092706
           },
           {
             "qid": "q046",
@@ -733,7 +733,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.14712499978486449
+            "latency_ms": 0.14008299876877572
           },
           {
             "qid": "q047",
@@ -742,7 +742,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.12283300020499155
+            "latency_ms": 0.11933300083910581
           },
           {
             "qid": "q048",
@@ -751,7 +751,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 0.1588750001246808
+            "latency_ms": 0.16024999968067277
           },
           {
             "qid": "q049",
@@ -760,7 +760,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.15879200145718642
+            "latency_ms": 0.15874999917286914
           },
           {
             "qid": "q050",
@@ -769,7 +769,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.15904199972283095
+            "latency_ms": 0.16387499999837019
           }
         ]
       },
@@ -779,29 +779,29 @@
             "questions": 39,
             "recall@5": 0.795,
             "mrr@10": 0.628,
-            "latency_p50_ms": 10.5,
-            "latency_p95_ms": 21.1
+            "latency_p50_ms": 10.9,
+            "latency_p95_ms": 12.6
           },
           "literal": {
             "questions": 20,
             "recall@5": 0.8,
             "mrr@10": 0.641,
-            "latency_p50_ms": 10.9,
-            "latency_p95_ms": 15.7
+            "latency_p50_ms": 10.8,
+            "latency_p95_ms": 12.6
           },
           "paraphrase": {
             "questions": 19,
             "recall@5": 0.789,
             "mrr@10": 0.614,
-            "latency_p50_ms": 10.5,
-            "latency_p95_ms": 26.6
+            "latency_p50_ms": 10.9,
+            "latency_p95_ms": 12.6
           },
           "names an Item": {
             "questions": 6,
             "recall@5": 0.667,
             "mrr@10": 0.548,
-            "latency_p50_ms": 10.9,
-            "latency_p95_ms": 12.2
+            "latency_p50_ms": 11.5,
+            "latency_p95_ms": 12.6
           }
         },
         "questions": [
@@ -812,7 +812,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.450540999954683
+            "latency_ms": 10.76012500016077
           },
           {
             "qid": "q002",
@@ -821,7 +821,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.500124999452964
+            "latency_ms": 9.937417000401183
           },
           {
             "qid": "q003",
@@ -830,7 +830,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.314332999769249
+            "latency_ms": 10.64970799961884
           },
           {
             "qid": "q004",
@@ -839,7 +839,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.139874999775202
+            "latency_ms": 12.643125000977307
           },
           {
             "qid": "q005",
@@ -848,7 +848,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.668250001093838
+            "latency_ms": 11.414624999815715
           },
           {
             "qid": "q006",
@@ -857,7 +857,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.375040999861085
+            "latency_ms": 10.773957999845152
           },
           {
             "qid": "q007",
@@ -866,7 +866,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.25,
             "first_hit_rank": 4,
-            "latency_ms": 10.147042001335649
+            "latency_ms": 10.822832999110688
           },
           {
             "qid": "q008",
@@ -875,7 +875,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.884832999887294
+            "latency_ms": 10.0618750002468
           },
           {
             "qid": "q009",
@@ -884,7 +884,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 10.305666999556706
+            "latency_ms": 10.925083999609342
           },
           {
             "qid": "q012",
@@ -893,7 +893,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.14285714285714285,
             "first_hit_rank": 7,
-            "latency_ms": 12.088959001630428
+            "latency_ms": 12.577167000927147
           },
           {
             "qid": "q013",
@@ -902,7 +902,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 11.658999999781372
+            "latency_ms": 11.703333000696148
           },
           {
             "qid": "q014",
@@ -911,7 +911,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.206875000221771
+            "latency_ms": 10.210415999608813
           },
           {
             "qid": "q015",
@@ -920,7 +920,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 10.106166999321431
+            "latency_ms": 10.797917000672896
           },
           {
             "qid": "q016",
@@ -929,7 +929,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 15.696124999521999
+            "latency_ms": 10.362832999817329
           },
           {
             "qid": "q018",
@@ -938,7 +938,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 13.724165999519755
+            "latency_ms": 10.386459000073955
           },
           {
             "qid": "q019",
@@ -947,7 +947,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 21.060457998828497
+            "latency_ms": 12.605791998794302
           },
           {
             "qid": "q021",
@@ -956,7 +956,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 26.61087500018766
+            "latency_ms": 12.312709000980249
           },
           {
             "qid": "q022",
@@ -965,7 +965,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 16.309124999679625
+            "latency_ms": 11.979832999713835
           },
           {
             "qid": "q025",
@@ -974,7 +974,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 12.542000000394182
+            "latency_ms": 11.204749998796615
           },
           {
             "qid": "q029",
@@ -983,7 +983,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 14.250541000365047
+            "latency_ms": 12.253749999217689
           },
           {
             "qid": "q030",
@@ -992,7 +992,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.2,
             "first_hit_rank": 5,
-            "latency_ms": 10.95391600028961
+            "latency_ms": 10.176874999160646
           },
           {
             "qid": "q032",
@@ -1001,7 +1001,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.216584000270814
+            "latency_ms": 12.063999998645158
           },
           {
             "qid": "q033",
@@ -1010,7 +1010,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.025750000044354
+            "latency_ms": 10.849958000108018
           },
           {
             "qid": "q034",
@@ -1019,7 +1019,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.788999999931548
+            "latency_ms": 10.371207999924081
           },
           {
             "qid": "q036",
@@ -1028,7 +1028,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 10.443707999002072
+            "latency_ms": 10.973583001032239
           },
           {
             "qid": "q037",
@@ -1037,7 +1037,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.16666666666666666,
             "first_hit_rank": 6,
-            "latency_ms": 10.522999999011518
+            "latency_ms": 10.925124999630498
           },
           {
             "qid": "q038",
@@ -1046,7 +1046,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.797999999544118
+            "latency_ms": 11.681916999805253
           },
           {
             "qid": "q039",
@@ -1055,7 +1055,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.25,
             "first_hit_rank": 4,
-            "latency_ms": 9.832125000684755
+            "latency_ms": 10.374208000939689
           },
           {
             "qid": "q040",
@@ -1064,7 +1064,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.403499998777988
+            "latency_ms": 12.137959000028786
           },
           {
             "qid": "q041",
@@ -1073,7 +1073,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.972334000849514
+            "latency_ms": 10.045083001386956
           },
           {
             "qid": "q042",
@@ -1082,7 +1082,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.11133400061226
+            "latency_ms": 10.864249999940512
           },
           {
             "qid": "q043",
@@ -1091,7 +1091,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.595209000006435
+            "latency_ms": 12.449042000298505
           },
           {
             "qid": "q044",
@@ -1100,7 +1100,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 9.840500000791508
+            "latency_ms": 10.057833000246319
           },
           {
             "qid": "q045",
@@ -1109,7 +1109,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.14285714285714285,
             "first_hit_rank": 7,
-            "latency_ms": 10.281165999913355
+            "latency_ms": 10.94924999961222
           },
           {
             "qid": "q046",
@@ -1118,7 +1118,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.758875001352862
+            "latency_ms": 11.034458999347407
           },
           {
             "qid": "q047",
@@ -1127,7 +1127,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.770084001502255
+            "latency_ms": 10.127792000275804
           },
           {
             "qid": "q048",
@@ -1136,7 +1136,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.125167000296642
+            "latency_ms": 10.787125000206288
           },
           {
             "qid": "q049",
@@ -1145,7 +1145,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 11.203709000255913
+            "latency_ms": 11.972542000876274
           },
           {
             "qid": "q050",
@@ -1154,7 +1154,392 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.040083001513267
+            "latency_ms": 10.26383400130726
+          }
+        ]
+      },
+      "hybrid+rerank": {
+        "summary": {
+          "all": {
+            "questions": 39,
+            "recall@5": 0.795,
+            "mrr@10": 0.703,
+            "latency_p50_ms": 358.8,
+            "latency_p95_ms": 381.4
+          },
+          "literal": {
+            "questions": 20,
+            "recall@5": 0.8,
+            "mrr@10": 0.671,
+            "latency_p50_ms": 358.3,
+            "latency_p95_ms": 381.4
+          },
+          "paraphrase": {
+            "questions": 19,
+            "recall@5": 0.789,
+            "mrr@10": 0.737,
+            "latency_p50_ms": 358.8,
+            "latency_p95_ms": 380.9
+          },
+          "names an Item": {
+            "questions": 6,
+            "recall@5": 0.833,
+            "mrr@10": 0.533,
+            "latency_p50_ms": 366.9,
+            "latency_p95_ms": 381.4
+          }
+        },
+        "questions": [
+          {
+            "qid": "q001",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 352.9940419994091
+          },
+          {
+            "qid": "q002",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 359.7254160013108
+          },
+          {
+            "qid": "q003",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 361.0320829993725
+          },
+          {
+            "qid": "q004",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 377.891374999308
+          },
+          {
+            "qid": "q005",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.16666666666666666,
+            "first_hit_rank": 6,
+            "latency_ms": 350.4647500012652
+          },
+          {
+            "qid": "q006",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.16666666666666666,
+            "first_hit_rank": 6,
+            "latency_ms": 339.9773749988526
+          },
+          {
+            "qid": "q007",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 345.38091700051154
+          },
+          {
+            "qid": "q008",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 338.2809169997927
+          },
+          {
+            "qid": "q009",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 360.77858399949037
+          },
+          {
+            "qid": "q012",
+            "style": "literal",
+            "names_item": true,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 381.44008300150745
+          },
+          {
+            "qid": "q013",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 360.55129200030933
+          },
+          {
+            "qid": "q014",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 344.2335420004383
+          },
+          {
+            "qid": "q015",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.1111111111111111,
+            "first_hit_rank": 9,
+            "latency_ms": 338.91816700088384
+          },
+          {
+            "qid": "q016",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 349.17124999992666
+          },
+          {
+            "qid": "q018",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 335.03299999938463
+          },
+          {
+            "qid": "q019",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 375.20450000010896
+          },
+          {
+            "qid": "q021",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 354.29458299950056
+          },
+          {
+            "qid": "q022",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 392.69470799990813
+          },
+          {
+            "qid": "q025",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 364.60066700055904
+          },
+          {
+            "qid": "q029",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 372.1561250004015
+          },
+          {
+            "qid": "q030",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 338.10649999941234
+          },
+          {
+            "qid": "q032",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 356.93395800080907
+          },
+          {
+            "qid": "q033",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 333.8847499999247
+          },
+          {
+            "qid": "q034",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 373.7963329986087
+          },
+          {
+            "qid": "q036",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.1,
+            "first_hit_rank": 10,
+            "latency_ms": 366.80183299904456
+          },
+          {
+            "qid": "q037",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 372.15199999991455
+          },
+          {
+            "qid": "q038",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 377.83179199868755
+          },
+          {
+            "qid": "q039",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 348.131958000522
+          },
+          {
+            "qid": "q040",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 363.9445839999098
+          },
+          {
+            "qid": "q041",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 349.01566699954856
+          },
+          {
+            "qid": "q042",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 356.85633399953076
+          },
+          {
+            "qid": "q043",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 380.8649590009736
+          },
+          {
+            "qid": "q044",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 360.95949999980803
+          },
+          {
+            "qid": "q045",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.2,
+            "first_hit_rank": 5,
+            "latency_ms": 361.3712919996033
+          },
+          {
+            "qid": "q046",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 358.8126670001657
+          },
+          {
+            "qid": "q047",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 353.3058750017517
+          },
+          {
+            "qid": "q048",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 372.33500000002095
+          },
+          {
+            "qid": "q049",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 355.94625000157976
+          },
+          {
+            "qid": "q050",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 350.77908399944135
           }
         ]
       }
@@ -1166,29 +1551,29 @@
             "questions": 39,
             "recall@5": 0.821,
             "mrr@10": 0.681,
-            "latency_p50_ms": 10.5,
-            "latency_p95_ms": 14.9
+            "latency_p50_ms": 10.9,
+            "latency_p95_ms": 12.6
           },
           "literal": {
             "questions": 20,
             "recall@5": 0.9,
             "mrr@10": 0.707,
-            "latency_p50_ms": 10.5,
-            "latency_p95_ms": 12.5
+            "latency_p50_ms": 10.9,
+            "latency_p95_ms": 12.4
           },
           "paraphrase": {
             "questions": 19,
             "recall@5": 0.737,
             "mrr@10": 0.654,
-            "latency_p50_ms": 10.6,
-            "latency_p95_ms": 14.9
+            "latency_p50_ms": 10.7,
+            "latency_p95_ms": 14.5
           },
           "names an Item": {
             "questions": 6,
             "recall@5": 0.833,
             "mrr@10": 0.75,
-            "latency_p50_ms": 10.7,
-            "latency_p95_ms": 12.5
+            "latency_p50_ms": 11.7,
+            "latency_p95_ms": 14.5
           }
         },
         "questions": [
@@ -1199,7 +1584,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.69266699939908
+            "latency_ms": 10.346417000619113
           },
           {
             "qid": "q002",
@@ -1208,7 +1593,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.790209000129835
+            "latency_ms": 9.873083001366467
           },
           {
             "qid": "q003",
@@ -1217,7 +1602,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.755958999448922
+            "latency_ms": 9.901833000185434
           },
           {
             "qid": "q004",
@@ -1226,7 +1611,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.42091600013373
+            "latency_ms": 11.458875000244007
           },
           {
             "qid": "q005",
@@ -1235,7 +1620,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.108082999271573
+            "latency_ms": 11.086041000453406
           },
           {
             "qid": "q006",
@@ -1244,7 +1629,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.110666999025852
+            "latency_ms": 10.16429100127425
           },
           {
             "qid": "q007",
@@ -1253,7 +1638,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.054583000965067
+            "latency_ms": 9.883250000711996
           },
           {
             "qid": "q008",
@@ -1262,7 +1647,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 9.866083999440889
+            "latency_ms": 9.954374998415005
           },
           {
             "qid": "q009",
@@ -1271,7 +1656,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.14285714285714285,
             "first_hit_rank": 7,
-            "latency_ms": 10.040332999778911
+            "latency_ms": 10.16541700118978
           },
           {
             "qid": "q012",
@@ -1280,7 +1665,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 11.486749999676249
+            "latency_ms": 11.675374998958432
           },
           {
             "qid": "q013",
@@ -1289,7 +1674,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.1111111111111111,
             "first_hit_rank": 9,
-            "latency_ms": 11.157499999171705
+            "latency_ms": 11.415250000936794
           },
           {
             "qid": "q014",
@@ -1298,7 +1683,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.2,
             "first_hit_rank": 5,
-            "latency_ms": 10.124000000359956
+            "latency_ms": 9.984416999941459
           },
           {
             "qid": "q015",
@@ -1307,7 +1692,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 9.965458000806393
+            "latency_ms": 10.335333001421532
           },
           {
             "qid": "q016",
@@ -1316,7 +1701,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.333750000427244
+            "latency_ms": 10.44358299986925
           },
           {
             "qid": "q018",
@@ -1325,7 +1710,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.030250001364038
+            "latency_ms": 10.882250000577187
           },
           {
             "qid": "q019",
@@ -1334,7 +1719,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.757874999602791
+            "latency_ms": 11.630540999249206
           },
           {
             "qid": "q021",
@@ -1343,7 +1728,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.411167000915157
+            "latency_ms": 12.480249999498483
           },
           {
             "qid": "q022",
@@ -1352,7 +1737,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.613874999966356
+            "latency_ms": 12.296249999053543
           },
           {
             "qid": "q025",
@@ -1361,7 +1746,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 10.914416001469363
+            "latency_ms": 11.14945799963607
           },
           {
             "qid": "q029",
@@ -1370,7 +1755,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 14.91041699955531
+            "latency_ms": 11.840250001114327
           },
           {
             "qid": "q030",
@@ -1379,7 +1764,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 34.750167000311194
+            "latency_ms": 10.718167000959511
           },
           {
             "qid": "q032",
@@ -1388,7 +1773,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.498541000240948
+            "latency_ms": 12.646582999877864
           },
           {
             "qid": "q033",
@@ -1397,7 +1782,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.603207998428843
+            "latency_ms": 10.590583000521292
           },
           {
             "qid": "q034",
@@ -1406,7 +1791,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.468125001352746
+            "latency_ms": 11.023917000784422
           },
           {
             "qid": "q036",
@@ -1415,7 +1800,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.1111111111111111,
             "first_hit_rank": 9,
-            "latency_ms": 11.321957999825827
+            "latency_ms": 11.500209000587347
           },
           {
             "qid": "q037",
@@ -1424,7 +1809,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.16666666666666666,
             "first_hit_rank": 6,
-            "latency_ms": 10.991916000421043
+            "latency_ms": 10.748209000666975
           },
           {
             "qid": "q038",
@@ -1433,7 +1818,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.19741599925328
+            "latency_ms": 12.267416999748093
           },
           {
             "qid": "q039",
@@ -1442,7 +1827,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.508207999009755
+            "latency_ms": 10.569125000984059
           },
           {
             "qid": "q040",
@@ -1451,7 +1836,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.136249999457505
+            "latency_ms": 12.35150000138674
           },
           {
             "qid": "q041",
@@ -1460,7 +1845,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.153167000884423
+            "latency_ms": 10.478875001354027
           },
           {
             "qid": "q042",
@@ -1469,7 +1854,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.479250000571483
+            "latency_ms": 10.993125000823056
           },
           {
             "qid": "q043",
@@ -1478,7 +1863,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.16666666666666666,
             "first_hit_rank": 6,
-            "latency_ms": 11.710417000358575
+            "latency_ms": 14.533042000039131
           },
           {
             "qid": "q044",
@@ -1487,7 +1872,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.360375001255306
+            "latency_ms": 10.866499998883228
           },
           {
             "qid": "q045",
@@ -1496,7 +1881,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.962125001038658
+            "latency_ms": 10.60341700031131
           },
           {
             "qid": "q046",
@@ -1505,7 +1890,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.738583001308143
+            "latency_ms": 10.715625001466833
           },
           {
             "qid": "q047",
@@ -1514,7 +1899,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.787584000150673
+            "latency_ms": 10.765084000013303
           },
           {
             "qid": "q048",
@@ -1523,7 +1908,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.011124999437016
+            "latency_ms": 11.778957999922568
           },
           {
             "qid": "q049",
@@ -1532,7 +1917,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.109040999144781
+            "latency_ms": 12.060250001013628
           },
           {
             "qid": "q050",
@@ -1541,7 +1926,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 9.946374999344698
+            "latency_ms": 11.079333000452607
           }
         ]
       },
@@ -1566,7 +1951,7 @@
             "recall@5": 1.0,
             "mrr@10": 0.768,
             "latency_p50_ms": 0.2,
-            "latency_p95_ms": 0.8
+            "latency_p95_ms": 0.3
           },
           "names an Item": {
             "questions": 6,
@@ -1584,7 +1969,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.8076659996731905
+            "latency_ms": 0.29562499912572093
           },
           {
             "qid": "q002",
@@ -1593,7 +1978,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.14783300139242783
+            "latency_ms": 0.17645799925958272
           },
           {
             "qid": "q003",
@@ -1602,7 +1987,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1415410006302409
+            "latency_ms": 0.15162499948928598
           },
           {
             "qid": "q004",
@@ -1611,7 +1996,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.21608300085063092
+            "latency_ms": 0.24112500068440568
           },
           {
             "qid": "q005",
@@ -1620,7 +2005,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.16783300088718534
+            "latency_ms": 0.17962499987334013
           },
           {
             "qid": "q006",
@@ -1629,7 +2014,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.16570799925830215
+            "latency_ms": 0.1687500007392373
           },
           {
             "qid": "q007",
@@ -1638,7 +2023,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.25,
             "first_hit_rank": 4,
-            "latency_ms": 0.18741599888016935
+            "latency_ms": 0.18937500135507435
           },
           {
             "qid": "q008",
@@ -1647,7 +2032,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.10037500032922253
+            "latency_ms": 0.10024999937741086
           },
           {
             "qid": "q009",
@@ -1656,7 +2041,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.17212499915331136
+            "latency_ms": 0.17091700101445895
           },
           {
             "qid": "q012",
@@ -1665,7 +2050,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.21570799981418531
+            "latency_ms": 0.21533400104090106
           },
           {
             "qid": "q013",
@@ -1674,7 +2059,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.17370900059177075
+            "latency_ms": 0.17258299885725137
           },
           {
             "qid": "q014",
@@ -1683,7 +2068,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.16629099991405383
+            "latency_ms": 0.16683300054864958
           },
           {
             "qid": "q015",
@@ -1692,7 +2077,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 0.15212499965855386
+            "latency_ms": 0.1545409995742375
           },
           {
             "qid": "q016",
@@ -1701,7 +2086,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.1561659992148634
+            "latency_ms": 0.158333999934257
           },
           {
             "qid": "q018",
@@ -1710,7 +2095,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.17050000133167487
+            "latency_ms": 0.1691249999566935
           },
           {
             "qid": "q019",
@@ -1719,7 +2104,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.21366699911595788
+            "latency_ms": 0.2147920004063053
           },
           {
             "qid": "q021",
@@ -1728,7 +2113,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.19483300093270373
+            "latency_ms": 0.20104199938941747
           },
           {
             "qid": "q022",
@@ -1737,7 +2122,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.18991599972650874
+            "latency_ms": 0.18954199913423508
           },
           {
             "qid": "q025",
@@ -1746,7 +2131,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1239159992110217
+            "latency_ms": 0.12620799861906562
           },
           {
             "qid": "q029",
@@ -1755,7 +2140,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.17787499928090256
+            "latency_ms": 0.1802080005290918
           },
           {
             "qid": "q030",
@@ -1764,7 +2149,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.16904100084502716
+            "latency_ms": 0.1718339990475215
           },
           {
             "qid": "q032",
@@ -1773,7 +2158,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.18354200074099936
+            "latency_ms": 0.18312500105821528
           },
           {
             "qid": "q033",
@@ -1782,7 +2167,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.15720900046289898
+            "latency_ms": 0.15587500092806295
           },
           {
             "qid": "q034",
@@ -1791,7 +2176,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.18762499894364737
+            "latency_ms": 0.18770899987430312
           },
           {
             "qid": "q036",
@@ -1800,7 +2185,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1849999989644857
+            "latency_ms": 0.18583399833005387
           },
           {
             "qid": "q037",
@@ -1809,7 +2194,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 0.15504099974350538
+            "latency_ms": 0.1548750005895272
           },
           {
             "qid": "q038",
@@ -1818,7 +2203,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1936250009748619
+            "latency_ms": 0.1967089992831461
           },
           {
             "qid": "q039",
@@ -1827,7 +2212,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.11695899956976064
+            "latency_ms": 0.12000000060652383
           },
           {
             "qid": "q040",
@@ -1836,7 +2221,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.19745899953704793
+            "latency_ms": 0.20716700055345427
           },
           {
             "qid": "q041",
@@ -1845,7 +2230,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.13937499898020178
+            "latency_ms": 0.14270899919210933
           },
           {
             "qid": "q042",
@@ -1854,7 +2239,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.16529200001969002
+            "latency_ms": 0.16783300088718534
           },
           {
             "qid": "q043",
@@ -1863,7 +2248,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.19933299881813582
+            "latency_ms": 0.20616700021491852
           },
           {
             "qid": "q044",
@@ -1872,7 +2257,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1377080006932374
+            "latency_ms": 0.1359999987471383
           },
           {
             "qid": "q045",
@@ -1881,7 +2266,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.10145799933525268
+            "latency_ms": 0.10441600170452148
           },
           {
             "qid": "q046",
@@ -1890,7 +2275,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.1200419992528623
+            "latency_ms": 0.12575000073411502
           },
           {
             "qid": "q047",
@@ -1899,7 +2284,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.13304099957167637
+            "latency_ms": 0.12812499880965333
           },
           {
             "qid": "q048",
@@ -1908,7 +2293,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.15741699826321565
+            "latency_ms": 0.1629170001251623
           },
           {
             "qid": "q049",
@@ -1917,7 +2302,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 0.15441700088558719
+            "latency_ms": 0.15454200001840945
           },
           {
             "qid": "q050",
@@ -1926,7 +2311,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 0.14629200086346827
+            "latency_ms": 0.14908299999660812
           }
         ]
       },
@@ -1936,29 +2321,29 @@
             "questions": 39,
             "recall@5": 0.949,
             "mrr@10": 0.767,
-            "latency_p50_ms": 10.6,
-            "latency_p95_ms": 12.7
+            "latency_p50_ms": 11.3,
+            "latency_p95_ms": 12.8
           },
           "literal": {
             "questions": 20,
             "recall@5": 0.95,
             "mrr@10": 0.822,
-            "latency_p50_ms": 10.6,
-            "latency_p95_ms": 12.4
+            "latency_p50_ms": 11.3,
+            "latency_p95_ms": 12.8
           },
           "paraphrase": {
             "questions": 19,
             "recall@5": 0.947,
             "mrr@10": 0.708,
-            "latency_p50_ms": 10.6,
-            "latency_p95_ms": 12.7
+            "latency_p50_ms": 11.3,
+            "latency_p95_ms": 13.1
           },
           "names an Item": {
             "questions": 6,
             "recall@5": 1.0,
             "mrr@10": 0.806,
-            "latency_p50_ms": 11.2,
-            "latency_p95_ms": 12.4
+            "latency_p50_ms": 11.8,
+            "latency_p95_ms": 12.8
           }
         },
         "questions": [
@@ -1969,7 +2354,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.644624999258667
+            "latency_ms": 11.291625000012573
           },
           {
             "qid": "q002",
@@ -1978,7 +2363,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.620291001032456
+            "latency_ms": 10.890666999330278
           },
           {
             "qid": "q003",
@@ -1987,7 +2372,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.637958999723196
+            "latency_ms": 10.698791000322672
           },
           {
             "qid": "q004",
@@ -1996,7 +2381,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.287666000702302
+            "latency_ms": 12.678125000093132
           },
           {
             "qid": "q005",
@@ -2005,7 +2390,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.667540999042103
+            "latency_ms": 12.404625000272063
           },
           {
             "qid": "q006",
@@ -2014,7 +2399,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.484207999979844
+            "latency_ms": 11.11454199963191
           },
           {
             "qid": "q007",
@@ -2023,7 +2408,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.622957999657956
+            "latency_ms": 11.011583999788854
           },
           {
             "qid": "q008",
@@ -2032,7 +2417,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 10.49345800129231
+            "latency_ms": 11.17783299923758
           },
           {
             "qid": "q009",
@@ -2041,7 +2426,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 10.99900000008347
+            "latency_ms": 11.227334000068367
           },
           {
             "qid": "q012",
@@ -2050,7 +2435,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 12.355834000118193
+            "latency_ms": 12.807791999875917
           },
           {
             "qid": "q013",
@@ -2059,7 +2444,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.2,
             "first_hit_rank": 5,
-            "latency_ms": 11.523707999003818
+            "latency_ms": 12.359374999505235
           },
           {
             "qid": "q014",
@@ -2068,7 +2453,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.418833000585437
+            "latency_ms": 11.92549999905168
           },
           {
             "qid": "q015",
@@ -2077,7 +2462,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.1111111111111111,
             "first_hit_rank": 9,
-            "latency_ms": 10.548958000072162
+            "latency_ms": 11.200999999346095
           },
           {
             "qid": "q016",
@@ -2086,7 +2471,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.361624999859487
+            "latency_ms": 11.3992499991582
           },
           {
             "qid": "q018",
@@ -2095,7 +2480,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.582916000203113
+            "latency_ms": 11.249958000917104
           },
           {
             "qid": "q019",
@@ -2104,7 +2489,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.72604199948546
+            "latency_ms": 13.097124998239451
           },
           {
             "qid": "q021",
@@ -2113,7 +2498,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 11.873374998685904
+            "latency_ms": 12.790292001227499
           },
           {
             "qid": "q022",
@@ -2122,7 +2507,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 12.234666000949801
+            "latency_ms": 12.313041001107194
           },
           {
             "qid": "q025",
@@ -2131,7 +2516,7 @@
             "recall": 0.0,
             "reciprocal_rank": 0.0,
             "first_hit_rank": null,
-            "latency_ms": 10.587957998723141
+            "latency_ms": 11.183792001247639
           },
           {
             "qid": "q029",
@@ -2140,7 +2525,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.820834000900504
+            "latency_ms": 12.412415999278892
           },
           {
             "qid": "q030",
@@ -2149,7 +2534,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.236624999379274
+            "latency_ms": 10.847541998373345
           },
           {
             "qid": "q032",
@@ -2158,7 +2543,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.741415999495075
+            "latency_ms": 12.524708999990253
           },
           {
             "qid": "q033",
@@ -2167,7 +2552,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.27958400118223
+            "latency_ms": 11.3030409993371
           },
           {
             "qid": "q034",
@@ -2176,7 +2561,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 10.731040998507524
+            "latency_ms": 11.01441600076214
           },
           {
             "qid": "q036",
@@ -2185,7 +2570,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.498707999431645
+            "latency_ms": 11.438916000770405
           },
           {
             "qid": "q037",
@@ -2194,7 +2579,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.25,
             "first_hit_rank": 4,
-            "latency_ms": 10.322166999685578
+            "latency_ms": 11.341790999722434
           },
           {
             "qid": "q038",
@@ -2203,7 +2588,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.797749999459484
+            "latency_ms": 12.828208000428276
           },
           {
             "qid": "q039",
@@ -2212,7 +2597,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.602541999105597
+            "latency_ms": 10.785625001517474
           },
           {
             "qid": "q040",
@@ -2221,7 +2606,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 11.91191600082675
+            "latency_ms": 12.518124998678104
           },
           {
             "qid": "q041",
@@ -2230,7 +2615,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.474541999428766
+            "latency_ms": 11.273540998445242
           },
           {
             "qid": "q042",
@@ -2239,7 +2624,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.644167001373717
+            "latency_ms": 10.983165999277844
           },
           {
             "qid": "q043",
@@ -2248,7 +2633,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 12.032917000396992
+            "latency_ms": 12.834958999519586
           },
           {
             "qid": "q044",
@@ -2257,7 +2642,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.5,
             "first_hit_rank": 2,
-            "latency_ms": 15.333999999711523
+            "latency_ms": 11.153708001074847
           },
           {
             "qid": "q045",
@@ -2266,7 +2651,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.258415999487625
+            "latency_ms": 11.072249999415362
           },
           {
             "qid": "q046",
@@ -2275,7 +2660,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.158666000279482
+            "latency_ms": 10.69837500108406
           },
           {
             "qid": "q047",
@@ -2284,7 +2669,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.171541998715838
+            "latency_ms": 11.013999999704538
           },
           {
             "qid": "q048",
@@ -2293,7 +2678,7 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.63458300086495
+            "latency_ms": 10.574124999038759
           },
           {
             "qid": "q049",
@@ -2302,7 +2687,7 @@
             "recall": 1.0,
             "reciprocal_rank": 0.3333333333333333,
             "first_hit_rank": 3,
-            "latency_ms": 11.601083000641665
+            "latency_ms": 12.102667000362999
           },
           {
             "qid": "q050",
@@ -2311,7 +2696,392 @@
             "recall": 1.0,
             "reciprocal_rank": 1.0,
             "first_hit_rank": 1,
-            "latency_ms": 10.305832998710684
+            "latency_ms": 11.175999999977648
+          }
+        ]
+      },
+      "hybrid+rerank": {
+        "summary": {
+          "all": {
+            "questions": 39,
+            "recall@5": 0.949,
+            "mrr@10": 0.846,
+            "latency_p50_ms": 360.5,
+            "latency_p95_ms": 389.9
+          },
+          "literal": {
+            "questions": 20,
+            "recall@5": 0.95,
+            "mrr@10": 0.808,
+            "latency_p50_ms": 363.8,
+            "latency_p95_ms": 386.0
+          },
+          "paraphrase": {
+            "questions": 19,
+            "recall@5": 0.947,
+            "mrr@10": 0.886,
+            "latency_p50_ms": 358.7,
+            "latency_p95_ms": 389.9
+          },
+          "names an Item": {
+            "questions": 6,
+            "recall@5": 1.0,
+            "mrr@10": 0.889,
+            "latency_p50_ms": 365.7,
+            "latency_p95_ms": 394.3
+          }
+        },
+        "questions": [
+          {
+            "qid": "q001",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 354.9979170002189
+          },
+          {
+            "qid": "q002",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 360.19908300113457
+          },
+          {
+            "qid": "q003",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 358.2359579995682
+          },
+          {
+            "qid": "q004",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 373.98224999924423
+          },
+          {
+            "qid": "q005",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 358.69779200038465
+          },
+          {
+            "qid": "q006",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 356.37779199896613
+          },
+          {
+            "qid": "q007",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.14285714285714285,
+            "first_hit_rank": 7,
+            "latency_ms": 358.7368749995221
+          },
+          {
+            "qid": "q008",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 355.16762499901233
+          },
+          {
+            "qid": "q009",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 369.09387500054436
+          },
+          {
+            "qid": "q012",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 394.29970899982436
+          },
+          {
+            "qid": "q013",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.2,
+            "first_hit_rank": 5,
+            "latency_ms": 376.1409580001782
+          },
+          {
+            "qid": "q014",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 360.48254200068186
+          },
+          {
+            "qid": "q015",
+            "style": "literal",
+            "names_item": false,
+            "recall": 0.0,
+            "reciprocal_rank": 0.0,
+            "first_hit_rank": null,
+            "latency_ms": 348.88483400027326
+          },
+          {
+            "qid": "q016",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 354.23541700038186
+          },
+          {
+            "qid": "q018",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 350.10212500128546
+          },
+          {
+            "qid": "q019",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 384.3410829995264
+          },
+          {
+            "qid": "q021",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 375.3129169999738
+          },
+          {
+            "qid": "q022",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 385.96537499870465
+          },
+          {
+            "qid": "q025",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 380.3055830012454
+          },
+          {
+            "qid": "q029",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 378.48433399994974
+          },
+          {
+            "qid": "q030",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 352.4413329996605
+          },
+          {
+            "qid": "q032",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 365.6015409997053
+          },
+          {
+            "qid": "q033",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 340.677374999359
+          },
+          {
+            "qid": "q034",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "first_hit_rank": 3,
+            "latency_ms": 374.83166600031836
+          },
+          {
+            "qid": "q036",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 380.40950000140583
+          },
+          {
+            "qid": "q037",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 354.2929169998388
+          },
+          {
+            "qid": "q038",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 384.46491600006993
+          },
+          {
+            "qid": "q039",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 360.5044169999019
+          },
+          {
+            "qid": "q040",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 344.22841600098764
+          },
+          {
+            "qid": "q041",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 341.88191700013704
+          },
+          {
+            "qid": "q042",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 352.5930830001016
+          },
+          {
+            "qid": "q043",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 389.94545900095545
+          },
+          {
+            "qid": "q044",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 369.8139589996572
+          },
+          {
+            "qid": "q045",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 364.90929199862876
+          },
+          {
+            "qid": "q046",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 362.09824999968987
+          },
+          {
+            "qid": "q047",
+            "style": "literal",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 365.69904199859593
+          },
+          {
+            "qid": "q048",
+            "style": "paraphrase",
+            "names_item": true,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 358.6306249999325
+          },
+          {
+            "qid": "q049",
+            "style": "literal",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 0.5,
+            "first_hit_rank": 2,
+            "latency_ms": 362.70779100050277
+          },
+          {
+            "qid": "q050",
+            "style": "paraphrase",
+            "names_item": false,
+            "recall": 1.0,
+            "reciprocal_rank": 1.0,
+            "first_hit_rank": 1,
+            "latency_ms": 350.291875000039
           }
         ]
       }

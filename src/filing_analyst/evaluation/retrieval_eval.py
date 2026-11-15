@@ -25,6 +25,7 @@ from filing_analyst.evaluation.retrieval_set import RetrievalItem, contains_quot
 from filing_analyst.parse.chunk import Chunk, Strategy
 from filing_analyst.retrieval.bm25 import BM25Index
 from filing_analyst.retrieval.dense import embed_query, load_embedder, load_or_build_index
+from filing_analyst.retrieval.rerank import RerankedSearcher, load_reranker
 from filing_analyst.retrieval.rrf import HybridSearcher
 
 RECALL_K = 5
@@ -118,23 +119,25 @@ def build_searchers(
     dense = load_or_build_index(settings, name=chunking, make_embedder=lambda: embedder)
     bm25 = BM25Index(dense.chunks)
     hybrid = HybridSearcher(dense, bm25, embedder)
+    reranked = RerankedSearcher(hybrid, load_reranker())
     searchers: dict[str, Search] = {
         "dense": lambda q, t: [
             c for c, _ in dense.search(embed_query(q, embedder), k=MRR_K, ticker=t)
         ],
         "bm25": lambda q, t: [c for c, _ in bm25.search(q, k=MRR_K, ticker=t)],
         "hybrid": lambda q, t: [r.chunk for r in hybrid.search(q, k=MRR_K, ticker=t)],
+        "hybrid+rerank": lambda q, t: [c for c, _ in reranked.search(q, k=MRR_K, ticker=t)],
     }
     return dense.chunks, searchers
 
 
 def print_table(setting: str, methods: dict) -> None:
     print(f"\n== {setting} ==")
-    print(f"{'method':<8} {'group':<14} {'n':>3} {'recall@5':>9} {'mrr@10':>7} {'p50 ms':>7}")
+    print(f"{'method':<14} {'group':<14} {'n':>3} {'recall@5':>9} {'mrr@10':>7} {'p50 ms':>7}")
     for name, data in methods.items():
         for group, s in data["summary"].items():
             print(
-                f"{name:<8} {group:<14} {s['questions']:>3} {s['recall@5']:>9.3f} "
+                f"{name:<14} {group:<14} {s['questions']:>3} {s['recall@5']:>9.3f} "
                 f"{s['mrr@10']:>7.3f} {s['latency_p50_ms']:>7.1f}"
             )
     for name, data in methods.items():
