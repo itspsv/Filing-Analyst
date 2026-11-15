@@ -9,18 +9,20 @@ quotes. No LLM is involved, so a run is free and repeatable.
     uv run python -m filing_analyst.evaluation.retrieval_eval
 """
 
+import argparse
 import json
 import math
 import re
 import statistics
 import time
 from collections.abc import Callable, Sequence
+from typing import get_args
 
 from pydantic import BaseModel
 
 from filing_analyst.config import Settings
 from filing_analyst.evaluation.retrieval_set import RetrievalItem, contains_quote
-from filing_analyst.parse.chunk import Chunk
+from filing_analyst.parse.chunk import Chunk, Strategy
 from filing_analyst.retrieval.bm25 import BM25Index
 from filing_analyst.retrieval.dense import embed_query, load_embedder, load_or_build_index
 from filing_analyst.retrieval.rrf import HybridSearcher
@@ -109,9 +111,11 @@ def load_items(settings: Settings) -> list[RetrievalItem]:
     return [RetrievalItem.model_validate_json(line) for line in path.read_text().splitlines()]
 
 
-def build_searchers(settings: Settings) -> tuple[list[Chunk], dict[str, Search]]:
+def build_searchers(
+    settings: Settings, chunking: Strategy = "fixed"
+) -> tuple[list[Chunk], dict[str, Search]]:
     embedder = load_embedder()
-    dense = load_or_build_index(settings, make_embedder=lambda: embedder)
+    dense = load_or_build_index(settings, name=chunking, make_embedder=lambda: embedder)
     bm25 = BM25Index(dense.chunks)
     hybrid = HybridSearcher(dense, bm25, embedder)
     searchers: dict[str, Search] = {
@@ -139,12 +143,15 @@ def print_table(setting: str, methods: dict) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Score the search methods on the eval set.")
+    parser.add_argument("--chunking", choices=get_args(Strategy), default="fixed")
+    chunking = parser.parse_args().chunking
     settings = Settings()
     items = load_items(settings)
-    chunks, searchers = build_searchers(settings)
+    chunks, searchers = build_searchers(settings, chunking)
     searchers["dense"]("warm-up", None)  # first call loads model weights; keep out of latency
 
-    report: dict = {"chunking": "fixed", "unreachable": unreachable(items, chunks), "settings": {}}
+    report: dict = {"chunking": chunking, "unreachable": unreachable(items, chunks), "settings": {}}
     for setting, company_filter in SETTINGS.items():
         methods = {}
         for name, search in searchers.items():
@@ -155,11 +162,12 @@ def main() -> None:
             }
         report["settings"][setting] = methods
 
-    print(f"{len(items)} questions, fixed chunks; unreachable: {report['unreachable'] or 'none'}")
+    print(f"{len(items)} questions, {chunking} chunks ({len(chunks):,}); ", end="")
+    print(f"unreachable: {report['unreachable'] or 'none'}")
     for setting, methods in report["settings"].items():
         print_table(setting, methods)
 
-    out = settings.evals_dir / "retrieval_report.json"
+    out = settings.evals_dir / f"retrieval_report_{chunking}.json"
     out.write_text(json.dumps(report, indent=2))
     print(f"\nreport: {out}")
 

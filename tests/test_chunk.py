@@ -3,7 +3,14 @@ from dataclasses import dataclass
 
 import pytest
 
-from filing_analyst.parse.chunk import chunk_text, clean_text, token_windows
+from filing_analyst.parse.chunk import (
+    chunk_section,
+    chunk_text,
+    clean_text,
+    heading_groups,
+    split_recursive,
+    token_windows,
+)
 
 
 @dataclass
@@ -99,3 +106,54 @@ def test_real_bge_tokenizer_keeps_chunks_under_model_limit() -> None:
     chunks = chunk_text(text, "ACME", 2025, "1A", tokenizer)
     assert all(c.token_count <= 300 for c in chunks)
     assert len(tokenizer.encode(chunks[0].text).ids) <= 512  # with [CLS]/[SEP] added
+
+
+# --- recursive and section-aware strategies --------------------------------------------------
+
+HEADING = "Competition could hurt our margins and our market share."
+PARAGRAPH = "We compete with many companies. " * 40  # 200 words, one long line
+LONG_PARAGRAPH = "We compete with many companies. " * 80  # 400 words: over the 300 limit
+
+
+def test_recursive_keeps_paragraphs_whole_when_they_fit() -> None:
+    text = "\n".join(["first paragraph has five words", "second paragraph has five words"])
+    assert split_recursive(text, WordTokenizer(), max_tokens=20) == [text]
+    pieces = split_recursive(text, WordTokenizer(), max_tokens=6)
+    assert pieces == ["first paragraph has five words\n", "second paragraph has five words"]
+
+
+def test_recursive_falls_back_to_sentences_then_words() -> None:
+    long_paragraph = "One two three. Four five six. Seven eight nine ten eleven twelve."
+    pieces = split_recursive(long_paragraph, WordTokenizer(), max_tokens=4)
+    assert pieces[0] == "One two three. "  # cut at a sentence end, not mid-sentence
+    assert all(len(p.split()) <= 4 for p in pieces)
+    assert "".join(pieces) == long_paragraph  # nothing lost or changed
+
+
+def test_heading_groups_pair_each_heading_with_its_paragraph() -> None:
+    text = "\n".join(
+        ["Intro line before any heading.", HEADING, PARAGRAPH, "• a bullet", PARAGRAPH]
+    )
+    groups = heading_groups(text)
+    assert groups[0] == ("", "Intro line before any heading.")
+    assert groups[1][0] == HEADING
+    assert "• a bullet" in groups[1][1]  # a bullet is never a heading, even before a paragraph
+
+
+def test_section_chunks_repeat_the_heading_on_every_piece() -> None:
+    text = "\n".join([HEADING, LONG_PARAGRAPH])
+    chunks = chunk_section(text, "ACME", 2025, "1A", WordTokenizer(), "section")
+    assert len(chunks) > 1  # 409 words do not fit in one 300-token chunk
+    assert all(c.text.startswith(HEADING) for c in chunks)
+    assert all(c.token_count <= 300 for c in chunks)
+
+
+@pytest.mark.parametrize("strategy", ["fixed", "recursive", "section"])
+def test_every_strategy_respects_the_limit_and_keeps_all_words(strategy: str) -> None:
+    text = "\n".join(
+        [HEADING, LONG_PARAGRAPH, "Another risk heading about suppliers here.", PARAGRAPH]
+    )
+    chunks = chunk_section(text, "ACME", 2025, "1A", WordTokenizer(), strategy)
+    assert all(c.token_count <= 300 for c in chunks)
+    assert set(" ".join(c.text for c in chunks).split()) == set(text.split())
+    assert [c.chunk_id for c in chunks] == [f"ACME-2025-1A-{i:04d}" for i in range(len(chunks))]
