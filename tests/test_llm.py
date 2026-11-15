@@ -252,3 +252,14 @@ def test_limiter_frees_room_when_real_usage_is_lower() -> None:
     limiter.settle(entry, 1_000)  # the call really used 1,000 tokens
     limiter.reserve(3_000)
     assert clock.waits == []
+
+
+def test_complete_json_with_stats_reports_tokens_then_zero_when_cached(tmp_path: Path) -> None:
+    body = ok_body('{"category": "supply", "severity": 4}', tokens_in=70, tokens_out=12)
+    client, calls, _ = make_client(tmp_path, [httpx.Response(200, json=body)])
+    risk, stats = client.complete_json_with_stats(MESSAGES, task="t", response_model=Risk)
+    assert risk == Risk(category="supply", severity=4)
+    assert (stats.tokens_in, stats.tokens_out) == (70, 12)
+    _, cached = client.complete_json_with_stats(MESSAGES, task="t", response_model=Risk)
+    assert (cached.tokens_in, cached.tokens_out) == (0, 0)  # free on a cache hit
+    assert len(calls) == 1

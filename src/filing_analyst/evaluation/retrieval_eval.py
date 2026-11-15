@@ -21,8 +21,9 @@ from typing import get_args
 from pydantic import BaseModel
 
 from filing_analyst.config import Settings
-from filing_analyst.evaluation.retrieval_set import RetrievalItem, contains_quote
+from filing_analyst.evaluation.retrieval_set import RetrievalItem
 from filing_analyst.parse.chunk import Chunk, Strategy
+from filing_analyst.quotes import contains_quote
 from filing_analyst.retrieval.bm25 import BM25Index
 from filing_analyst.retrieval.dense import embed_query, load_embedder, load_or_build_index
 from filing_analyst.retrieval.rerank import RerankedSearcher, load_reranker

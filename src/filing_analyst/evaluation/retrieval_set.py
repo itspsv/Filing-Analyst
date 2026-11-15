@@ -12,7 +12,6 @@ can score any chunking strategy: a retrieved chunk is relevant if it contains th
 import argparse
 import csv
 import random
-import re
 from collections.abc import Sequence
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -25,6 +24,7 @@ from filing_analyst.extract import JSONCompleter
 from filing_analyst.llm import DailyBudgetExceeded, LLMClient, LLMError
 from filing_analyst.parse.chunk import Chunk, clean_text, load_chunks
 from filing_analyst.parse.sections import SECTIONS
+from filing_analyst.quotes import contains_quote
 
 DRAFT_MODEL = "openai/gpt-oss-20b"  # its own Groq daily budget, separate from extraction
 SEED = 42
@@ -72,17 +72,6 @@ Given one passage, write ONE question an analyst might ask that this passage ans
   matching words alone would not find it.
 - If the passage has nothing specific to ask about (boilerplate, table fragments), set
   usable to false and leave question and quote empty."""
-
-
-def normalize(text: str) -> str:
-    """For matching only: lowercase, straight quotes and dashes, single spaces."""
-    for fancy, plain in {"’": "'", "‘": "'", "“": '"', "”": '"', "–": "-", "—": "-"}.items():
-        text = text.replace(fancy, plain)
-    return re.sub(r"\s+", " ", text).strip().lower()
-
-
-def contains_quote(text: str, quote: str) -> bool:
-    return normalize(quote) in normalize(text)
 
 
 def quote_problem(quote: str, source: str) -> str | None:

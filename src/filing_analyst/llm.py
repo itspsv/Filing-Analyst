@@ -204,13 +204,26 @@ class LLMClient:
         self._budget_lock = threading.Lock()
 
     def complete(self, messages: Messages, task: str, max_tokens: int = 1024) -> str:
-        return self._complete(messages, task, max_tokens, response_model=None)
+        return self._complete(messages, task, max_tokens, response_model=None)[0]
 
     def complete_json[T: BaseModel](
         self, messages: Messages, task: str, response_model: type[T], max_tokens: int = 2048
     ) -> T:
-        text = self._complete(messages, task, max_tokens, response_model)
-        return response_model.model_validate_json(text)
+        return self.complete_json_with_stats(messages, task, response_model, max_tokens)[0]
+
+    def complete_json_with_stats[T: BaseModel](
+        self, messages: Messages, task: str, response_model: type[T], max_tokens: int = 2048
+    ) -> tuple[T, CallStats]:
+        """Like complete_json, plus the tokens and API time this call cost (zero if cached)."""
+        text, stats = self._complete(messages, task, max_tokens, response_model)
+        return response_model.model_validate_json(text), stats
+
+    def cost_eur(self, stats: CallStats) -> float:
+        s = self.settings
+        return (
+            stats.tokens_in * s.llm_eur_per_million_in
+            + stats.tokens_out * s.llm_eur_per_million_out
+        ) / 1e6
 
     def _complete(
         self,
@@ -218,12 +231,12 @@ class LLMClient:
         task: str,
         max_tokens: int,
         response_model: type[BaseModel] | None,
-    ) -> str:
+    ) -> tuple[str, CallStats]:
         payload = self._payload(messages, max_tokens, response_model)
         cache_path = self._cache_path(payload)
         if cache_path.exists():
             self._log(task, CallStats(), success=True, cached=True)
-            return json.loads(cache_path.read_text())["text"]
+            return json.loads(cache_path.read_text())["text"], CallStats()
 
         stats = CallStats()
         attempt_messages = messages
@@ -243,7 +256,7 @@ class LLMClient:
                 cache_path.parent.mkdir(parents=True, exist_ok=True)
                 cache_path.write_text(json.dumps({"text": text}))
                 self._log(task, stats, success=attempt == 0)
-                return text
+                return text, stats
             stats.first_error = stats.first_error or error
             attempt_messages = [
                 *messages,
@@ -356,10 +369,7 @@ class LLMClient:
     ) -> None:
         """One line per logical call. success = valid on the first try (no re-ask needed)."""
         s = self.settings
-        cost = (
-            stats.tokens_in * s.llm_eur_per_million_in
-            + stats.tokens_out * s.llm_eur_per_million_out
-        ) / 1e6
+        cost = self.cost_eur(stats)
         self.log.append(
             {
                 "timestamp": datetime.now(UTC).isoformat(),

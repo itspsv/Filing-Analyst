@@ -1,0 +1,116 @@
+{
+  "model": "openai/gpt-oss-20b",
+  "summary": {
+    "questions": 5,
+    "refused": 0,
+    "label_retrieved": 0.8,
+    "grounded": 0.8,
+    "grounded_when_answered": 0.8,
+    "citation_valid": 0.875,
+    "tokens_mean": 2444,
+    "cost_eur_total": 0.0,
+    "seconds_p50": 2.29,
+    "seconds_p95": 58.88
+  },
+  "questions": [
+    {
+      "qid": "q001",
+      "style": "paraphrase",
+      "question": "What does Apple say about its ability to compete in global markets?",
+      "answer": "Apple states that its ability to compete in global markets is highly uncertain and depends on several factors. It acknowledges that global markets for its products and services are highly competitive, subject to rapid technological change, aggressive price competition, and downward pressure on gross margins. Apple notes that it must continually introduce innovative products, services, and technologies, invest heavily in R&D, and protect its intellectual property to maintain a competitive advantage. The company also recognizes that competitors may imitate its features, cut prices, and offer low\u2011cost or loss\u2011leading products, which could erode market share and competitive positioning. Apple further highlights that failure to successfully develop, deploy, or differentiate artificial intelligence capabilities could result in loss of market share and inability to attract or retain customers and talent. Overall, Apple emphasizes that its competitive success depends on timely innovation, effective IP protection, and the ability to manage risks associated with new technologies and market dynamics.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 5,
+      "dropped_citations": 1,
+      "tokens": 2568,
+      "cost_eur": 0.0,
+      "seconds": 1.18,
+      "cited": [
+        "AAPL-2026-1A-0007",
+        "AAPL-2026-1A-0007",
+        "AAPL-2026-1A-0007",
+        "AAPL-2026-1A-0009",
+        "AAPL-2026-1A-0009"
+      ]
+    },
+    {
+      "qid": "q002",
+      "style": "literal",
+      "question": "What product did Apple announce in the first quarter of fiscal year 2026?",
+      "answer": "Apple announced the 14\u2011inch MacBook\u202fPro, the iPad\u202fPro, and the Apple Vision\u202fPro in the first quarter of fiscal year\u202f2026.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2320,
+      "cost_eur": 0.0,
+      "seconds": 1.02,
+      "cited": [
+        "AAPL-2026-7-0000"
+      ]
+    },
+    {
+      "qid": "q003",
+      "style": "paraphrase",
+      "question": "How much additional tax payment is the IRS seeking from Microsoft in the NOPAs?",
+      "answer": "The IRS is seeking an additional tax payment of $28.9\u202fbillion.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 3,
+      "dropped_citations": 0,
+      "tokens": 2292,
+      "cost_eur": 0.0,
+      "seconds": 58.88,
+      "cited": [
+        "MSFT-2026-1A-0047",
+        "MSFT-2026-7-0020",
+        "MSFT-2026-7-0019"
+      ]
+    },
+    {
+      "qid": "q004",
+      "style": "literal",
+      "question": "What risks does Microsoft identify related to inadequate account security or organizational security practices, including those of companies it has acquired or third parties it utilizes?",
+      "answer": "Microsoft identifies the following risks related to inadequate account security or organizational security practices, including those of acquired companies or third parties:\n1. Adversaries can acquire user account information and use it to compromise users\u2019 accounts, especially when accounts share the same attributes such as passwords. Inadequate account security practices may also result in unauthorized access and enable ransomware or other malicious software to impact customers\u2019 use of Microsoft\u2019s products or services. [MSFT-2026-1A-0020] [MSFT-2026-1A-0019]\n2. The security of Microsoft\u2019s cloud\u2011based services and customer data depends on the security of third\u2011party infrastructure, including hardware, software, and other elements provided by third parties. Adversaries may attack customers\u2019 on\u2011premises or cloud environments, exploiting previously unknown (\u201czero\u2011day\u201d) vulnerabilities. Product vulnerabilities can persist if customers do not install the most recent updates, allowing attackers to install malware and further compromise customers\u2019 systems. [MSFT-2026-1A-0019]\n3. Microsoft\u2019s customers operate complex systems with third\u2011party hardware and software from multiple vendors, including those acquired over many years. If these third\u2011party products or personnel fail to take or take actions that impact the reliability or security of Microsoft\u2019s products and services, it could increase customers\u2019 vulnerability to attack. [MSFT-2026-1A-0020]",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": false,
+      "grounded": false,
+      "citations": 3,
+      "dropped_citations": 1,
+      "tokens": 2639,
+      "cost_eur": 0.0,
+      "seconds": 2.29,
+      "cited": [
+        "MSFT-2026-1A-0019",
+        "MSFT-2026-1A-0019",
+        "MSFT-2026-1A-0020"
+      ]
+    },
+    {
+      "qid": "q005",
+      "style": "paraphrase",
+      "question": "How much did Microsoft\u2019s research and development expenses rise in fiscal year 2026 compared to fiscal year 2025?",
+      "answer": "Microsoft\u2019s research and development expenses increased by $3.1\u202fbillion in fiscal year\u202f2026 compared to fiscal year\u202f2025.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2400,
+      "cost_eur": 0.0,
+      "seconds": 57.49,
+      "cited": [
+        "MSFT-2026-7-0016",
+        "MSFT-2026-7-0015"
+      ]
+    }
+  ]
+}
