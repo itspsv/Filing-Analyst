@@ -145,14 +145,35 @@ def print_table(setting: str, methods: dict) -> None:
         print(f"{name} misses in top 5 ({len(misses)}): {', '.join(misses) or 'none'}")
 
 
+def measure_latency(
+    items: Sequence[RetrievalItem], search: Search, repeats: int, company_filter: bool = True
+) -> dict[str, float]:
+    """Time every question `repeats` times on warm models, for steadier p50/p95 than one pass."""
+    samples: list[float] = []
+    for _ in range(repeats):
+        for item in items:
+            started = time.perf_counter()
+            search(item.question, item.ticker if company_filter else None)
+            samples.append((time.perf_counter() - started) * 1000)
+    samples.sort()
+    return {
+        "searches": len(samples),
+        "p50_ms": round(statistics.median(samples), 1),
+        "p95_ms": round(samples[math.ceil(0.95 * len(samples)) - 1], 1),
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Score the search methods on the eval set.")
     parser.add_argument("--chunking", choices=get_args(Strategy), default="fixed")
-    chunking = parser.parse_args().chunking
+    parser.add_argument("--latency-repeats", type=int, default=0, help="extra timed passes")
+    args = parser.parse_args()
+    chunking = args.chunking
     settings = Settings()
     items = load_items(settings)
     chunks, searchers = build_searchers(settings, chunking)
-    searchers["dense"]("warm-up", None)  # first call loads model weights; keep out of latency
+    for search in searchers.values():  # first calls load model weights; keep out of latency
+        search("warm-up", None)
 
     report: dict = {"chunking": chunking, "unreachable": unreachable(items, chunks), "settings": {}}
     for setting, company_filter in SETTINGS.items():
@@ -169,6 +190,18 @@ def main() -> None:
     print(f"unreachable: {report['unreachable'] or 'none'}")
     for setting, methods in report["settings"].items():
         print_table(setting, methods)
+
+    if args.latency_repeats:
+        report["latency"] = {
+            name: measure_latency(items, search, args.latency_repeats)
+            for name, search in searchers.items()
+        }
+        print(f"\n== latency, company filter, {args.latency_repeats} passes ==")
+        for name, lat in report["latency"].items():
+            print(
+                f"{name:<14} {lat['searches']:>4} searches  p50 {lat['p50_ms']:>7.1f} ms  ", end=""
+            )
+            print(f"p95 {lat['p95_ms']:>7.1f} ms")
 
     out = settings.evals_dir / f"retrieval_report_{chunking}.json"
     out.write_text(json.dumps(report, indent=2))

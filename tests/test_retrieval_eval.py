@@ -3,6 +3,7 @@ import pytest
 from filing_analyst.evaluation.retrieval_eval import (
     evaluate,
     groups,
+    measure_latency,
     score,
     summarize,
     unreachable,
@@ -97,3 +98,12 @@ def test_quote_cut_by_a_chunk_boundary_is_reported_as_unreachable() -> None:
     ]
     assert unreachable([item("q1", [TSMC])], halves) == ["q1"]
     assert unreachable([item("q1", [TSMC])], [ANSWER]) == []
+
+
+def test_latency_is_measured_for_every_question_and_pass() -> None:
+    calls: list[str | None] = []
+    items = [item("q1", [TSMC]), item("q2", [TSMC])]
+    lat = measure_latency(items, lambda q, t: calls.append(t) or [], repeats=3)
+    assert lat["searches"] == 6 and len(calls) == 6
+    assert set(calls) == {"AVGO"}  # timed with the company filter, as the agent searches
+    assert 0 <= lat["p50_ms"] <= lat["p95_ms"]
