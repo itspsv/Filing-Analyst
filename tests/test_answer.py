@@ -1,6 +1,8 @@
-from pydantic import BaseModel
+import pytest
+from pydantic import BaseModel, ValidationError
 
 from filing_analyst.answer import (
+    MAX_QUOTE_CHARS,
     REFUSAL,
     SYSTEM_PROMPT,
     DraftAnswer,
@@ -139,3 +141,12 @@ def test_company_outside_our_20_is_refused_before_any_search_or_llm_call() -> No
     answer = answer_question("What risks does Intel name?", "INTC", search, client)
     assert answer.refused and answer.refusal_reason == "company not covered"
     assert search.asked == [] and client.messages == []
+
+
+def test_quote_limit_allows_one_long_sentence_but_not_half_a_page() -> None:
+    """Real case, Nov 16: quotes of 436 to 589 characters failed the old 400 limit."""
+    DraftCitation(chunk_id="X", quote="w" * 589)  # the longest real failing quote now fits
+    with pytest.raises(ValidationError):
+        DraftCitation(chunk_id="X", quote="w" * (MAX_QUOTE_CHARS + 1))
+    schema = DraftAnswer.model_json_schema()
+    assert schema["$defs"]["DraftCitation"]["properties"]["quote"]["maxLength"] == MAX_QUOTE_CHARS

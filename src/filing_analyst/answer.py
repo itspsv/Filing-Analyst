@@ -23,6 +23,9 @@ from filing_analyst.quotes import normalize_for_match, text_supports_quote
 EVIDENCE_K = 5
 MAX_ANSWER_TOKENS = 1_500
 MIN_QUOTE_WORDS = 3
+# Was 400: on Nov 16 three answers failed because the model quoted 436, 471 and 589 characters
+# (a full long sentence). 1,000 allows that, but not half a page.
+MAX_QUOTE_CHARS = 1_000
 REFUSAL = "Not enough evidence in the filings."
 
 Search = Callable[[str, str | None], list[Chunk]]  # (question, ticker filter) -> best first
@@ -53,7 +56,7 @@ class DraftCitation(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     chunk_id: str
-    quote: str = Field(max_length=400)
+    quote: str = Field(max_length=MAX_QUOTE_CHARS)
 
 
 class DraftAnswer(BaseModel):
