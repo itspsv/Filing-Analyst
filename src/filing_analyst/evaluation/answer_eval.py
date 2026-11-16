@@ -26,7 +26,7 @@ from filing_analyst.answer import (
 from filing_analyst.config import Settings
 from filing_analyst.evaluation.retrieval_eval import load_items
 from filing_analyst.evaluation.retrieval_set import RetrievalItem
-from filing_analyst.llm import LLMClient
+from filing_analyst.llm import DailyBudgetExceeded, LLMClient, LLMError
 from filing_analyst.parse.chunk import load_chunks
 from filing_analyst.quotes import contains_quote
 
@@ -46,6 +46,7 @@ class AnswerResult(BaseModel):
     cost_eur: float
     seconds: float
     cited: list[str]
+    error: str | None = None  # the question failed (counted as not grounded), see failed()
 
 
 def judge(
@@ -73,14 +74,49 @@ def judge(
     )
 
 
+def failed(item: RetrievalItem, error: Exception, seconds: float) -> AnswerResult:
+    """A question whose LLM call failed. Kept in the results so the run goes on and the
+    failure is counted, not hidden (Nov 16: one over-long quote crashed the whole run)."""
+    return AnswerResult(qid=item.qid, style=item.style, question=item.question, answer="",
+                        refused=False, refusal_reason=None, label_retrieved=False,
+                        grounded=False, citations=0, dropped_citations=0, tokens=0,
+                        cost_eur=0.0, seconds=round(seconds, 2), cited=[],
+                        error=str(error)[:300])  # fmt: skip
+
+
+def run_items(
+    items: Sequence[RetrievalItem], search: Search, client: AnswerClient, texts: dict[str, str]
+) -> list[AnswerResult]:
+    results = []
+    for item in items:
+        started = time.perf_counter()
+        try:
+            answer = answer_question(item.question, item.ticker, search, client)
+        except DailyBudgetExceeded:
+            raise  # out of budget: stop; a rerun resumes from the cache
+        except LLMError as err:
+            results.append(failed(item, err, time.perf_counter() - started))
+        else:
+            results.append(judge(item, answer, texts, time.perf_counter() - started))
+        r = results[-1]
+        if r.error:
+            flag = "FAILED"
+        else:
+            flag = "REFUSED" if r.refused else ("grounded" if r.grounded else "NOT grounded")
+        print(f"{r.qid} {flag:<12} cites {r.citations} (dropped {r.dropped_citations}) "
+              f"{r.tokens} tokens {r.seconds:.1f} s")  # fmt: skip
+    return results
+
+
 def summarize(results: Sequence[AnswerResult]) -> dict[str, float]:
     n = len(results)
-    answered = [r for r in results if not r.refused]
+    answered = [r for r in results if not r.refused and not r.error]
     total_citations = sum(r.citations + r.dropped_citations for r in results)
     seconds = sorted(r.seconds for r in results)
     return {
         "questions": n,
         "refused": sum(r.refused for r in results),
+        "failed": sum(r.error is not None for r in results),
         "label_retrieved": round(sum(r.label_retrieved for r in results) / n, 3),
         "grounded": round(sum(r.grounded for r in results) / n, 3),
         "grounded_when_answered": round(
@@ -152,15 +188,7 @@ def main() -> None:
     search, client = load_default_search(settings), LLMClient(settings)
     search("warm-up", None)  # model loading stays out of the timings
 
-    results = []
-    for item in items:
-        started = time.perf_counter()
-        answer = answer_question(item.question, item.ticker, search, client)
-        results.append(judge(item, answer, texts, time.perf_counter() - started))
-        r = results[-1]
-        flag = "REFUSED" if r.refused else ("grounded" if r.grounded else "NOT grounded")
-        print(f"{r.qid} {flag:<12} cites {r.citations} (dropped {r.dropped_citations}) "
-              f"{r.tokens} tokens {r.seconds:.1f} s")  # fmt: skip
+    results = run_items(items, search, client, texts)
 
     summary = summarize(results)
     print(f"\n{settings.llm_model}: {json.dumps(summary, indent=2)}")

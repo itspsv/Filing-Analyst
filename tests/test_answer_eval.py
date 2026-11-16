@@ -3,10 +3,11 @@ from filing_analyst.evaluation.answer_eval import (
     UnanswerableItem,
     check_refusals,
     judge,
+    run_items,
     summarize,
 )
 from filing_analyst.evaluation.retrieval_set import RetrievalItem
-from filing_analyst.llm import CallStats
+from filing_analyst.llm import CallStats, LLMError
 from filing_analyst.parse.chunk import Chunk
 
 ITEM = RetrievalItem(
@@ -79,3 +80,35 @@ def test_refusal_check_flags_any_answer_as_a_failure() -> None:
     rows = check_refusals(items, lambda q, t: [chunk], AnswersEverything())
     assert [r["refused"] for r in rows] == [False, True]  # u1 slipped through: a failure
     assert rows[1]["reason"] == "company not covered"
+
+
+def test_failed_question_is_recorded_and_the_run_goes_on() -> None:
+    second = ITEM.model_copy(update={"qid": "q2"})
+    chunk = Chunk(chunk_id="AVGO-2025-1A-0018", ticker="AVGO", fiscal_year=2025, section="1A",
+                  text=TEXTS["AVGO-2025-1A-0018"], token_count=10)  # fmt: skip
+
+    class FailsOnce:
+        calls = 0
+
+        def complete_json_with_stats(self, messages, task, response_model, max_tokens=0):
+            self.calls += 1
+            if self.calls == 1:
+                raise LLMError("answer: no valid answer after 3 tries")
+            d = DraftAnswer(
+                answer="95%",
+                refused=False,
+                citations=[
+                    DraftCitation(chunk_id=chunk.chunk_id, quote="95% of the wafers were produced")
+                ],
+            )
+            return response_model.model_validate(d.model_dump()), CallStats()  # fmt: skip
+
+        def cost_eur(self, stats):
+            return 0.0
+
+    results = run_items([ITEM, second], lambda q, t: [chunk], FailsOnce(), TEXTS)
+    assert [r.qid for r in results] == ["q1", "q2"]  # q2 still ran
+    assert results[0].error and not results[0].grounded
+    assert results[1].error is None and results[1].grounded
+    summary = summarize(results)
+    assert summary["failed"] == 1 and summary["grounded"] == 0.5

@@ -18,7 +18,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from filing_analyst.config import COMPANIES, Settings
 from filing_analyst.llm import CallStats, LLMClient, Messages
 from filing_analyst.parse.chunk import Chunk
-from filing_analyst.quotes import contains_quote, normalize_for_match
+from filing_analyst.quotes import normalize_for_match, text_supports_quote
 
 EVIDENCE_K = 5
 MAX_ANSWER_TOKENS = 1_500
@@ -109,11 +109,7 @@ def check_citations(draft: DraftAnswer, evidence: list[Chunk]) -> tuple[list[Cit
     for cited in draft.citations:
         chunk = by_id.get(cited.chunk_id)
         quote = cited.quote.strip()
-        if (
-            chunk is None
-            or len(quote.split()) < MIN_QUOTE_WORDS
-            or not contains_quote(chunk.text, quote)
-        ):
+        if chunk is None or not text_supports_quote(chunk.text, quote, MIN_QUOTE_WORDS):
             dropped += 1
             continue
         key = (chunk.chunk_id, normalize_for_match(quote))
