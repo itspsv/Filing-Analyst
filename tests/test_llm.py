@@ -263,3 +263,28 @@ def test_complete_json_with_stats_reports_tokens_then_zero_when_cached(tmp_path:
     _, cached = client.complete_json_with_stats(MESSAGES, task="t", response_model=Risk)
     assert (cached.tokens_in, cached.tokens_out) == (0, 0)  # free on a cache hit
     assert len(calls) == 1
+
+
+def tool_call_body(tool_calls: list[dict] | None, content: str | None = None) -> dict:
+    return {
+        "choices": [{"message": {"content": content, "tool_calls": tool_calls}}],
+        "usage": {"prompt_tokens": 160, "completion_tokens": 50},
+    }
+
+
+def test_chat_with_tools_returns_the_tool_calls_and_caches_them(tmp_path: Path) -> None:
+    call = {
+        "id": "fc_1",
+        "type": "function",
+        "function": {"name": "query_financials", "arguments": '{"sql": "SELECT 1"}'},
+    }
+    client, calls, _ = make_client(tmp_path, [httpx.Response(200, json=tool_call_body([call]))])
+    tools = [{"type": "function", "function": {"name": "query_financials", "parameters": {}}}]
+    message, stats = client.chat_with_tools(MESSAGES, tools, task="agent_step")
+    assert message == {"role": "assistant", "content": "", "tool_calls": [call]}
+    assert (stats.tokens_in, stats.tokens_out) == (160, 50)
+    sent = json.loads(calls[0].content)
+    assert sent["tools"] == tools and sent["tool_choice"] == "auto"
+    assert "response_format" not in sent  # json mode and tools cannot be combined on Groq
+    again, cached = client.chat_with_tools(MESSAGES, tools, task="agent_step")
+    assert again == message and cached.tokens_in == 0 and len(calls) == 1

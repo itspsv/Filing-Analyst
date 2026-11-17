@@ -33,11 +33,11 @@ RefusalReason = Literal["company not covered", "no evidence", "model refused", "
 
 
 class Citation(BaseModel):
-    kind: Literal["chunk", "sql"]
-    ref: str  # chunk_id (or, later, a SQL query id)
+    kind: Literal["chunk", "sql", "ratio"]  # ratio: computed in code from cited SQL rows
+    ref: str  # chunk_id, SQL query_id, or "ratio-N"
     ticker: str
-    section: str
-    quote_or_row: str
+    section: str  # "1A" / "7" for chunks, "" for SQL rows and ratios
+    quote_or_row: str  # the quote, the row as JSON, or the ratio formula
 
 
 class Answer(BaseModel):

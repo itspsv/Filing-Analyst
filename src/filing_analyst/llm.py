@@ -16,6 +16,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from typing import Any
 
 import httpx
 from pydantic import BaseModel, ConfigDict, ValidationError
@@ -224,6 +225,36 @@ class LLMClient:
             stats.tokens_in * s.llm_eur_per_million_in
             + stats.tokens_out * s.llm_eur_per_million_out
         ) / 1e6
+
+    def chat_with_tools(
+        self, messages: list[dict[str, Any]], tools: list[dict], task: str, max_tokens: int = 1024
+    ) -> tuple[dict[str, Any], CallStats]:
+        """One agent step: the model either answers or asks for tool calls.
+        Returns {"role", "content", "tool_calls"} and the call's cost. No JSON schema here:
+        Groq refuses json mode together with tools (HTTP 400, checked Nov 17)."""
+        payload = {**self._payload(messages, max_tokens, None), "tools": tools,
+                   "tool_choice": "auto"}  # fmt: skip
+        cache_path = self._cache_path(payload)
+        if cache_path.exists():
+            self._log(task, CallStats(), success=True, cached=True)
+            return json.loads(cache_path.read_text())["message"], CallStats()
+        stats = CallStats()
+        try:
+            body, stats.retries, stats.api_seconds = self._post(payload)
+        except DailyBudgetExceeded:
+            raise
+        except LLMError as err:
+            self._log(task, stats, success=False, error=str(err)[:300])
+            raise
+        stats.tokens_in = body["usage"]["prompt_tokens"]
+        stats.tokens_out = body["usage"]["completion_tokens"]
+        raw = body["choices"][0]["message"]
+        message = {"role": "assistant", "content": raw.get("content") or "",
+                   "tool_calls": raw.get("tool_calls") or []}  # fmt: skip
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps({"message": message}))
+        self._log(task, stats, success=True)
+        return message, stats
 
     def _complete(
         self,
