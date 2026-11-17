@@ -207,6 +207,7 @@ dependencies = [
     { name = "pydantic-settings" },
     { name = "qdrant-client" },
     { name = "sentence-transformers" },
+    { name = "sqlglot" },
     { name = "tokenizers" },
     { name = "torch" },
     { name = "uvicorn" },
@@ -230,6 +231,7 @@ requires-dist = [
     { name = "pydantic-settings", specifier = "==2.16.2" },
     { name = "qdrant-client", specifier = "==1.20.0" },
     { name = "sentence-transformers", specifier = "==6.2.0" },
+    { name = "sqlglot", specifier = "==30.29.0" },
     { name = "tokenizers", specifier = "==0.23.3" },
     { name = "torch", specifier = "==2.14.1" },
     { name = "uvicorn", specifier = "==0.54.0" },
@@ -1086,6 +1088,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/01/7c/a64eedae0b7776cb9602d2da9cb8f8caae8e1b4c1da5e8e87bf1e68121ec/soupsieve-4.0.1.tar.gz", hash = "sha256:7621e3c5f6b371ed2c5eabaac5de300ac3d66d05e6d7f34783e31b63c4f90c75", size = 153302, upload-time = "2026-11-04T16:36:27.749Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/2c/5c/4f68370847b561a389dd9a2d7eb3d19fd8cbb8acbae543a0c6b8d0d9700b/soupsieve-4.0.1-py3-none-any.whl", hash = "sha256:2e68cf7dd5a0f29d81f9d485275ccf294e6475f615e211895d91cb81f8614f04", size = 50688, upload-time = "2026-11-04T16:36:26.158Z" },
+]
+
+[[package]]
+name = "sqlglot"
+version = "30.29.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/cb/26/ede384f80617864ff6a87701b921f887c5b156976e10594cfb72d12f7545/sqlglot-30.29.0.tar.gz", hash = "sha256:67bef76a4cbd29607b8859c65c213f39c086246c35c96cb96140ca7f8e7515d1", size = 6177381, upload-time = "2026-11-03T11:49:51.324Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/10/b0/d7f3f0169fdf0261e924bfd37149aa5cb98798aec330fe0e94721a68a2a1/sqlglot-30.29.0-py3-none-any.whl", hash = "sha256:16e47cc30c48bbf66bd24a680cb6edc2203d4ed4644acf84dd377109ecbe70fc", size = 804206, upload-time = "2026-11-03T11:49:49.284Z" },
 ]
 
 [[package]]
