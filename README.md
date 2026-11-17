@@ -2,7 +2,7 @@
 
 An AI research assistant that answers questions about 20 large US tech companies using their official SEC 10-K filings, and shows the filing passage or database row behind every claim. Built as a portfolio project for data and AI engineering roles.
 
-> **Status: Week 2 of 4.** The data pipeline and the search layer are built and measured. Cited answers, refusals and `POST /ask` come next; then the agent, evals and the live demo. Every number below comes from a run log or an eval report in this repo, not an estimate, unless it says otherwise.
+> **Status: Week 3 of 4.** Data pipeline, search, cited answers, refusals and `POST /ask` are built and measured. The agent (safe SQL over the numbers, plain-Python ratios), evals in CI and the live demo come next. Every number below comes from a run log or an eval report in this repo, not an estimate, unless it says otherwise.
 
 ## What works today
 
@@ -27,6 +27,13 @@ Search over the filings, with the best setup from the experiment grid below:
 uv run python -m filing_analyst.retrieval.rerank "Which companies depend on TSMC?" --ticker AVGO
 ```
 
+Ask a question and get a cited answer, from the command line or over HTTP:
+
+```bash
+uv run python -m filing_analyst.answer "What share of Broadcom's wafers come from TSMC?" --ticker AVGO
+uv run uvicorn filing_analyst.api:app --port 8000   # then POST /ask {"question": ..., "ticker": ...}
+```
+
 ## Architecture
 
 Two data lanes that only meet at the agent (Week 3).
@@ -38,7 +45,7 @@ SEC EDGAR
   |                                                 -> RRF fusion -> cross-encoder     [built]
   |-- numbers lane: XBRL company facts -> typed rows -> DuckDB                         [built]
 
-Cited answers + refusals + POST /ask                                                   [next]
+Cited answers (citations checked by code) + refusals + POST /ask                       [built]
 Agent: search_filings, query_financials (guarded SQL), compute_ratio (plain Python)    [Week 3]
 ```
 
@@ -48,7 +55,9 @@ Agent: search_filings, query_financials (guarded SQL), compute_ratio (plain Pyth
 - `llm.py`: the one client for every LLM call (rate limiter, per-model daily token budget, retries with backoff and jitter, disk cache, Pydantic validation with re-asks, one log line per call).
 - `extract.py`: Item 1A into a list of risks (category, one-line summary, severity 1 to 5).
 - `retrieval/`: BM25 and cosine search from scratch, Reciprocal Rank Fusion, Qdrant (local mode) with company, year and section filters, cross-encoder re-ranking.
-- `evaluation/`: the retrieval test set (LLM-drafted, human-reviewed) and the retrieval eval.
+- `answer.py`: answers from the top 5 retrieved chunks; every citation's chunk and quote are checked in code; no valid citation means a refusal. `api.py` serves it as `POST /ask`.
+- `tools/compute_ratio.py`: margins and growth in plain Python, with the formula and inputs, so the LLM never does arithmetic.
+- `evaluation/`: the retrieval test set (LLM-drafted, human-reviewed), the retrieval eval, and the answer and refusal eval.
 
 ## Results
 
@@ -85,6 +94,32 @@ Agent: search_filings, query_financials (guarded SQL), compute_ratio (plain Pyth
 
 **Caveats.** 39 questions is a small set: one question moves recall by 2.6 points, so only differences of several questions are meaningful (fixed and section-aware hybrid tie at 37/39). The questions were drafted from fixed-size chunks, which may favour that strategy. Knowing the company matters most: with the filter, hybrid misses drop from 8 to 2.
 
+### Cited answers: error analysis, before and after (`gpt-oss-120b`)
+
+The answer model gets the top 5 chunks from the winning search (with the company filter) and must give, for every claim, a chunk id and a word-for-word quote. Code drops a citation if its chunk was not retrieved or its quote is not in that chunk; an answer with no valid citation becomes a refusal ("Not enough evidence in the filings."). **Grounded** means the answer cites a chunk that contains the question's labelled quote: a strict code check, no LLM judge.
+
+| Round | Change | Grounded | Refused | Failed | Citation validity |
+|---|---|---|---|---|---|
+| 0 | first run: exact quote match, quotes up to 400 characters | 11/24* | 10/24* | run crashed | 43.6% (24/55)* |
+| 1 | accept quotes shortened with "..." if every piece matches | 31/39 | 0 | 3 | 89.7% (70/78) |
+| 2 | quote limit 400 to 1,000 characters (answers regenerated) | 32/39 | 1 | 0 | 77.2% (71/92) |
+| 3 | ignore a full stop added at the end of a quote (same answers as round 2) | **32/39 (82.1%)** | 1 | **0** | **84.8% (78/92)** |
+
+\* Round 0 stopped after 24 questions. Round 1 re-judged those **same 24 cached answers**: grounded 11 to 20, refused 10 to 0, citation validity 43.6% to 90.9%, so that jump comes from the checker fix alone.
+
+**How the fixes were found.** In round 0, 30 of 31 rejected citations were real quotes the model had shortened with "..." (1 was paraphrased). The 3 failures in round 1 were quotes of 436, 471 and 589 characters against a 400 limit, which also wasted ~59,000 estimated tokens on rejected answers. In round 2, 7 of 21 rejected citations only had a full stop added where the model cut a sentence short; the other 13 changed words and 1 cited the wrong chunk, and those are still rejected.
+
+| Other answer numbers (round 2, from the run log) | Result |
+|---|---|
+| Unanswerable questions refused | **5/5** (4 by the model; Intel by the "company not covered" rule) |
+| Labelled passage among the 5 shown to the model | 37/39 |
+| LLM calls valid on the first try | 43/43 |
+| Tokens per question | ~2,400 |
+| LLM latency per answer (API time) | p50 934 ms, p95 2,252 ms |
+| Cost | 0.00 EUR |
+
+"Not grounded" is not the same as wrong: the label is one passage, and 4 of the 6 "not grounded" answers cite the chunk right next to the labelled one, which often continues the same text. Whether those answers are correct is not checked yet; a faithfulness judge calibrated against human labels comes in Week 4.
+
 ### Data pipeline and LLM extraction
 
 | What | Result |
@@ -98,7 +133,7 @@ Agent: search_filings, query_financials (guarded SQL), compute_ratio (plain Pyth
 | LLM tokens, extraction (production runs) | 455,501 logged + ~24,000 estimated for answers Groq rejected |
 | LLM latency, extraction (125 logged calls) | median 1,854 ms, p95 4,709 ms |
 | **Total cost** | **0.00 EUR** (Groq free tier, `openai/gpt-oss-120b`) |
-| Tests | 119 passing |
+| Tests | 156 passing |
 
 \* 125 calls are in the run log; 3 more failed on Nov 10 (Groq schema rejections) before failed calls were written to the log, and are counted from that run's console output. After the fix (re-ask on rejection), runs went from 3 failed companies to 0, with 44/47 and 46/47 first-try valid.
 
@@ -117,6 +152,9 @@ Check, by hand: Apple revenue in DuckDB for FY2022, FY2023 and FY2024 is $394,32
 - **Cache everything.** Downloads, embeddings and LLM answers are cached on disk, so every step can be rerun safely and a stopped run resumes for free. This matters on a free tier with 200K tokens per day per model.
 - **Strict JSON schema plus our own validation.** Groq's strict mode checks the model's JSON against the schema and rejects bad output with an error; it does not stop the model from producing it. So the client re-asks on both kinds of failure (Groq rejection and Pydantic rejection), and every failure is logged.
 - **Filing text is treated as untrusted.** It only goes in the user message, inside tags, and the system prompt says never to follow instructions inside it.
+- **Citations are verified by code, not trusted.** A citation must point to a chunk that was retrieved, and its quote (each piece, if shortened with "...") must be in that chunk. An answer with no surviving citation becomes a refusal: on `gpt-oss-20b` this caught an attempted answer to "What is the favourite food of Apple's CEO?".
+- **Refuse before searching a company we do not cover.** Otherwise another company's text about it (AMD writing about Intel) could answer the question.
+- **One change per round, measured on the same answers where possible.** Cached answers let a checker change be judged on identical model output, so before/after numbers show the effect of that change alone.
 
 ## Limitations (known, measured)
 
@@ -124,6 +162,7 @@ Check, by hand: Apple revenue in DuckDB for FY2022, FY2023 and FY2024 is $394,32
 - **Broad questions have many right passages.** The test set labels one or a few quotes per question, so a search that finds a different, also-correct passage counts as a miss (for example "AMD export risks", where several AMD passages qualify).
 - **Some metrics are not reported by some companies.** In each company's latest year, 12 metric gaps: no gross profit for GOOGL, AMZN, META, NFLX, ORCL, QCOM, PYPL; no total liabilities for AMZN, AMD, ORCL; no cost of revenue for ORCL, PYPL. The agent must say "not reported" rather than guess.
 - **Only the latest 10-K per company** is parsed for text; the numbers lane covers many years.
+- **The citation check is strict on purpose.** A correct answer whose only quote has a small word change is refused (q036, Broadcom). Answers are regenerated when the request changes, so a few questions flip between rounds for reasons other than the fix (3 of 39 between rounds 1 and 2).
 - **Re-ranker workaround.** On the development Mac, the cross-encoder returned NaN scores when its weights were read straight from the memory-mapped file; it now copies them into memory once (~90 MB), and a test guards it.
 
 ## How to run
@@ -139,10 +178,11 @@ uv run pytest
 uv run python -m filing_analyst.pipeline --no-llm
 uv run python -m filing_analyst.parse.chunk --strategy fixed
 uv run python -m filing_analyst.evaluation.retrieval_eval --chunking fixed
+uv run python -m filing_analyst.evaluation.answer_eval                 # needs a Groq key
+uv run python -m filing_analyst.evaluation.answer_eval --unanswerable
 ```
 
 ## Roadmap
 
-- **Week 2 (rest):** cited answers that use full passages (several for list questions), refusals when evidence is missing, `POST /ask`.
-- **Week 3:** agent with three tools, guarded text-to-SQL (sqlglot, SELECT only, read-only), prompt-injection test, MCP server.
+- **Week 3:** guarded text-to-SQL (sqlglot, SELECT only, read-only), agent with three tools (search, SQL, ratios), answers citing both chunks and SQL rows, prompt-injection test, MCP server.
 - **Week 4:** 50-question eval suite with XBRL ground truth in CI, LLM judge calibrated against human labels, tracing, cost per question, p95 latency, live demo.

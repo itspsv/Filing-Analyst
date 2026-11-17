@@ -13,6 +13,7 @@ def normalize_for_match(text: str) -> str:
 
 
 ELLIPSIS = re.compile(r"\s*(?:\.{3}|…)\s*")
+END_PUNCTUATION = " .,;:!?"
 
 
 def contains_quote(text: str, quote: str) -> bool:
@@ -20,8 +21,12 @@ def contains_quote(text: str, quote: str) -> bool:
 
 
 def quote_pieces(quote: str) -> list[str]:
-    """'A grew ... B fell' -> ['A grew', 'B fell']. A quote without '...' is one piece."""
-    return [p for p in (piece.strip() for piece in ELLIPSIS.split(quote)) if p]
+    """'A grew ... B fell.' -> ['A grew', 'B fell']. A quote without '...' is one piece.
+    Punctuation at the end of a piece is dropped: models cut a sentence short and add a full
+    stop ("...technology." where the filing goes on ", including network ..."). 7 of 21 rejected
+    citations on Nov 17. Every word must still match exactly and in order."""
+    pieces = (piece.strip().rstrip(END_PUNCTUATION) for piece in ELLIPSIS.split(quote))
+    return [p for p in pieces if p]
 
 
 def text_supports_quote(text: str, quote: str, min_words: int) -> bool:

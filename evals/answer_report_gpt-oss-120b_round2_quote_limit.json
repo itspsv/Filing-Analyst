@@ -1,0 +1,790 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "summary": {
+    "questions": 39,
+    "refused": 1,
+    "failed": 0,
+    "label_retrieved": 0.949,
+    "grounded": 0.821,
+    "grounded_when_answered": 0.842,
+    "citation_valid": 0.772,
+    "tokens_mean": 2425,
+    "cost_eur_total": 0.0,
+    "seconds_p50": 7.4,
+    "seconds_p95": 57.88
+  },
+  "questions": [
+    {
+      "qid": "q001",
+      "style": "paraphrase",
+      "question": "What does Apple say about its ability to compete in global markets?",
+      "answer": "Apple states that its products and services operate in highly competitive global markets characterized by aggressive price competition, rapid technological change, short product life cycles, and evolving industry standards. Its ability to compete successfully depends on continuously introducing innovative products, services and technologies, protecting its intellectual property, and investing heavily in research and development. Apple also notes that competitors have significant technical, marketing, distribution, and financial resources, and may imitate its product features or offer low\u2011priced solutions, which could erode Apple\u2019s market share and margins. Failure to keep pace with these competitive pressures could materially adversely affect its business, reputation, financial condition, and stock price.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 4,
+      "dropped_citations": 1,
+      "tokens": 2510,
+      "cost_eur": 0.0,
+      "seconds": 2.07,
+      "cited": [
+        "AAPL-2026-1A-0007",
+        "AAPL-2026-1A-0007",
+        "AAPL-2026-1A-0008",
+        "AAPL-2026-1A-0010"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q002",
+      "style": "literal",
+      "question": "What product did Apple announce in the first quarter of fiscal year 2026?",
+      "answer": "Apple announced the 14-inch MacBook Pro, iPad Pro, and Apple Vision Pro in the first quarter of fiscal year 2026.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2357,
+      "cost_eur": 0.0,
+      "seconds": 1.37,
+      "cited": [
+        "AAPL-2026-7-0000"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q003",
+      "style": "paraphrase",
+      "question": "How much additional tax payment is the IRS seeking from Microsoft in the NOPAs?",
+      "answer": "The IRS is seeking an additional tax payment of $28.9\u202fbillion plus penalties and interest.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2253,
+      "cost_eur": 0.0,
+      "seconds": 57.87,
+      "cited": [
+        "MSFT-2026-1A-0047"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q004",
+      "style": "literal",
+      "question": "What risks does Microsoft identify related to inadequate account security or organizational security practices, including those of companies it has acquired or third parties it utilizes?",
+      "answer": "Microsoft says that inadequate account security practices can lead to unauthorized access, ransomware, or other malicious software affecting customers\u2019 use of its products and services. It also notes that compromised or poorly managed accounts \u2013 especially when accounts share attributes like passwords \u2013 increase the risk of attackers obtaining user account information and using it to compromise accounts. Additionally, the company warns that security weaknesses in organizations it has acquired or in third\u2011party vendors, suppliers, service providers, or open\u2011source components can expose its systems and products to supply\u2011chain attacks, malware injection, or other compromises, which may affect its own infrastructure and customers.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": false,
+      "grounded": false,
+      "citations": 2,
+      "dropped_citations": 1,
+      "tokens": 2490,
+      "cost_eur": 0.0,
+      "seconds": 2.95,
+      "cited": [
+        "MSFT-2026-1A-0020",
+        "MSFT-2026-1A-0018"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q005",
+      "style": "paraphrase",
+      "question": "How much did Microsoft\u2019s research and development expenses rise in fiscal year 2026 compared to fiscal year 2025?",
+      "answer": "Microsoft\u2019s research and development expenses increased by $3.1\u202fbillion in fiscal year 2026 compared to fiscal year 2025.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2332,
+      "cost_eur": 0.0,
+      "seconds": 57.88,
+      "cited": [
+        "MSFT-2026-7-0016"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q006",
+      "style": "literal",
+      "question": "What does GOOGL say about the impact of supply chain disruptions on its technical infrastructure and product availability?",
+      "answer": "Google says that supply chain disruptions could delay critical data\u2011center or network infrastructure upgrades and expansions, which would in turn delay consumer product availability. It also notes that the manufacturing and supply of servers, networking equipment and specialized AI chips for its technical infrastructure are limited to a small number of qualified suppliers, so extended or unforeseen disruptions at these suppliers could hinder its ability to meet customer demand, train models and serve Cloud customers. Additionally, reliance on contract manufacturers and third\u2011party component suppliers means that shortages, price increases, longer lead times or the inability to find replacement vendors on favorable terms could harm its operations and product availability.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 3,
+      "dropped_citations": 0,
+      "tokens": 2509,
+      "cost_eur": 0.0,
+      "seconds": 2.14,
+      "cited": [
+        "GOOGL-2025-1A-0014",
+        "GOOGL-2025-1A-0014",
+        "GOOGL-2025-1A-0013"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q007",
+      "style": "paraphrase",
+      "question": "How does Google describe the impact of external factors on its ability to develop and sell AI products?",
+      "answer": "Google says that a variety of external factors could prevent, limit, or interfere with its ability to develop, use or sell its own AI products and services. It notes that competitors and new entrants may offer similar or better AI experiences, that changes in how consumers obtain information online could reduce the utility of its existing offerings, and that the availability and cost of third\u2011party equipment, network capacity, energy and other infrastructure can affect its ability to deploy AI technologies. Additionally, other companies may hold patents or proprietary rights that restrict Google\u2019s AI development, and regulatory scrutiny or enforcement differences could give rivals competitive advantages, all of which could harm Google\u2019s financial condition and operating results.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 2,
+      "tokens": 2537,
+      "cost_eur": 0.0,
+      "seconds": 57.73,
+      "cited": [
+        "GOOGL-2025-1A-0008",
+        "GOOGL-2025-1A-0007"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q008",
+      "style": "paraphrase",
+      "question": "What regulatory areas does Amazon say it is subject to?",
+      "answer": "Amazon says it is subject to a wide range of regulatory areas, including:\n- Foreign\u2011investment restrictions and licensing requirements for internet, IT infrastructure, data centers, retail, delivery and other sectors in India and China\n- Regulations on internet content and the sale of media and other products and services\n- Competition\u2011related and consumer\u2011protection rules affecting its stores, fulfillment network, Prime and AWS services\n- Laws governing the collection, use, disclosure and protection of data, including privacy, data\u2011use, data\u2011protection, data\u2011localization and network\u2011security regulations\n- Payments\u2011related regulations such as licensing, inspection, bonding, capital\u2011maintenance, authentication, money\u2011laundering, international money transfers, electronic fund transfers and related consumer\u2011disclosure rules\n- Additional emerging regulations that target technology \u201cgatekeepers\u201d and impose new compliance costs",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": false,
+      "grounded": false,
+      "citations": 3,
+      "dropped_citations": 0,
+      "tokens": 2533,
+      "cost_eur": 0.0,
+      "seconds": 1.97,
+      "cited": [
+        "AMZN-2025-1A-0006",
+        "AMZN-2025-1A-0035",
+        "AMZN-2025-1A-0032"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q009",
+      "style": "paraphrase",
+      "question": "What was Amazon\u2019s interest income in 2025, and how did it compare to the previous year?",
+      "answer": "Amazon\u2019s interest income was $4.4\u202fbillion in 2025, down from $4.7\u202fbillion in 2024.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2193,
+      "cost_eur": 0.0,
+      "seconds": 57.26,
+      "cited": [
+        "AMZN-2025-7-0028"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q012",
+      "style": "literal",
+      "question": "NVDA: What are the potential consequences of vulnerabilities in its security controls, systems, or software, including third\u2011party software, as described in Item 1A?",
+      "answer": "Vulnerabilities in NVIDIA\u2019s security controls, systems or software could lead to a range of adverse outcomes, including:\n- Reputational and financial harm, damage to the brand and loss of customer trust.\n- Litigation, indemnification obligations, regulatory inquiries or actions, and other legal liability.\n- Government enforcement actions, additional reporting requirements, restrictions on data processing, and mandatory disclosure that could generate negative publicity.\n- Diversion of funds and management attention away from core operations.\n- Financial loss, loss of data, and material disruptions to systems, operations, supply chain, and the ability to produce, sell and distribute goods and services.\n- Inability to fulfill orders, delayed sales, lower margins, lost customers, and a potential decline in stock price.\n- Overall business disruptions that could reduce revenue, increase expenses, and harm the company\u2019s financial results.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": false,
+      "citations": 3,
+      "dropped_citations": 1,
+      "tokens": 2614,
+      "cost_eur": 0.0,
+      "seconds": 2.95,
+      "cited": [
+        "NVDA-2026-1A-0030",
+        "NVDA-2026-1A-0030",
+        "NVDA-2026-1A-0025"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q013",
+      "style": "paraphrase",
+      "question": "What was NVIDIA\u2019s gross margin in fiscal year 2026 and how did it compare to the previous year?",
+      "answer": "NVIDIA\u2019s gross margin was 71.1% in fiscal year 2026, down from 75.0% in fiscal year 2025.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2306,
+      "cost_eur": 0.0,
+      "seconds": 57.12,
+      "cited": [
+        "NVDA-2026-7-0017"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q014",
+      "style": "literal",
+      "question": "What risks does AMD identify that could affect the adoption of AI and its business?",
+      "answer": "AMD says that several risks could affect AI adoption and its business. These include legal, social and ethical concerns about responsible AI use, third\u2011party misuse of AI applications or models, and ineffective AI development or deployment practices that could harm individuals or society and reduce public acceptance. The company may also face competitive harm, regulatory action and legal liability from new AI\u2011related legislation or existing data\u2011protection, privacy and intellectual\u2011property laws, which could increase compliance costs and limit the ability to sell or use its AI products. Additionally, AMD notes that customers might lack sufficient data\u2011center capacity, energy, or capital to fund AI infrastructure, leading to delayed or reduced demand for its products. The firm also warns that it may incur significant costs, delays, or fail to achieve a return on investment in AI solutions, and that the long\u2011term trajectory of AI adoption is uncertain. Finally, AMD highlights that delays in product development, qualification, or shipping, as well as customers\u2019 platform launch timing, could cause it to miss design windows, lose market share, and adversely affect its business.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 5,
+      "dropped_citations": 2,
+      "tokens": 2705,
+      "cost_eur": 0.0,
+      "seconds": 4.29,
+      "cited": [
+        "AMD-2025-1A-0077",
+        "AMD-2025-1A-0077",
+        "AMD-2025-1A-0013",
+        "AMD-2025-1A-0013",
+        "AMD-2025-1A-0076"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q015",
+      "style": "literal",
+      "question": "What risks could AMD face that might affect its ability to export products to certain customers?",
+      "answer": "AMD faces several risks that could limit its ability to export products to certain customers. These include:\n- Restrictions under U.S. Export Administration Regulations (EAR) that limit exports to countries such as China, Russia, and Belarus, which may prevent sales to customers in those markets. [AMD-2025-1A-0052]\n- Evolving U.S. government policies and new licensing requirements for advanced computing items, especially for parties in Country Groups D1, D4, or D5 (including China), which could require licenses or block shipments of AMD Instinct\u2122 ICs and Versal\u2122 FPGAs. [AMD-2025-1A-0052]\n- The April 2025 U.S. license requirement for certain semiconductor products to D5 countries and companies headquartered there, which has already led to inventory charges and could affect future sales of AMD Instinct\u2122 MI308 products. [AMD-2025-1A-0037]\n- The risk that future products may exceed licensing thresholds or be subject to new licensing requirements, potentially preventing their export even if they fall below current thresholds. [AMD-2025-1A-0053]\n- General compliance risks related to prohibited end\u2011users and the possibility that export control compliance programs may not fully eliminate the risk of exporting to restricted parties. [AMD-2025-1A-0049]",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": false,
+      "citations": 4,
+      "dropped_citations": 1,
+      "tokens": 2718,
+      "cost_eur": 0.0,
+      "seconds": 57.28,
+      "cited": [
+        "AMD-2025-1A-0052",
+        "AMD-2025-1A-0037",
+        "AMD-2025-1A-0053",
+        "AMD-2025-1A-0049"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q016",
+      "style": "literal",
+      "question": "What was AMD's Client net revenue in 2025 and how did it compare to 2024?",
+      "answer": "AMD's Client net revenue was $10.6\u202fbillion in 2025, which was up 51% from $7.1\u202fbillion in 2024.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2325,
+      "cost_eur": 0.0,
+      "seconds": 1.53,
+      "cited": [
+        "AMD-2025-7-0018"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q018",
+      "style": "literal",
+      "question": "What could result from reporting on AMAT's sustainability strategies and targets, according to the passage?",
+      "answer": "Reporting on AMAT's sustainability strategies and targets could lead to additional costs, and failing to achieve those strategies and targets could adversely affect the company's reputation and performance.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2337,
+      "cost_eur": 0.0,
+      "seconds": 57.1,
+      "cited": [
+        "AMAT-2025-1A-0044",
+        "AMAT-2025-1A-0045"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q019",
+      "style": "paraphrase",
+      "question": "What was the total amount of commercial paper notes that Applied Materials could issue under its short\u2011term program as of the fourth quarter of fiscal 2025?",
+      "answer": "Applied Materials' short\u2011term commercial paper program allowed issuance of unsecured commercial paper notes up to a total of $4.0\u202fbillion as of the fourth quarter of fiscal 2025.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2388,
+      "cost_eur": 0.0,
+      "seconds": 3.2,
+      "cited": [
+        "AMAT-2025-7-0022"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q021",
+      "style": "paraphrase",
+      "question": "What does Tesla say about the adequacy of its warranty reserves and the potential impact on its financial condition if they are insufficient?",
+      "answer": "Tesla warns that its current and future warranty reserves may be insufficient to cover future warranty claims. If the reserves are inadequate, the company says its financial condition and operating results could be harmed.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 1,
+      "tokens": 2352,
+      "cost_eur": 0.0,
+      "seconds": 56.82,
+      "cited": [
+        "TSLA-2025-1A-0034",
+        "TSLA-2025-1A-0033"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q022",
+      "style": "literal",
+      "question": "What was the change in Tesla's gross margin for total automotive in the year ended December 31, 2025 compared to the year ended December 31, 2024?",
+      "answer": "Tesla's gross margin for total automotive fell from 18.4% to 17.8%, a decrease of 0.6 percentage points.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2409,
+      "cost_eur": 0.0,
+      "seconds": 2.99,
+      "cited": [
+        "TSLA-2025-7-0029"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q025",
+      "style": "paraphrase",
+      "question": "What were Netflix\u2019s gross unrecognized tax benefits as of December 31, 2025?",
+      "answer": "Netflix reported gross unrecognized tax benefits of $566 million as of December 31, 2025.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2266,
+      "cost_eur": 0.0,
+      "seconds": 57.04,
+      "cited": [
+        "NFLX-2025-7-0022"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q029",
+      "style": "paraphrase",
+      "question": "What was the main reason for Oracle's increase in GAAP operating expenses in fiscal 2026 compared to fiscal 2025?",
+      "answer": "The primary driver of the $7.0\u202fbillion rise in GAAP operating expenses in fiscal 2026 was a $6.0\u202fbillion increase in cloud and software expenses, which was mainly caused by higher infrastructure costs.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2370,
+      "cost_eur": 0.0,
+      "seconds": 3.07,
+      "cited": [
+        "ORCL-2026-7-0019"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q030",
+      "style": "literal",
+      "question": "What risks does Adobe Inc. identify that could affect the success of its acquisitions and strategic transactions?",
+      "answer": "Adobe identifies several risks that could affect the success of its acquisitions and strategic transactions, including:\n- Inability to achieve expected financial and strategic benefits, or to do so on a timely basis.\n- Difficulty integrating operations, technologies, products, services, culture, or personnel.\n- Disruption to ongoing business and distraction of management.\n- Challenges or failure to obtain regulatory approvals, or having to satisfy conditions precedent that could limit benefits.\n- Entering markets where Adobe has little experience and faces stronger competitors.\n- Inability to retain personnel, key customers, distributors, vendors, and other partners of the acquired business.\n- Exposure to litigation or inheritance of claims from a transaction.\n- Incurring additional debt or issuing equity to finance a transaction, increasing leverage or diluting shareholders.\n- Economic, tax, currency, political, legal, and regulatory risks associated with foreign transactions.\n- Brand or reputational harm linked to acquisitions.\n- Failure to identify significant problems, liabilities, or challenges during due diligence.\n- Higher than anticipated integration costs, compliance costs, or security vulnerabilities in acquired entities.\n- Increased collection times, delinquency, or bad\u2011debt write\u2011offs from acquired receivables.\n- Difficulty maintaining internal controls during integration.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 5,
+      "tokens": 2795,
+      "cost_eur": 0.0,
+      "seconds": 59.34,
+      "cited": [
+        "ADBE-2025-1A-0009"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q032",
+      "style": "literal",
+      "question": "What is the approximate cash consideration for Adobe's acquisition of Semrush Holdings, Inc. as disclosed in Item 7?",
+      "answer": "The acquisition of Semrush Holdings, Inc. is for approximately $1.9\u202fbillion of cash consideration.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": false,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2236,
+      "cost_eur": 0.0,
+      "seconds": 1.07,
+      "cited": [
+        "ADBE-2025-7-0032"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q033",
+      "style": "paraphrase",
+      "question": "What regulatory or compliance risks does QCOM face if it fails to meet environmental laws and regulations?",
+      "answer": "If QCOM fails to comply with environmental laws and regulations, it could face regulatory penalties, fines and legal liabilities; suspension of production; significant compliance requirements; the need to alter manufacturing, assembly or test processes; restrictions on modifying or expanding facilities; damage to its reputation; and broader operational or sales restrictions. Additionally, it could be liable for clean\u2011up costs, third\u2011party claims related to contaminated sites, and liability for human exposure to hazardous substances or other environmental damage.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2368,
+      "cost_eur": 0.0,
+      "seconds": 56.71,
+      "cited": [
+        "QCOM-2026-1A-0043",
+        "QCOM-2026-1A-0042"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q034",
+      "style": "literal",
+      "question": "What risks does QCOM identify related to government actions or policies affecting its integrated circuit products and customers in China?",
+      "answer": "QCOM lists several risks tied to government actions or policies that could affect its integrated circuit products and customers in China. These include:\n1. Being limited or prohibited from selling integrated circuit products to Chinese or Chinese\u2011affiliated customers, or having non\u2011Chinese customers restricted from selling devices that contain QCOM\u2019s chips into China.\n2. Chinese customers developing or using their own or competitors\u2019 integrated circuit products instead of QCOM\u2019s, potentially reducing QCOM\u2019s sales.\n3. Tariffs on QCOM\u2019s chips or on devices that incorporate them, which could make purchases more expensive for Chinese customers and consumers.\n4. Delays or cessation of royalty payments from Chinese licensees.\n5. Restrictions on obtaining critical components, manufacturing, assembly, or test services from Chinese or Chinese\u2011affiliated suppliers, or limits on selling U.S. products that contain Chinese\u2011origin content.\n6. Chinese government policies that regulate the amount and timing of funds flowing out of China, which could delay QCOM\u2019s receipt of payments and negatively impact cash flows.\nThese risks stem from U.S. and Chinese trade protection, national security policies, tariffs, bans, and restricted entity listings, and they could materially harm QCOM\u2019s business, results of operations, cash flows, and financial condition.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 4,
+      "dropped_citations": 1,
+      "tokens": 2689,
+      "cost_eur": 0.0,
+      "seconds": 7.4,
+      "cited": [
+        "QCOM-2026-1A-0013",
+        "QCOM-2026-1A-0013",
+        "QCOM-2026-1A-0013",
+        "QCOM-2026-1A-0012"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q036",
+      "style": "literal",
+      "question": "What could AVGO be required to do if a pending or future proceeding results in an adverse outcome?",
+      "answer": "Not enough evidence in the filings.",
+      "refused": true,
+      "refusal_reason": "no valid citation",
+      "label_retrieved": true,
+      "grounded": false,
+      "citations": 0,
+      "dropped_citations": 1,
+      "tokens": 2435,
+      "cost_eur": 0.0,
+      "seconds": 52.76,
+      "cited": [],
+      "error": null
+    },
+    {
+      "qid": "q037",
+      "style": "paraphrase",
+      "question": "What percentage of AVGO's net revenue in fiscal year 2025 came from sales to distributors?",
+      "answer": "Sales to distributors accounted for 48% of AVGO's net revenue in fiscal year 2025.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2319,
+      "cost_eur": 0.0,
+      "seconds": 3.75,
+      "cited": [
+        "AVGO-2025-1A-0012"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q038",
+      "style": "literal",
+      "question": "What percentage of AVGO's net revenue in fiscal year 2025 came from shipments or deliveries to China (including Hong Kong)?",
+      "answer": "In fiscal year 2025, 17% of AVGO's net revenue came from shipments or deliveries to China (including Hong Kong).",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2308,
+      "cost_eur": 0.0,
+      "seconds": 55.91,
+      "cited": [
+        "AVGO-2025-7-0023"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q039",
+      "style": "paraphrase",
+      "question": "Does Texas Instruments have product liability insurance that guarantees protection against all claims?",
+      "answer": "Texas Instruments maintains product liability insurance, but it does not guarantee that the insurance will be available or adequate to protect against all claims.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2306,
+      "cost_eur": 0.0,
+      "seconds": 3.79,
+      "cited": [
+        "TXN-2025-1A-0011",
+        "TXN-2025-1A-0010"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q040",
+      "style": "literal",
+      "question": "What does TXN say about the impact of limited or delayed access to key materials, services and utilities on its operations?",
+      "answer": "TXN warns that limited or delayed access to key materials, services and utilities \u2013 and the associated high costs \u2013 could adversely affect its results of operations. The company notes that such constraints on essential inputs for its manufacturing processes could harm its operating performance.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2312,
+      "cost_eur": 0.0,
+      "seconds": 56.03,
+      "cited": [
+        "TXN-2025-1A-0008",
+        "TXN-2025-1A-0007"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q041",
+      "style": "paraphrase",
+      "question": "What price per share did TXN agree to pay for Silicon Labs in its acquisition deal?",
+      "answer": "TXN agreed to pay $231.00 per share for Silicon Labs in the acquisition.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2300,
+      "cost_eur": 0.0,
+      "seconds": 3.99,
+      "cited": [
+        "TXN-2025-7-0012",
+        "TXN-2025-7-0011"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q042",
+      "style": "literal",
+      "question": "What does MU say about the impact of lower utilization on its per gigabit manufacturing costs and gross margins?",
+      "answer": "Micron (MU) states that because a large portion of its manufacturing costs are fixed, lower utilization and lower wafer output increase its per\u2011gigabit manufacturing costs. These higher costs can lead to higher inventory carrying costs and may adversely affect its gross margins, business results, and financial condition.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2369,
+      "cost_eur": 0.0,
+      "seconds": 56.64,
+      "cited": [
+        "MU-2026-1A-0005",
+        "MU-2026-1A-0004"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q043",
+      "style": "paraphrase",
+      "question": "What risks could affect Micron Technology\u2019s ability to meet its sustainability goals and commitments, according to the 2026 10-K Item\u202f1A?",
+      "answer": "Micron Technology identifies several risks that could hinder its ability to meet its sustainability goals and commitments. These include reputational harm and damage to relationships with customers, suppliers, investors, governments, or other stakeholders; adverse impacts on manufacturing and sales or loss of market share; failure of collaborations with third parties; loss of business if customers\u2019 sustainability targets are not met; increased litigation, investigations, or regulatory enforcement; unfavorable sustainability and governance ratings or investor sentiment; diversion of resources and higher costs to control, assess, and report sustainability metrics; inability to achieve goals within announced timeframes; higher costs to achieve goals; unforeseen operational and technological difficulties; limited access to, and higher cost of, capital; and adverse effects on the company\u2019s stock price. Additionally, evolving stakeholder expectations, changing external standards for measuring and reporting sustainability, new sustainability laws and regulations, and increased regulatory scrutiny could also create additional costs, require strategy revisions, and expose the company to penalties, fines, or reputational damage, further affecting its ability to meet sustainability objectives.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 1,
+      "tokens": 2630,
+      "cost_eur": 0.0,
+      "seconds": 4.76,
+      "cited": [
+        "MU-2026-1A-0058"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q044",
+      "style": "literal",
+      "question": "When did MU break ground on the new cleanroom project at its Hiroshima manufacturing facility?",
+      "answer": "Micron broke ground on the new cleanroom project at its Hiroshima manufacturing facility in July 2026.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2253,
+      "cost_eur": 0.0,
+      "seconds": 54.53,
+      "cited": [
+        "MU-2026-7-0019",
+        "MU-2026-7-0018"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q045",
+      "style": "literal",
+      "question": "What cybersecurity risks does NOW identify in its Item 1A section?",
+      "answer": "NOW identifies several cybersecurity risks in its Item\u202f1A section, including:\n\u2022 Actual or perceived cybersecurity events affecting NOW or its third\u2011party service providers, which could damage the perception of platform security, cause loss of customers, or create significant liabilities.\n\u2022 Increased exposure to cyberattacks as the company\u2019s global operations grow, with threat actors using tactics such as malicious code, ransomware, social engineering, business\u2011email compromise, supply\u2011chain attacks, denial\u2011of\u2011service attacks and other internet\u2011enabled fraudulent activity.\n\u2022 The emergence of AI\u2011driven threats, where threat actors leverage advanced AI to create more sophisticated, automated, targeted and coordinated attacks that are harder to defend against.\n\u2022 Heightened risk of geopolitically motivated cyberattacks during wars or major conflicts, potentially disrupting systems, supply chain and service delivery.\n\u2022 Risks from reliance on third\u2011party providers and public\u2011cloud infrastructure, including the possibility that third\u2011party services or supply\u2011chain components could be compromised, leading to security incidents.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 3,
+      "dropped_citations": 2,
+      "tokens": 2696,
+      "cost_eur": 0.0,
+      "seconds": 5.3,
+      "cited": [
+        "NOW-2025-1A-0024",
+        "NOW-2025-1A-0024",
+        "NOW-2025-1A-0025"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q046",
+      "style": "paraphrase",
+      "question": "How does NOW describe the timing of contract renewals for its customers?",
+      "answer": "NOW states that while customers usually renew at the end of the contract term, they sometimes renew early\u2014such as when adding products to align expiration dates\u2014or they may renew after the contract has expired due to prolonged negotiations or other factors.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2286,
+      "cost_eur": 0.0,
+      "seconds": 54.82,
+      "cited": [
+        "NOW-2025-7-0005"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q047",
+      "style": "literal",
+      "question": "What risks does CSCO identify regarding its strategic alliances and joint ventures in Item 1A?",
+      "answer": "Cisco identifies several risks related to its strategic alliances and joint ventures, including:\n- The possibility of not realizing the expected benefits from these alliances or joint ventures, which could also increase competition in certain business areas.\n- The risk of competing with a partner in some areas while cooperating in others.\n- Potential delays in product development or other operational difficulties if alliance or joint\u2011venture partners fail to perform or if the relationships do not develop as expected.\n- Management challenges for joint ventures due to potentially different interests of the parties involved.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2470,
+      "cost_eur": 0.0,
+      "seconds": 4.48,
+      "cited": [
+        "CSCO-2026-1A-0035",
+        "CSCO-2026-1A-0034"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q048",
+      "style": "paraphrase",
+      "question": "What competitive threats does Cisco Systems face in its markets, according to the 10\u2011K Item\u202f1A section?",
+      "answer": "Cisco says it faces competitive threats from a wide range of rivals.  It competes with many vendors, including traditional networking companies, semiconductor firms, systems providers, cloud providers and other technology firms, and new entrants that offer technology\u2011as\u2011a\u2011service.  Competition is intensifying in areas such as software\u2011defined networking and \u201cwhite\u2011box\u201d hardware, as well as in AI and cloud\u2011infrastructure markets where customers may choose alternative network architectures.  Cisco also experiences price\u2011focused competition, especially from Asian competitors such as those in China, and anticipates further competition as it expands globally.  The company notes that barriers to entry are relatively low, allowing new ventures and resellers to challenge its products, and that some competitors have greater technical and engineering resources.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": false,
+      "citations": 1,
+      "dropped_citations": 2,
+      "tokens": 2552,
+      "cost_eur": 0.0,
+      "seconds": 55.92,
+      "cited": [
+        "CSCO-2026-1A-0000"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q049",
+      "style": "literal",
+      "question": "What did Cisco Systems, Inc. report about the increase in financing receivables compared to fiscal 2025?",
+      "answer": "Cisco reported that financing receivables increased by 28% compared with the end of fiscal 2025, primarily due to higher loan receivables reflecting greater customer demand for financing of hardware, software and services.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 1,
+      "dropped_citations": 0,
+      "tokens": 2396,
+      "cost_eur": 0.0,
+      "seconds": 3.54,
+      "cited": [
+        "CSCO-2026-7-0048"
+      ],
+      "error": null
+    },
+    {
+      "qid": "q050",
+      "style": "paraphrase",
+      "question": "What potential legal risks does PayPal face from users selling illegal or infringing goods on its platform?",
+      "answer": "PayPal could face legal action from intellectual\u2011property owners or government authorities for being peripherally involved in users\u2019 sales of infringing or illegal items. It may also be subject to individual and class\u2011action lawsuits, regulatory inquiries, investigations, or enforcement actions that could result in liability, operational restrictions, additional compliance requirements, reputational harm, higher costs, and negative impacts on its business.",
+      "refused": false,
+      "refusal_reason": null,
+      "label_retrieved": true,
+      "grounded": true,
+      "citations": 2,
+      "dropped_citations": 0,
+      "tokens": 2337,
+      "cost_eur": 0.0,
+      "seconds": 56.33,
+      "cited": [
+        "PYPL-2025-1A-0046",
+        "PYPL-2025-1A-0046"
+      ],
+      "error": null
+    }
+  ]
+}

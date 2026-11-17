@@ -7,11 +7,11 @@
     "label_retrieved": 0.949,
     "grounded": 0.821,
     "grounded_when_answered": 0.842,
-    "citation_valid": 0.772,
-    "tokens_mean": 2425,
+    "citation_valid": 0.848,
+    "tokens_mean": 0,
     "cost_eur_total": 0.0,
-    "seconds_p50": 7.4,
-    "seconds_p95": 57.88
+    "seconds_p50": 0.55,
+    "seconds_p95": 0.67
   },
   "questions": [
     {
@@ -25,9 +25,9 @@
       "grounded": true,
       "citations": 4,
       "dropped_citations": 1,
-      "tokens": 2510,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 2.07,
+      "seconds": 0.55,
       "cited": [
         "AAPL-2026-1A-0007",
         "AAPL-2026-1A-0007",
@@ -47,9 +47,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2357,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 1.37,
+      "seconds": 0.62,
       "cited": [
         "AAPL-2026-7-0000"
       ],
@@ -66,9 +66,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2253,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 57.87,
+      "seconds": 0.54,
       "cited": [
         "MSFT-2026-1A-0047"
       ],
@@ -83,13 +83,14 @@
       "refusal_reason": null,
       "label_retrieved": false,
       "grounded": false,
-      "citations": 2,
-      "dropped_citations": 1,
-      "tokens": 2490,
+      "citations": 3,
+      "dropped_citations": 0,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 2.95,
+      "seconds": 0.67,
       "cited": [
         "MSFT-2026-1A-0020",
+        "MSFT-2026-1A-0019",
         "MSFT-2026-1A-0018"
       ],
       "error": null
@@ -105,9 +106,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2332,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 57.88,
+      "seconds": 0.51,
       "cited": [
         "MSFT-2026-7-0016"
       ],
@@ -124,9 +125,9 @@
       "grounded": true,
       "citations": 3,
       "dropped_citations": 0,
-      "tokens": 2509,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 2.14,
+      "seconds": 0.53,
       "cited": [
         "GOOGL-2025-1A-0014",
         "GOOGL-2025-1A-0014",
@@ -143,13 +144,15 @@
       "refusal_reason": null,
       "label_retrieved": true,
       "grounded": true,
-      "citations": 2,
-      "dropped_citations": 2,
-      "tokens": 2537,
+      "citations": 4,
+      "dropped_citations": 0,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 57.73,
+      "seconds": 0.55,
       "cited": [
         "GOOGL-2025-1A-0008",
+        "GOOGL-2025-1A-0007",
+        "GOOGL-2025-1A-0007",
         "GOOGL-2025-1A-0007"
       ],
       "error": null
@@ -165,9 +168,9 @@
       "grounded": false,
       "citations": 3,
       "dropped_citations": 0,
-      "tokens": 2533,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 1.97,
+      "seconds": 0.67,
       "cited": [
         "AMZN-2025-1A-0006",
         "AMZN-2025-1A-0035",
@@ -186,9 +189,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2193,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 57.26,
+      "seconds": 0.57,
       "cited": [
         "AMZN-2025-7-0028"
       ],
@@ -205,9 +208,9 @@
       "grounded": false,
       "citations": 3,
       "dropped_citations": 1,
-      "tokens": 2614,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 2.95,
+      "seconds": 0.66,
       "cited": [
         "NVDA-2026-1A-0030",
         "NVDA-2026-1A-0030",
@@ -226,9 +229,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2306,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 57.12,
+      "seconds": 0.56,
       "cited": [
         "NVDA-2026-7-0017"
       ],
@@ -243,14 +246,16 @@
       "refusal_reason": null,
       "label_retrieved": true,
       "grounded": true,
-      "citations": 5,
-      "dropped_citations": 2,
-      "tokens": 2705,
+      "citations": 7,
+      "dropped_citations": 0,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 4.29,
+      "seconds": 0.51,
       "cited": [
         "AMD-2025-1A-0077",
         "AMD-2025-1A-0077",
+        "AMD-2025-1A-0077",
+        "AMD-2025-1A-0009",
         "AMD-2025-1A-0013",
         "AMD-2025-1A-0013",
         "AMD-2025-1A-0076"
@@ -268,9 +273,9 @@
       "grounded": false,
       "citations": 4,
       "dropped_citations": 1,
-      "tokens": 2718,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 57.28,
+      "seconds": 0.54,
       "cited": [
         "AMD-2025-1A-0052",
         "AMD-2025-1A-0037",
@@ -290,9 +295,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2325,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 1.53,
+      "seconds": 0.54,
       "cited": [
         "AMD-2025-7-0018"
       ],
@@ -309,9 +314,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 0,
-      "tokens": 2337,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 57.1,
+      "seconds": 0.55,
       "cited": [
         "AMAT-2025-1A-0044",
         "AMAT-2025-1A-0045"
@@ -329,9 +334,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2388,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 3.2,
+      "seconds": 0.55,
       "cited": [
         "AMAT-2025-7-0022"
       ],
@@ -348,9 +353,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 1,
-      "tokens": 2352,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 56.82,
+      "seconds": 0.58,
       "cited": [
         "TSLA-2025-1A-0034",
         "TSLA-2025-1A-0033"
@@ -368,9 +373,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2409,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 2.99,
+      "seconds": 0.54,
       "cited": [
         "TSLA-2025-7-0029"
       ],
@@ -387,9 +392,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2266,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 57.04,
+      "seconds": 0.54,
       "cited": [
         "NFLX-2025-7-0022"
       ],
@@ -406,9 +411,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2370,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 3.07,
+      "seconds": 0.54,
       "cited": [
         "ORCL-2026-7-0019"
       ],
@@ -425,9 +430,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 5,
-      "tokens": 2795,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 59.34,
+      "seconds": 0.57,
       "cited": [
         "ADBE-2025-1A-0009"
       ],
@@ -444,9 +449,9 @@
       "grounded": false,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2236,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 1.07,
+      "seconds": 0.55,
       "cited": [
         "ADBE-2025-7-0032"
       ],
@@ -463,9 +468,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 0,
-      "tokens": 2368,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 56.71,
+      "seconds": 0.57,
       "cited": [
         "QCOM-2026-1A-0043",
         "QCOM-2026-1A-0042"
@@ -483,9 +488,9 @@
       "grounded": true,
       "citations": 4,
       "dropped_citations": 1,
-      "tokens": 2689,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 7.4,
+      "seconds": 0.53,
       "cited": [
         "QCOM-2026-1A-0013",
         "QCOM-2026-1A-0013",
@@ -505,9 +510,9 @@
       "grounded": false,
       "citations": 0,
       "dropped_citations": 1,
-      "tokens": 2435,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 52.76,
+      "seconds": 0.51,
       "cited": [],
       "error": null
     },
@@ -522,9 +527,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2319,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 3.75,
+      "seconds": 0.58,
       "cited": [
         "AVGO-2025-1A-0012"
       ],
@@ -541,9 +546,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2308,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 55.91,
+      "seconds": 0.57,
       "cited": [
         "AVGO-2025-7-0023"
       ],
@@ -560,9 +565,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 0,
-      "tokens": 2306,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 3.79,
+      "seconds": 0.57,
       "cited": [
         "TXN-2025-1A-0011",
         "TXN-2025-1A-0010"
@@ -580,9 +585,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 0,
-      "tokens": 2312,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 56.03,
+      "seconds": 0.57,
       "cited": [
         "TXN-2025-1A-0008",
         "TXN-2025-1A-0007"
@@ -600,9 +605,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 0,
-      "tokens": 2300,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 3.99,
+      "seconds": 0.53,
       "cited": [
         "TXN-2025-7-0012",
         "TXN-2025-7-0011"
@@ -620,9 +625,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 0,
-      "tokens": 2369,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 56.64,
+      "seconds": 0.57,
       "cited": [
         "MU-2026-1A-0005",
         "MU-2026-1A-0004"
@@ -640,9 +645,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 1,
-      "tokens": 2630,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 4.76,
+      "seconds": 0.57,
       "cited": [
         "MU-2026-1A-0058"
       ],
@@ -659,9 +664,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 0,
-      "tokens": 2253,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 54.53,
+      "seconds": 0.51,
       "cited": [
         "MU-2026-7-0019",
         "MU-2026-7-0018"
@@ -677,14 +682,16 @@
       "refusal_reason": null,
       "label_retrieved": true,
       "grounded": true,
-      "citations": 3,
-      "dropped_citations": 2,
-      "tokens": 2696,
+      "citations": 5,
+      "dropped_citations": 0,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 5.3,
+      "seconds": 0.53,
       "cited": [
         "NOW-2025-1A-0024",
         "NOW-2025-1A-0024",
+        "NOW-2025-1A-0025",
+        "NOW-2025-1A-0025",
         "NOW-2025-1A-0025"
       ],
       "error": null
@@ -700,9 +707,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2286,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 54.82,
+      "seconds": 0.55,
       "cited": [
         "NOW-2025-7-0005"
       ],
@@ -719,9 +726,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 0,
-      "tokens": 2470,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 4.48,
+      "seconds": 0.5,
       "cited": [
         "CSCO-2026-1A-0035",
         "CSCO-2026-1A-0034"
@@ -739,9 +746,9 @@
       "grounded": false,
       "citations": 1,
       "dropped_citations": 2,
-      "tokens": 2552,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 55.92,
+      "seconds": 0.53,
       "cited": [
         "CSCO-2026-1A-0000"
       ],
@@ -758,9 +765,9 @@
       "grounded": true,
       "citations": 1,
       "dropped_citations": 0,
-      "tokens": 2396,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 3.54,
+      "seconds": 0.55,
       "cited": [
         "CSCO-2026-7-0048"
       ],
@@ -777,9 +784,9 @@
       "grounded": true,
       "citations": 2,
       "dropped_citations": 0,
-      "tokens": 2337,
+      "tokens": 0,
       "cost_eur": 0.0,
-      "seconds": 56.33,
+      "seconds": 0.52,
       "cited": [
         "PYPL-2025-1A-0046",
         "PYPL-2025-1A-0046"

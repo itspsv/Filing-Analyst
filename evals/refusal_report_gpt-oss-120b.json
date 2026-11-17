@@ -9,7 +9,7 @@
       "refused": true,
       "reason": "model refused",
       "answer": "Not enough evidence in the filings.",
-      "tokens": 2183
+      "tokens": 0
     },
     {
       "qid": "u002",
@@ -17,7 +17,7 @@
       "refused": true,
       "reason": "model refused",
       "answer": "Not enough evidence in the filings.",
-      "tokens": 2197
+      "tokens": 0
     },
     {
       "qid": "u003",
@@ -33,7 +33,7 @@
       "refused": true,
       "reason": "model refused",
       "answer": "Not enough evidence in the filings.",
-      "tokens": 2127
+      "tokens": 0
     },
     {
       "qid": "u005",
@@ -41,7 +41,7 @@
       "refused": true,
       "reason": "model refused",
       "answer": "Not enough evidence in the filings.",
-      "tokens": 2135
+      "tokens": 0
     }
   ]
 }
