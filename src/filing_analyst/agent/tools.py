@@ -5,8 +5,11 @@ go back to the model as a message so it can try again; they never crash the loop
 """
 
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
+
+import duckdb
 
 from filing_analyst.answer import EVIDENCE_K, Search
 from filing_analyst.config import COMPANIES
@@ -21,6 +24,38 @@ from filing_analyst.tools.query_financials import (
 )
 
 AGENT_MAX_ROWS = 50  # fewer rows than the API default, to keep the conversation small
+NAME_SUFFIXES = {"inc", "corp", "corporation", "co", "com", "de", "holdings", "ltd", "plc"}
+BRAND_ALIASES = {"google": "GOOGL", "facebook": "META"}
+
+
+def _name_words(name: str) -> list[str]:
+    return [w for w in re.findall(r"[a-z0-9]+", name.lower()) if w not in NAME_SUFFIXES]
+
+
+def resolve_company(value: str, names: dict[str, str]) -> str | None:
+    """A ticker ('NVDA') or a company name ('NVIDIA', 'Nvidia Corp') -> our ticker, else None.
+    Nov 17: gpt-oss-120b passed 'NVIDIA' three times and the search kept refusing."""
+    if value.strip().upper() in COMPANIES:
+        return value.strip().upper()
+    query = " ".join(_name_words(value))
+    if query in BRAND_ALIASES:
+        return BRAND_ALIASES[query]
+    for ticker, name in names.items():
+        words = _name_words(name)
+        if query and words and query in (" ".join(words), words[0]):
+            return ticker
+    return None
+
+
+def load_company_names(db_path: Path) -> dict[str, str]:
+    """ticker -> SEC company name, from the facts table (empty if it is not there)."""
+    try:
+        config = {"enable_external_access": False}
+        with duckdb.connect(str(db_path), read_only=True, config=config) as con:
+            rows = con.execute("SELECT DISTINCT ticker, company_name FROM facts").fetchall()
+    except duckdb.Error:
+        return {}
+    return {ticker: name for ticker, name in rows if ticker in COMPANIES}
 
 
 def _function(name: str, description: str, properties: dict, required: list[str]) -> dict:
@@ -41,9 +76,14 @@ TOOL_SPECS = [
         "Returns the 5 most relevant passages with their chunk_id.",
         {
             "query": {"type": "string", "description": "what to look for, in plain words"},
-            "company": {"type": "string", "description": f"ticker, one of {', '.join(COMPANIES)}"},
+            "company": {
+                "type": "string",
+                "description": f"ticker (one of {', '.join(COMPANIES)}) or company name",
+            },
         },
-        ["query", "company"],
+        # company is checked by our code, not by Groq: a missing one gets a helpful error back
+        # instead of an HTTP 400 that ends the run (Nov 17).
+        ["query"],
     ),
     _function(
         "query_financials",
@@ -79,8 +119,11 @@ def _error(message: str) -> ToolOutcome:
 
 
 class ToolRunner:
-    def __init__(self, search: Search, db_path: Path) -> None:
+    def __init__(
+        self, search: Search, db_path: Path, company_names: dict[str, str] | None = None
+    ) -> None:
         self.search, self.db_path = search, db_path
+        self.names = load_company_names(db_path) if company_names is None else company_names
 
     def run(self, name: str, arguments: str) -> ToolOutcome:
         try:
@@ -89,7 +132,8 @@ class ToolRunner:
             return _error(f"arguments are not valid JSON: {arguments[:200]}")
         try:
             if name == "search_filings":
-                return self._search(str(args["query"]), str(args.get("company", "")).upper())
+                company = args.get("company") or args.get("ticker") or ""  # models use both
+                return self._search(str(args["query"]), str(company))
             if name == "query_financials":
                 return self._sql(str(args["sql"]))
             if name == "compute_ratio":
@@ -102,9 +146,10 @@ class ToolRunner:
                       "compute_ratio")  # fmt: skip
 
     def _search(self, query: str, company: str) -> ToolOutcome:
-        if company not in COMPANIES:
+        ticker = resolve_company(company, self.names)
+        if ticker is None:
             return _error(f"company {company!r} is not covered; use one of {', '.join(COMPANIES)}")
-        chunks = self.search(query, company)[:EVIDENCE_K]
+        chunks = self.search(query, ticker)[:EVIDENCE_K]
         shown = [{"chunk_id": c.chunk_id, "company": c.ticker, "section": f"Item {c.section}",
                   "text": c.text} for c in chunks]  # fmt: skip
         return ToolOutcome(text=json.dumps(shown), chunks=chunks)

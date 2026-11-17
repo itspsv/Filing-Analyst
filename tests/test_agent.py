@@ -9,16 +9,18 @@ import pytest
 from pydantic import BaseModel
 
 from filing_analyst.agent.compose import (
+    COMPOSE_PROMPT,
     DraftAgentAnswer,
     Evidence,
     SqlCitation,
     untraced_numbers,
 )
 from filing_analyst.agent.loop import SYSTEM_PROMPT, run_agent
-from filing_analyst.agent.tools import ToolOutcome, ToolRunner
+from filing_analyst.agent.tools import ToolOutcome, ToolRunner, resolve_company
 from filing_analyst.answer import DraftCitation
-from filing_analyst.llm import CallStats
+from filing_analyst.llm import CallStats, LLMError
 from filing_analyst.parse.chunk import Chunk
+from filing_analyst.tools.compute_ratio import RatioResult
 from filing_analyst.tools.query_financials import QueryResult
 
 EXPORT = Chunk(
@@ -78,6 +80,8 @@ class ScriptedClient:
     def chat_with_tools(self, messages, tools, task, max_tokens=0) -> tuple[dict, CallStats]:
         self.seen.append(list(messages))
         step = self.steps[min(len(self.seen), len(self.steps)) - 1]
+        if isinstance(step, Exception):
+            raise step
         return step, CallStats(tokens_in=self.tokens)
 
     def complete_json_with_stats[T: BaseModel](
@@ -240,7 +244,7 @@ def test_chunk_citation_from_search_is_kept(db: Path) -> None:
     assert result.untraced_numbers == []  # "2026" inside the chunk id is not counted
 
 
-def test_rounded_or_converted_numbers_are_reported_as_untraced() -> None:
+def revenue_evidence() -> Evidence:
     q = QueryResult(
         query_id="sql-1",
         sql="SELECT 1",
@@ -248,9 +252,35 @@ def test_rounded_or_converted_numbers_are_reported_as_untraced() -> None:
         rows=[[215938000000.0]],
         truncated=False,
     )
-    evidence = Evidence(queries={"sql-1": q})
+    ratio = RatioResult(
+        name="gross_margin",
+        value=0.710681,
+        percent="71.07%",
+        formula="gross_profit / revenue = 1 / 2",
+        inputs={},
+    )
+    return Evidence(queries={"sql-1": q}, ratios=[ratio])
+
+
+def test_exact_numbers_and_exact_unit_conversions_are_traced() -> None:
+    """Real case, Nov 17: the model wrote '$391.035 billion' for 391,035,000,000."""
+    evidence = revenue_evidence()
     assert untraced_numbers("Revenue was $215,938,000,000.", evidence) == []
-    assert untraced_numbers("Revenue was $215.94 billion.", evidence) == ["215.94"]
+    assert untraced_numbers("Revenue was $215.938 billion.", evidence) == []
+    assert untraced_numbers("Revenue was $215,938 million.", evidence) == []
+    assert untraced_numbers("Gross margin was 71.07%.", evidence) == []
+
+
+def test_rounded_conversions_and_invented_numbers_are_flagged() -> None:
+    evidence = revenue_evidence()
+    assert untraced_numbers("Revenue was $215.94 billion.", evidence) == ["215.94 billion"]
+    assert untraced_numbers("Gross margin was 71.1%.", evidence) == ["71.1"]
+    assert untraced_numbers("Revenue grew 42%.", evidence) == ["42"]
+
+
+def test_prompts_say_figures_come_from_sql_and_ratios() -> None:
+    assert "even if a passage states the number" in SYSTEM_PROMPT
+    assert "must come from SQL rows or ratio" in COMPOSE_PROMPT
 
 
 def test_filing_text_reaches_the_model_only_as_a_tool_result(db: Path) -> None:
@@ -262,3 +292,45 @@ def test_filing_text_reaches_the_model_only_as_a_tool_result(db: Path) -> None:
     system, *rest = client.seen[1]
     assert system["content"] == SYSTEM_PROMPT and "untrusted" in SYSTEM_PROMPT
     assert [m["role"] for m in rest if "DROP TABLE" in str(m.get("content"))] == ["tool"]
+
+
+NAMES = {"NVDA": "NVIDIA CORP", "AMD": "ADVANCED MICRO DEVICES INC", "GOOGL": "Alphabet Inc."}
+
+
+@pytest.mark.parametrize(
+    ("value", "ticker"),
+    [
+        ("NVDA", "NVDA"),
+        ("nvda", "NVDA"),
+        ("NVIDIA", "NVDA"),
+        ("Nvidia Corp", "NVDA"),
+        ("Advanced Micro Devices", "AMD"),
+        ("Google", "GOOGL"),
+        ("Intel", None),
+        ("", None),
+    ],
+)
+def test_company_names_resolve_to_our_tickers(value: str, ticker: str | None) -> None:
+    assert resolve_company(value, NAMES) == ticker
+
+
+def test_search_accepts_a_company_name_or_a_ticker_field(db: Path) -> None:
+    """Real case, Nov 17: gpt-oss-120b sent {"company": "NVIDIA", "ticker": "NVDA"}."""
+    tools = ToolRunner(lambda q, t: [EXPORT] if t == "NVDA" else [], db, company_names=NAMES)
+    by_name = tools.run("search_filings", json.dumps({"query": "export", "company": "NVIDIA"}))
+    by_ticker_field = tools.run("search_filings", json.dumps({"query": "export", "ticker": "NVDA"}))
+    assert by_name.chunks == [EXPORT] and by_ticker_field.chunks == [EXPORT]
+    intel = tools.run("search_filings", json.dumps({"query": "risks", "company": "Intel"}))
+    assert intel.error and "not covered" in intel.error
+
+
+def test_loop_recovers_when_groq_rejects_a_tool_call(db: Path) -> None:
+    rejected = LLMError(
+        "HTTP 400: Tool call validation failed: parameters for tool search_filings did not match"
+    )
+    search = says(call("search_filings", {"query": "export", "company": "NVDA"}))
+    client = ScriptedClient([rejected, search, says()], compose=cite_export_chunk)
+    result = run_agent("What does NVIDIA say about export controls?", client, runner(db))
+    assert [s.tool for s in result.trace] == ["(invalid tool call)", "search_filings"]
+    assert "rejected" in client.seen[1][-1]["content"]  # the model was told what went wrong
+    assert result.stop_reason == "model finished" and not result.answer.refused
