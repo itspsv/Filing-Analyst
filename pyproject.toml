@@ -44,7 +44,9 @@ constraint-dependencies = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = '-m "not llm"'  # real-LLM tests cost tokens: run them with `pytest -m llm`
 markers = [
+    "llm: calls the real LLM (Groq); responses are cached, so reruns are free",
     "network: calls the real SEC website (skipped when SEC_USER_AGENT is not set)",
     "data: reads downloaded files in data/ (skipped when they are missing)",
 ]
