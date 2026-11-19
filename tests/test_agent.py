@@ -16,8 +16,9 @@ from filing_analyst.agent.compose import (
 )
 from filing_analyst.agent.graph import build_graph, run_graph
 from filing_analyst.agent.loop import SYSTEM_PROMPT, run_agent
-from filing_analyst.agent.tools import ToolOutcome, ToolRunner, resolve_company
+from filing_analyst.agent.tools import TOOL_SPECS, ToolOutcome, ToolRunner, resolve_company
 from filing_analyst.answer import DraftCitation
+from filing_analyst.config import COMPANIES, COMPANY_NAMES
 from filing_analyst.llm import LLMError
 from filing_analyst.parse.chunk import Chunk
 from filing_analyst.tools.compute_ratio import RatioResult
@@ -308,3 +309,12 @@ def test_graph_saves_every_step_in_the_sqlite_checkpointer(db: Path, tmp_path: P
     visited = [h.next for h in reversed(history) if h.next]
     assert visited[:5] == [("__start__",), ("agent",), ("tools",), ("agent",), ("tools",)]
     assert len(history) >= 7  # one checkpoint per step: start, agent, tools, ..., compose
+
+
+def test_the_model_sees_every_company_by_name() -> None:
+    """Nov 19: with tickers only, gpt-oss-120b thought Broadcom (AVGO) was not covered."""
+    assert set(COMPANY_NAMES) == set(COMPANIES)
+    search_spec = next(s for s in TOOL_SPECS if s["function"]["name"] == "search_filings")
+    company_field = search_spec["function"]["parameters"]["properties"]["company"]["description"]
+    for text in (SYSTEM_PROMPT, company_field):
+        assert all(f"{t} {COMPANY_NAMES[t]}" in text for t in COMPANIES)

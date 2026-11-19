@@ -1,0 +1,331 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "summary": {
+    "questions": 10,
+    "passed": 7,
+    "passed_by_kind": {
+      "text": "3/3",
+      "number": "2/3",
+      "mixed": "1/3",
+      "refuse": "1/1"
+    },
+    "failed_runs": 0,
+    "figures_exact": "3/7",
+    "figures_within_1pct": "3/7",
+    "untraced_numbers": 5,
+    "dropped_citations": 3,
+    "tokens_total": 57646,
+    "tokens_mean": 5765,
+    "llm_calls_mean": 4.1,
+    "seconds_p50": 58.79,
+    "seconds_p95": 182.31
+  },
+  "questions": [
+    {
+      "qid": "a01",
+      "kind": "text",
+      "question": "What does Microsoft's latest 10-K say about competition in AI?",
+      "answer": "Microsoft\u2019s 2026 Form\u202f10\u2011K describes competition in AI as intense and rapidly evolving. The filing notes that AI technology and services are a \u201chighly competitive and rapidly evolving market, and new competitors continue to enter the market,\u201d and that Microsoft\u2019s AI offerings must compete with products from other hyperscalers, open\u2011source projects, and frontier\u2011model providers, some of which may also be partners. It also highlights that many of Microsoft\u2019s strategic partners provide technologies that compete with its own AI products, and that changes in those relationships could affect the competitiveness of its AI services. Additionally, the company warns that pricing pressure, commoditization, and competition could increase model\u2011training and inference costs, potentially compressing margins. The filing further points to regulatory and antitrust scrutiny worldwide, which could add costs or limit Microsoft\u2019s ability to deliver AI offerings.",
+      "passed": true,
+      "problems": [],
+      "refused": false,
+      "refusal_reason": null,
+      "stop_reason": "model finished",
+      "figures_exact": 0,
+      "figures_within_1pct": 0,
+      "figures_expected": 0,
+      "citations": {
+        "chunk": 4,
+        "sql": 0,
+        "ratio": 0
+      },
+      "dropped_citations": 1,
+      "untraced_numbers": [
+        "10"
+      ],
+      "tools": [
+        "search_filings",
+        "search_filings"
+      ],
+      "llm_calls": 4,
+      "tokens": 4756,
+      "seconds": 2.86,
+      "error": null
+    },
+    {
+      "qid": "a02",
+      "kind": "text",
+      "question": "What risks does Tesla describe about its dependence on Elon Musk?",
+      "answer": "Tesla warns that it is highly dependent on Elon Musk\u2019s services. The company notes that Musk does not devote his full time to Tesla because he holds management positions at other ventures such as SpaceX, xAI, Neuralink and The Boring Company. This dependence creates several risks: (1) if Musk were forced to sell shares of Tesla stock to meet personal loan or tax obligations, the resulting share sales could depress Tesla\u2019s stock price; (2) any misalignment between Musk\u2019s focus and Tesla\u2019s strategic priorities could lead to underperformance, strategic misalignment, or write\u2011downs of related assets; and (3) the loss or reduced involvement of Musk could disrupt operations and harm the business, financial condition, and operating results.",
+      "passed": true,
+      "problems": [],
+      "refused": false,
+      "refusal_reason": null,
+      "stop_reason": "model finished",
+      "figures_exact": 0,
+      "figures_within_1pct": 0,
+      "figures_expected": 0,
+      "citations": {
+        "chunk": 4,
+        "sql": 0,
+        "ratio": 0
+      },
+      "dropped_citations": 0,
+      "untraced_numbers": [
+        "2",
+        "3"
+      ],
+      "tools": [
+        "search_filings"
+      ],
+      "llm_calls": 3,
+      "tokens": 3559,
+      "seconds": 59.13,
+      "error": null
+    },
+    {
+      "qid": "a03",
+      "kind": "text",
+      "question": "How does Netflix describe competition for entertainment content and viewers?",
+      "answer": "Netflix says the market for entertainment video is \"intensely competitive and subject to rapid change\" and that consumers have many options to access entertainment video through various distribution channels and economic models, including subscription, transactional, ad\u2011supported and piracy\u2011based models. It faces competition from traditional entertainment video providers such as broadcasters and cable network operators, as well as internet\u2011based e\u2011commerce or entertainment video providers and platforms. Competitors often have long operating histories, large customer bases, strong brand recognition, exclusive content rights, large content libraries, and significant financial, marketing and other resources, which may allow them to offer more compelling content, better pricing, or greater investment in product development, technology, infrastructure, content acquisition and marketing. Netflix also notes competition from new entrants, existing providers that adjust their services, and emerging technologies like generative AI, as well as piracy services that offer content for free.",
+      "passed": true,
+      "problems": [],
+      "refused": false,
+      "refusal_reason": null,
+      "stop_reason": "model finished",
+      "figures_exact": 0,
+      "figures_within_1pct": 0,
+      "figures_expected": 0,
+      "citations": {
+        "chunk": 1,
+        "sql": 0,
+        "ratio": 0
+      },
+      "dropped_citations": 2,
+      "untraced_numbers": [],
+      "tools": [
+        "search_filings"
+      ],
+      "llm_calls": 3,
+      "tokens": 3601,
+      "seconds": 1.51,
+      "error": null
+    },
+    {
+      "qid": "a04",
+      "kind": "number",
+      "question": "What was Apple's net income in fiscal year 2026?",
+      "answer": "Apple's net income in fiscal year 2026 was 132175000000.0.",
+      "passed": true,
+      "problems": [],
+      "refused": false,
+      "refusal_reason": null,
+      "stop_reason": "model finished",
+      "figures_exact": 1,
+      "figures_within_1pct": 1,
+      "figures_expected": 1,
+      "citations": {
+        "chunk": 0,
+        "sql": 1,
+        "ratio": 0
+      },
+      "dropped_citations": 0,
+      "untraced_numbers": [],
+      "tools": [
+        "query_financials"
+      ],
+      "llm_calls": 3,
+      "tokens": 1905,
+      "seconds": 57.82,
+      "error": null
+    },
+    {
+      "qid": "a05",
+      "kind": "number",
+      "question": "What was Microsoft's operating margin in fiscal year 2026?",
+      "answer": "Microsoft's operating margin in fiscal year 2026 was 46.78%.",
+      "passed": true,
+      "problems": [],
+      "refused": false,
+      "refusal_reason": null,
+      "stop_reason": "model finished",
+      "figures_exact": 1,
+      "figures_within_1pct": 1,
+      "figures_expected": 1,
+      "citations": {
+        "chunk": 0,
+        "sql": 2,
+        "ratio": 1
+      },
+      "dropped_citations": 0,
+      "untraced_numbers": [],
+      "tools": [
+        "query_financials",
+        "compute_ratio"
+      ],
+      "llm_calls": 4,
+      "tokens": 3947,
+      "seconds": 2.7,
+      "error": null
+    },
+    {
+      "qid": "a06",
+      "kind": "number",
+      "question": "By how much did Amazon's revenue grow from fiscal year 2024 to fiscal year 2025?",
+      "answer": "Amazon's revenue grew by $78,965,000,000 from fiscal year 2024 to fiscal year 2025.",
+      "passed": false,
+      "problems": [
+        "figure missing: AMZN revenue growth FY2024 -> FY2025 (637,959M -> 716,924M)"
+      ],
+      "refused": false,
+      "refusal_reason": null,
+      "stop_reason": "model finished",
+      "figures_exact": 0,
+      "figures_within_1pct": 0,
+      "figures_expected": 1,
+      "citations": {
+        "chunk": 0,
+        "sql": 2,
+        "ratio": 0
+      },
+      "dropped_citations": 0,
+      "untraced_numbers": [
+        "78,965,000,000"
+      ],
+      "tools": [
+        "query_financials",
+        "compute_ratio"
+      ],
+      "llm_calls": 4,
+      "tokens": 4936,
+      "seconds": 58.45,
+      "error": null
+    },
+    {
+      "qid": "a07",
+      "kind": "mixed",
+      "question": "Compare the gross margins of AMD in fiscal year 2025 and NVIDIA in fiscal year 2026, and say what each company's 10-K says about export controls.",
+      "answer": "Not enough evidence in the filings.",
+      "passed": false,
+      "problems": [
+        "refused (model refused)"
+      ],
+      "refused": true,
+      "refusal_reason": "model refused",
+      "stop_reason": "model finished",
+      "figures_exact": 0,
+      "figures_within_1pct": 0,
+      "figures_expected": 2,
+      "citations": {
+        "chunk": 0,
+        "sql": 0,
+        "ratio": 0
+      },
+      "dropped_citations": 0,
+      "untraced_numbers": [],
+      "tools": [
+        "query_financials",
+        "compute_ratio",
+        "compute_ratio",
+        "search_filings",
+        "search_filings"
+      ],
+      "llm_calls": 7,
+      "tokens": 17140,
+      "seconds": 182.31,
+      "error": null
+    },
+    {
+      "qid": "a08",
+      "kind": "mixed",
+      "question": "What was Meta's net income in fiscal year 2025, and what regulatory risks does Meta describe?",
+      "answer": "Meta reported net income of $60,458,000,000 for fiscal year 2025. The company describes regulatory risks including political, social, or economic instability; legal, regulatory and government scrutiny in foreign jurisdictions covering privacy, tax, law enforcement, content, trade compliance, competition, consumer protection, intellectual property, environmental, health and safety, accessibility, licensing, and infrastructure matters; potential brand and reputation damage from compliance with local laws; difficulties in content review and enforcement across languages and countries; currency exchange fluctuations and controls; foreign exchange and tax regulations that may limit cash repatriation; credit risk and payment fraud; challenges integrating foreign acquisitions; and the burden of complying with a variety of foreign laws.",
+      "passed": true,
+      "problems": [],
+      "refused": false,
+      "refusal_reason": null,
+      "stop_reason": "model finished",
+      "figures_exact": 1,
+      "figures_within_1pct": 1,
+      "figures_expected": 1,
+      "citations": {
+        "chunk": 8,
+        "sql": 1,
+        "ratio": 0
+      },
+      "dropped_citations": 0,
+      "untraced_numbers": [],
+      "tools": [
+        "query_financials",
+        "search_filings"
+      ],
+      "llm_calls": 4,
+      "tokens": 4802,
+      "seconds": 59.82,
+      "error": null
+    },
+    {
+      "qid": "a09",
+      "kind": "mixed",
+      "question": "How much did Broadcom's revenue grow from fiscal year 2024 to fiscal year 2025, and what does its 10-K say drove the change?",
+      "answer": "Broadcom\u2019s revenue grew by $12,313,000,000 from fiscal year 2024 ($51,574,000,000) to fiscal year 2025 ($63,887,000,000). The 10\u2011K attributes the increase to strong demand for its semiconductor solutions \u2013 especially custom AI accelerators and AI networking products \u2013 and strong demand for its infrastructure software, driven by the VCF product and a shift to a subscription license model.",
+      "passed": false,
+      "problems": [
+        "figure missing: AVGO revenue growth FY2024 -> FY2025 (51,574M -> 63,887M)"
+      ],
+      "refused": false,
+      "refusal_reason": null,
+      "stop_reason": "model finished",
+      "figures_exact": 0,
+      "figures_within_1pct": 0,
+      "figures_expected": 1,
+      "citations": {
+        "chunk": 1,
+        "sql": 2,
+        "ratio": 1
+      },
+      "dropped_citations": 0,
+      "untraced_numbers": [
+        "12,313,000,000"
+      ],
+      "tools": [
+        "query_financials",
+        "compute_ratio",
+        "search_filings"
+      ],
+      "llm_calls": 5,
+      "tokens": 9083,
+      "seconds": 61.84,
+      "error": null
+    },
+    {
+      "qid": "a10",
+      "kind": "refuse",
+      "question": "What was Oracle's gross margin in fiscal year 2026?",
+      "answer": "Not enough evidence in the filings.",
+      "passed": true,
+      "problems": [],
+      "refused": true,
+      "refusal_reason": "model refused",
+      "stop_reason": "model finished",
+      "figures_exact": 0,
+      "figures_within_1pct": 0,
+      "figures_expected": 0,
+      "citations": {
+        "chunk": 0,
+        "sql": 0,
+        "ratio": 0
+      },
+      "dropped_citations": 0,
+      "untraced_numbers": [],
+      "tools": [
+        "query_financials",
+        "query_financials"
+      ],
+      "llm_calls": 4,
+      "tokens": 3917,
+      "seconds": 59.33,
+      "error": null
+    }
+  ]
+}

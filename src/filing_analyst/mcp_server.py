@@ -18,11 +18,11 @@ from pydantic import Field
 
 from filing_analyst.agent.tools import TOOL_SPECS, ToolRunner
 from filing_analyst.answer import Search, load_default_search
-from filing_analyst.config import COMPANIES, Settings
+from filing_analyst.config import COMPANY_LIST, Settings
 from filing_analyst.tools.compute_ratio import RATIOS
 
 READ_ONLY = ToolAnnotations(read_only_hint=True, idempotent_hint=True, open_world_hint=False)
-Company = Annotated[str, Field(description=f"ticker (one of {', '.join(COMPANIES)}) or name")]
+Company = Annotated[str, Field(description=f"ticker or company name, one of: {COMPANY_LIST}")]
 RatioName = Annotated[str, Field(description=f"one of {', '.join(sorted(RATIOS))}")]
 DESCRIPTIONS = {spec["function"]["name"]: spec["function"]["description"] for spec in TOOL_SPECS}
 

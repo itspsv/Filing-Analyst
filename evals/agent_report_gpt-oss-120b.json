@@ -2,23 +2,23 @@
   "model": "openai/gpt-oss-120b",
   "summary": {
     "questions": 10,
-    "passed": 9,
+    "passed": 7,
     "passed_by_kind": {
       "text": "3/3",
-      "number": "3/3",
-      "mixed": "2/3",
+      "number": "2/3",
+      "mixed": "1/3",
       "refuse": "1/1"
     },
     "failed_runs": 0,
-    "figures_exact": "6/7",
-    "figures_within_1pct": "6/7",
+    "figures_exact": "3/7",
+    "figures_within_1pct": "3/7",
     "untraced_numbers": 5,
     "dropped_citations": 3,
-    "tokens_total": 64952,
-    "tokens_mean": 6495,
+    "tokens_total": 57646,
+    "tokens_mean": 5765,
     "llm_calls_mean": 4.1,
-    "seconds_p50": 59.28,
-    "seconds_p95": 182.82
+    "seconds_p50": 58.79,
+    "seconds_p95": 182.31
   },
   "questions": [
     {
@@ -44,11 +44,12 @@
         "10"
       ],
       "tools": [
+        "search_filings",
         "search_filings"
       ],
-      "llm_calls": 3,
-      "tokens": 6020,
-      "seconds": 4.31,
+      "llm_calls": 4,
+      "tokens": 4756,
+      "seconds": 2.86,
       "error": null
     },
     {
@@ -78,8 +79,8 @@
         "search_filings"
       ],
       "llm_calls": 3,
-      "tokens": 5967,
-      "seconds": 59.86,
+      "tokens": 3559,
+      "seconds": 59.13,
       "error": null
     },
     {
@@ -106,8 +107,8 @@
         "search_filings"
       ],
       "llm_calls": 3,
-      "tokens": 6046,
-      "seconds": 60.16,
+      "tokens": 3601,
+      "seconds": 1.51,
       "error": null
     },
     {
@@ -134,8 +135,8 @@
         "query_financials"
       ],
       "llm_calls": 3,
-      "tokens": 2371,
-      "seconds": 57.76,
+      "tokens": 1905,
+      "seconds": 57.82,
       "error": null
     },
     {
@@ -160,78 +161,78 @@
       "untraced_numbers": [],
       "tools": [
         "query_financials",
-        "query_financials",
         "compute_ratio"
       ],
-      "llm_calls": 5,
-      "tokens": 4638,
-      "seconds": 3.03,
+      "llm_calls": 4,
+      "tokens": 3947,
+      "seconds": 2.7,
       "error": null
     },
     {
       "qid": "a06",
       "kind": "number",
       "question": "By how much did Amazon's revenue grow from fiscal year 2024 to fiscal year 2025?",
-      "answer": "Amazon's revenue grew by 12.38% from fiscal year 2024 to fiscal year 2025.",
-      "passed": true,
-      "problems": [],
+      "answer": "Amazon's revenue grew by $78,965,000,000 from fiscal year 2024 to fiscal year 2025.",
+      "passed": false,
+      "problems": [
+        "figure missing: AMZN revenue growth FY2024 -> FY2025 (637,959M -> 716,924M)"
+      ],
       "refused": false,
       "refusal_reason": null,
       "stop_reason": "model finished",
-      "figures_exact": 1,
-      "figures_within_1pct": 1,
+      "figures_exact": 0,
+      "figures_within_1pct": 0,
       "figures_expected": 1,
       "citations": {
         "chunk": 0,
         "sql": 2,
-        "ratio": 1
+        "ratio": 0
       },
       "dropped_citations": 0,
-      "untraced_numbers": [],
+      "untraced_numbers": [
+        "78,965,000,000"
+      ],
       "tools": [
         "query_financials",
         "compute_ratio"
       ],
       "llm_calls": 4,
-      "tokens": 3774,
-      "seconds": 58.71,
+      "tokens": 4936,
+      "seconds": 58.45,
       "error": null
     },
     {
       "qid": "a07",
       "kind": "mixed",
       "question": "Compare the gross margins of AMD in fiscal year 2025 and NVIDIA in fiscal year 2026, and say what each company's 10-K says about export controls.",
-      "answer": "AMD\u2019s fiscal 2025 gross margin was 49.52%, while NVIDIA\u2019s fiscal 2026 gross margin was 71.07%. AMD\u2019s 10\u2011K discusses export controls in Item\u202f1A, noting that U.S. export administration regulations restrict the export of certain products to countries such as China, Russia and Belarus and could limit AMD\u2019s ability to sell its Instinct GPUs and Versal FPGAs without a license, potentially harming its business. NVIDIA\u2019s 10\u2011K also addresses export controls in Item\u202f1A, warning that U.S. export controls on advanced semiconductor products, especially GPUs, could restrict sales to China and other markets, increase compliance costs, and give competitors an advantage.",
-      "passed": true,
-      "problems": [],
-      "refused": false,
-      "refusal_reason": null,
+      "answer": "Not enough evidence in the filings.",
+      "passed": false,
+      "problems": [
+        "refused (model refused)"
+      ],
+      "refused": true,
+      "refusal_reason": "model refused",
       "stop_reason": "model finished",
-      "figures_exact": 2,
-      "figures_within_1pct": 2,
+      "figures_exact": 0,
+      "figures_within_1pct": 0,
       "figures_expected": 2,
       "citations": {
-        "chunk": 2,
-        "sql": 2,
-        "ratio": 2
+        "chunk": 0,
+        "sql": 0,
+        "ratio": 0
       },
       "dropped_citations": 0,
-      "untraced_numbers": [
-        "10",
-        "10"
-      ],
+      "untraced_numbers": [],
       "tools": [
-        "query_financials",
-        "query_financials",
         "query_financials",
         "compute_ratio",
         "compute_ratio",
         "search_filings",
         "search_filings"
       ],
-      "llm_calls": 9,
-      "tokens": 18879,
-      "seconds": 182.82,
+      "llm_calls": 7,
+      "tokens": 17140,
+      "seconds": 182.31,
       "error": null
     },
     {
@@ -259,36 +260,42 @@
         "search_filings"
       ],
       "llm_calls": 4,
-      "tokens": 7276,
-      "seconds": 61.94,
+      "tokens": 4802,
+      "seconds": 59.82,
       "error": null
     },
     {
       "qid": "a09",
       "kind": "mixed",
       "question": "How much did Broadcom's revenue grow from fiscal year 2024 to fiscal year 2025, and what does its 10-K say drove the change?",
-      "answer": "Not enough evidence in the filings.",
+      "answer": "Broadcom\u2019s revenue grew by $12,313,000,000 from fiscal year 2024 ($51,574,000,000) to fiscal year 2025 ($63,887,000,000). The 10\u2011K attributes the increase to strong demand for its semiconductor solutions \u2013 especially custom AI accelerators and AI networking products \u2013 and strong demand for its infrastructure software, driven by the VCF product and a shift to a subscription license model.",
       "passed": false,
       "problems": [
-        "refused (no evidence)"
+        "figure missing: AVGO revenue growth FY2024 -> FY2025 (51,574M -> 63,887M)"
       ],
-      "refused": true,
-      "refusal_reason": "no evidence",
+      "refused": false,
+      "refusal_reason": null,
       "stop_reason": "model finished",
       "figures_exact": 0,
       "figures_within_1pct": 0,
       "figures_expected": 1,
       "citations": {
-        "chunk": 0,
-        "sql": 0,
-        "ratio": 0
+        "chunk": 1,
+        "sql": 2,
+        "ratio": 1
       },
       "dropped_citations": 0,
-      "untraced_numbers": [],
-      "tools": [],
-      "llm_calls": 1,
-      "tokens": 795,
-      "seconds": 0.61,
+      "untraced_numbers": [
+        "12,313,000,000"
+      ],
+      "tools": [
+        "query_financials",
+        "compute_ratio",
+        "search_filings"
+      ],
+      "llm_calls": 5,
+      "tokens": 9083,
+      "seconds": 61.84,
       "error": null
     },
     {
@@ -313,13 +320,11 @@
       "untraced_numbers": [],
       "tools": [
         "query_financials",
-        "query_financials",
-        "query_financials",
-        "search_filings"
+        "query_financials"
       ],
-      "llm_calls": 6,
-      "tokens": 9186,
-      "seconds": 117.77,
+      "llm_calls": 4,
+      "tokens": 3917,
+      "seconds": 59.33,
       "error": null
     }
   ]

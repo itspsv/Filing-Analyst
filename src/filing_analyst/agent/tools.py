@@ -12,7 +12,7 @@ from pathlib import Path
 import duckdb
 
 from filing_analyst.answer import EVIDENCE_K, Search
-from filing_analyst.config import COMPANIES
+from filing_analyst.config import COMPANIES, COMPANY_LIST
 from filing_analyst.parse.chunk import Chunk
 from filing_analyst.tools.compute_ratio import RATIOS, RatioError, RatioResult, compute_ratio
 from filing_analyst.tools.query_financials import (
@@ -78,7 +78,7 @@ TOOL_SPECS = [
             "query": {"type": "string", "description": "what to look for, in plain words"},
             "company": {
                 "type": "string",
-                "description": f"ticker (one of {', '.join(COMPANIES)}) or company name",
+                "description": f"ticker or company name, one of: {COMPANY_LIST}",
             },
         },
         # company is checked by our code, not by Groq: a missing one gets a helpful error back
@@ -148,7 +148,7 @@ class ToolRunner:
     def _search(self, query: str, company: str) -> ToolOutcome:
         ticker = resolve_company(company, self.names)
         if ticker is None:
-            return _error(f"company {company!r} is not covered; use one of {', '.join(COMPANIES)}")
+            return _error(f"company {company!r} is not covered; use one of: {COMPANY_LIST}")
         chunks = self.search(query, ticker)[:EVIDENCE_K]
         shown = [{"chunk_id": c.chunk_id, "company": c.ticker, "section": f"Item {c.section}",
                   "text": c.text} for c in chunks]  # fmt: skip

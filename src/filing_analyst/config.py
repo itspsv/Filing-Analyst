@@ -14,6 +14,18 @@ COMPANIES: tuple[str, ...] = (
 # INTC and IBM were swapped out: Intel's 10-K is not laid out by Item number, and IBM's
 # Item 7 only points to a separate annual-report exhibit.
 
+# Everyday names for the prompt and tool schemas. Nov 19: with tickers only, gpt-oss-120b
+# said "Broadcom isn't among the companies covered" (AVGO) and called no tool.
+COMPANY_NAMES: dict[str, str] = {
+    "AAPL": "Apple", "MSFT": "Microsoft", "GOOGL": "Alphabet (Google)", "AMZN": "Amazon",
+    "META": "Meta Platforms", "NVDA": "NVIDIA", "AMD": "Advanced Micro Devices",
+    "AMAT": "Applied Materials", "TSLA": "Tesla", "NFLX": "Netflix", "CRM": "Salesforce",
+    "ORCL": "Oracle", "ADBE": "Adobe", "QCOM": "Qualcomm", "AVGO": "Broadcom",
+    "TXN": "Texas Instruments", "MU": "Micron Technology", "NOW": "ServiceNow",
+    "CSCO": "Cisco Systems", "PYPL": "PayPal",
+}  # fmt: skip
+COMPANY_LIST = ", ".join(f"{t} {COMPANY_NAMES[t]}" for t in COMPANIES)  # "AAPL Apple, ..."
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")

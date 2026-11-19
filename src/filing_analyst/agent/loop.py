@@ -14,7 +14,7 @@ from pydantic import BaseModel
 from filing_analyst.agent.compose import ComposeClient, Evidence, compose_answer
 from filing_analyst.agent.tools import TOOL_SPECS, ToolOutcome, ToolRunner
 from filing_analyst.answer import Answer, load_default_search
-from filing_analyst.config import Settings
+from filing_analyst.config import COMPANY_LIST, Settings
 from filing_analyst.llm import CallStats, DailyBudgetExceeded, LLMClient, LLMError
 
 MAX_STEPS = 8
@@ -23,8 +23,9 @@ COMPOSE_RESERVE = 6_000  # stop gathering early enough to leave room for the fin
 STEP_MAX_TOKENS = 1_024
 INVALID_TOOL_CALL = "tool call validation failed"  # Groq's HTTP 400 text, seen Nov 17
 
-SYSTEM_PROMPT = """You are a research agent for questions about 20 US companies' latest 10-K
-filings. Use the tools to gather evidence; a later step writes the final answer from it.
+SYSTEM_PROMPT = f"""You are a research agent for questions about the latest 10-K filings of
+these 20 US companies: {COMPANY_LIST}.
+Use the tools to gather evidence; a later step writes the final answer from it.
 - search_filings: what a filing says (risks, strategy, management's discussion).
 - query_financials: numbers (revenue, profit, assets, ...) from the facts table.
 - compute_ratio: any margin or growth rate. Never calculate anything yourself.
