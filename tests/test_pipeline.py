@@ -3,9 +3,9 @@ from pathlib import Path
 import pytest
 
 from filing_analyst.config import Settings
-from filing_analyst.extract import run_extraction
+from filing_analyst.extract import ExtractionRun, run_extraction
 from filing_analyst.llm import DailyBudgetExceeded
-from filing_analyst.pipeline import PipelineError, Step, build_steps, run_pipeline
+from filing_analyst.pipeline import PipelineError, Step, build_steps, risk_summary, run_pipeline
 
 SETTINGS = Settings(_env_file=None, sec_user_agent="Test test@example.com")
 
@@ -62,3 +62,14 @@ def test_extraction_stops_cleanly_at_daily_budget(tmp_path: Path) -> None:
     assert run.stopped == "190000 tokens used"
     assert run.done == []
     assert run.failed == {}  # a budget stop is not a failure; rerun later resumes
+
+
+def test_risk_summary_counts_saved_companies_not_only_this_run(tmp_path: Path) -> None:
+    settings = Settings(_env_file=None, sec_user_agent="Test test@example.com", data_dir=tmp_path)
+    settings.risks_dir.mkdir(parents=True)
+    for ticker in ("AAPL", "MSFT", "NVDA"):  # saved by earlier runs
+        (settings.risks_dir / f"{ticker}.json").write_text("{}")
+    run = ExtractionRun(done=["AAPL"], stopped="190000 tokens used")
+    summary = risk_summary(run, settings)
+    assert summary.startswith("3/20 companies saved (1 extracted in this run), 0 failed")
+    assert summary.endswith("stopped early at the daily budget, rerun later")

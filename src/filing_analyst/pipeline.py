@@ -13,7 +13,7 @@ from collections.abc import Callable
 
 from filing_analyst.config import COMPANIES, Settings
 from filing_analyst.db import write_facts
-from filing_analyst.extract import log_length, print_run_summary, run_extraction
+from filing_analyst.extract import ExtractionRun, log_length, print_run_summary, run_extraction
 from filing_analyst.llm import LLMClient
 from filing_analyst.parse.sections import extract_all_sections, missing_sections
 from filing_analyst.sec.filings import download_all, write_manifest
@@ -53,13 +53,21 @@ def step_facts(settings: Settings) -> str:
     return f"{rows:,} rows in DuckDB, {len(coverage_gaps(facts))} known gaps in latest year"
 
 
+def risk_summary(run: ExtractionRun, settings: Settings) -> str:
+    """This run's work and the total saved on disk. A run that stops at the daily budget only
+    counts the companies it reached, while earlier runs may have saved the rest."""
+    saved = sum((settings.risks_dir / f"{t}.json").exists() for t in COMPANIES)
+    summary = (f"{saved}/{len(COMPANIES)} companies saved ({len(run.done)} extracted in this "
+               f"run), {len(run.failed)} failed")  # fmt: skip
+    return f"{summary}; stopped early at the daily budget, rerun later" if run.stopped else summary
+
+
 def step_risks(settings: Settings) -> str:
     client = LLMClient(settings)
     log_start = log_length(client)
     run = run_extraction(settings, list(COMPANIES), client)
     print_run_summary(client, log_start)
-    summary = f"{len(run.done)}/{len(COMPANIES)} companies done, {len(run.failed)} failed"
-    return f"{summary}; stopped early at the daily budget, rerun later" if run.stopped else summary
+    return risk_summary(run, settings)
 
 
 def build_steps(no_llm: bool) -> list[Step]:
