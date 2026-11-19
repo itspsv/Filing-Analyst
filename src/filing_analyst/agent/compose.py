@@ -33,6 +33,12 @@ NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
 CHUNK_REF = re.compile(r"\[[A-Z]+-\d{4}-(?:1A|7)-\d{4}\]")
 UNITS = {"thousand": 10**3, "million": 10**6, "billion": 10**9, "trillion": 10**12}
 SCALED = re.compile(r"(\d[\d,]*(?:\.\d+)?)\s*(thousand|million|billion|trillion)\b", re.I)
+# Not amounts: SEC form names ("10-K", also with the non-breaking hyphen the model writes) and
+# list markers, "(2)" or "2. " at the start of a line. Nov 19: all the "untraced" numbers of
+# rounds 0 to 2 were these.
+NOT_AMOUNTS = re.compile(
+    r"\b\d{1,2}[-\u2010\u2011\u2012\u2013]?[KQ]\b|\(\d{1,2}\)|^\s*\d{1,2}[.)](?=\s)", re.M
+)
 
 
 @dataclass
@@ -153,7 +159,7 @@ def untraced_numbers(answer: str, evidence: Evidence) -> list[str]:
     }
     values |= {Decimal(str(r.amount)) for r in evidence.ratios if r.amount is not None}
     written |= {str(int(v)) for v in values if v == v.to_integral_value()}
-    text = CHUNK_REF.sub("", answer)
+    text = NOT_AMOUNTS.sub(" ", CHUNK_REF.sub("", answer))
     untraced = []
     for match in SCALED.finditer(text):
         number = match.group(1).replace(",", "")

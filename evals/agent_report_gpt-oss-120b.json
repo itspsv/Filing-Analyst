@@ -12,13 +12,13 @@
     "failed_runs": 0,
     "figures_exact": "6/7",
     "figures_within_1pct": "6/7",
-    "untraced_numbers": 6,
+    "untraced_numbers": 0,
     "dropped_citations": 1,
-    "tokens_total": 43050,
-    "tokens_mean": 4305,
+    "tokens_total": 0,
+    "tokens_mean": 0,
     "llm_calls_mean": 4.2,
-    "seconds_p50": 29.95,
-    "seconds_p95": 182.84
+    "seconds_p50": 0.59,
+    "seconds_p95": 1.13
   },
   "questions": [
     {
@@ -40,16 +40,14 @@
         "ratio": 0
       },
       "dropped_citations": 0,
-      "untraced_numbers": [
-        "10"
-      ],
+      "untraced_numbers": [],
       "tools": [
         "search_filings",
         "search_filings"
       ],
       "llm_calls": 4,
-      "tokens": 2718,
-      "seconds": 2.33,
+      "tokens": 0,
+      "seconds": 0.6,
       "error": null
     },
     {
@@ -71,17 +69,13 @@
         "ratio": 0
       },
       "dropped_citations": 0,
-      "untraced_numbers": [
-        "2",
-        "3",
-        "4"
-      ],
+      "untraced_numbers": [],
       "tools": [
         "search_filings"
       ],
       "llm_calls": 3,
-      "tokens": 2671,
-      "seconds": 1.94,
+      "tokens": 0,
+      "seconds": 0.62,
       "error": null
     },
     {
@@ -108,8 +102,8 @@
         "search_filings"
       ],
       "llm_calls": 3,
-      "tokens": 2696,
-      "seconds": 58.02,
+      "tokens": 0,
+      "seconds": 0.59,
       "error": null
     },
     {
@@ -136,8 +130,8 @@
         "query_financials"
       ],
       "llm_calls": 3,
-      "tokens": 762,
-      "seconds": 0.55,
+      "tokens": 0,
+      "seconds": 0.06,
       "error": null
     },
     {
@@ -165,8 +159,8 @@
         "compute_ratio"
       ],
       "llm_calls": 4,
-      "tokens": 2000,
-      "seconds": 0.67,
+      "tokens": 0,
+      "seconds": 0.02,
       "error": null
     },
     {
@@ -196,8 +190,8 @@
         "compute_ratio"
       ],
       "llm_calls": 4,
-      "tokens": 2594,
-      "seconds": 57.56,
+      "tokens": 0,
+      "seconds": 0.02,
       "error": null
     },
     {
@@ -219,9 +213,7 @@
         "ratio": 2
       },
       "dropped_citations": 0,
-      "untraced_numbers": [
-        "10"
-      ],
+      "untraced_numbers": [],
       "tools": [
         "query_financials",
         "compute_ratio",
@@ -231,8 +223,8 @@
         "search_filings"
       ],
       "llm_calls": 8,
-      "tokens": 18808,
-      "seconds": 182.84,
+      "tokens": 0,
+      "seconds": 1.13,
       "error": null
     },
     {
@@ -260,8 +252,8 @@
         "search_filings"
       ],
       "llm_calls": 4,
-      "tokens": 2882,
-      "seconds": 60.31,
+      "tokens": 0,
+      "seconds": 0.59,
       "error": null
     },
     {
@@ -283,17 +275,15 @@
         "ratio": 1
       },
       "dropped_citations": 0,
-      "untraced_numbers": [
-        "10"
-      ],
+      "untraced_numbers": [],
       "tools": [
         "query_financials",
         "compute_ratio",
         "search_filings"
       ],
       "llm_calls": 5,
-      "tokens": 7110,
-      "seconds": 62.04,
+      "tokens": 0,
+      "seconds": 0.59,
       "error": null
     },
     {
@@ -321,8 +311,8 @@
         "query_financials"
       ],
       "llm_calls": 4,
-      "tokens": 809,
-      "seconds": 0.73,
+      "tokens": 0,
+      "seconds": 0.04,
       "error": null
     }
   ]

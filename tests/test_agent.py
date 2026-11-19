@@ -236,6 +236,27 @@ def test_a_growth_change_computed_in_code_is_traced() -> None:
     assert untraced_numbers("Revenue grew $79 billion.", evidence) == ["79 billion"]
 
 
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Microsoft’s Form 10‑K describes competition.",  # non-breaking hyphen
+        "Its 10-K and 10-Q filings and an 8-K say so.",
+        "Risks: (2) misalignment and (3) the loss of key staff.",
+        "Risks:\n2. misalignment\n3) the loss of key staff",
+    ],
+)
+def test_form_names_and_list_markers_are_not_amounts(text: str) -> None:
+    """Nov 19, round 2: all 6 untraced numbers were these."""
+    assert untraced_numbers(text, revenue_evidence()) == []
+
+
+def test_real_amounts_next_to_form_names_are_still_checked() -> None:
+    evidence = revenue_evidence()
+    assert untraced_numbers("The 10‑K reports $79 billion.", evidence) == ["79 billion"]
+    assert untraced_numbers("A loss of (2,863) was reported (2).", evidence) == ["2,863"]
+    assert untraced_numbers("Revenue:\n2.5 billion", evidence) == ["2.5 billion"]
+
+
 def test_compose_prompt_says_growth_changes_come_from_the_ratio_result() -> None:
     assert "never subtract or add figures yourself" in COMPOSE_PROMPT
 
