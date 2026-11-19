@@ -21,6 +21,9 @@ class RatioResult(BaseModel):
     percent: str
     formula: str  # with the actual numbers, e.g. "gross_profit / revenue = 153,463 / 215,938"
     inputs: Inputs
+    # growth only: new - old in dollars. Nov 19: asked "by how much did revenue grow", the
+    # model subtracted the two revenues itself; now the difference also comes from code.
+    amount: float | None = None
 
 
 def _need(inputs: Inputs, *names: str) -> list[float]:
@@ -62,7 +65,8 @@ def growth(inputs: Inputs) -> tuple[float, str]:
     old, new = _need(inputs, "old", "new")
     if old <= 0:
         raise RatioError(f"growth needs a positive starting value, got {old:,.0f}")
-    return (new - old) / old, f"(new - old) / old = ({new:,.0f} - {old:,.0f}) / {old:,.0f}"
+    formula = f"(new - old) / old = ({new:,.0f} - {old:,.0f}) / {old:,.0f}"
+    return (new - old) / old, f"{formula}; change = new - old = {new - old:,.0f}"
 
 
 # name -> (function, inputs it accepts)
@@ -88,4 +92,5 @@ def compute_ratio(name: str, inputs: Inputs) -> RatioResult:
         percent=f"{value * 100:.2f}%",
         formula=formula,
         inputs=inputs,
+        amount=inputs["new"] - inputs["old"] if name == "growth" else None,
     )

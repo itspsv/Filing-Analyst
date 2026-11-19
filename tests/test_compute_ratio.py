@@ -30,6 +30,21 @@ def test_growth_from_real_nvidia_revenue() -> None:
     assert result.percent == "65.47%"
 
 
+def test_growth_also_gives_the_dollar_change_from_code() -> None:
+    """Nov 19: asked 'by how much did Amazon's revenue grow', the model subtracted itself."""
+    result = compute_ratio("growth", {"old": 637_959_000_000.0, "new": 716_924_000_000.0})
+    assert result.percent == "12.38%"
+    assert result.amount == 78_965_000_000
+    assert result.formula.endswith("change = new - old = 78,965,000,000")
+    shrink = compute_ratio("growth", {"old": 97_690_000_000.0, "new": 94_827_000_000.0})  # TSLA
+    assert shrink.amount == -2_863_000_000 and shrink.percent == "-2.93%"
+
+
+def test_margins_have_no_dollar_change() -> None:
+    result = compute_ratio("net_margin", {"net_income": 1.0, "revenue": 4.0})
+    assert result.amount is None
+
+
 @pytest.mark.parametrize(
     ("name", "inputs", "message"),
     [

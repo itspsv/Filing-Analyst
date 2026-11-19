@@ -226,6 +226,20 @@ def test_exact_numbers_and_exact_unit_conversions_are_traced() -> None:
     assert untraced_numbers("Gross margin was 71.07%.", evidence) == []
 
 
+def test_a_growth_change_computed_in_code_is_traced() -> None:
+    growth = RatioResult(name="growth", value=0.123778, percent="12.38%",
+                         formula="(new - old) / old = ...; change = new - old = 78,965,000,000",
+                         inputs={}, amount=78_965_000_000.0)  # fmt: skip
+    evidence = Evidence(ratios=[growth])
+    assert untraced_numbers("Revenue grew $78,965,000,000 (12.38%).", evidence) == []
+    assert untraced_numbers("Revenue grew $78.965 billion (12.38%).", evidence) == []
+    assert untraced_numbers("Revenue grew $79 billion.", evidence) == ["79 billion"]
+
+
+def test_compose_prompt_says_growth_changes_come_from_the_ratio_result() -> None:
+    assert "never subtract or add figures yourself" in COMPOSE_PROMPT
+
+
 def test_rounded_conversions_and_invented_numbers_are_flagged() -> None:
     evidence = revenue_evidence()
     assert untraced_numbers("Revenue was $215.94 billion.", evidence) == ["215.94 billion"]
